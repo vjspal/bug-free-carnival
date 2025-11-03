@@ -1,0 +1,18 @@
+#cloud-config
+autoinstall:
+  version: 1
+  identity:
+    hostname: ubuntu-ci
+    username: packer
+    password: "$6$rounds=4096$REPLACE_ME$REPLACE_ME_MORE"   # <-- fill in step 2
+  ssh:
+    install-server: true
+  packages:
+    - qemu-guest-agent
+    - cloud-init
+  storage:
+    layout: { name: lvm }
+  apt:
+    preserve_sources_list: false
+  late-commands:
+    - curtin in-target --target=/target -- systemctl enable qemu-guest-agent
