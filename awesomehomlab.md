@@ -1,0 +1,3751 @@
+---
+tags: #🌱, #devops, #homelaby
+---
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+The content has been processed where security check has been disabled.
+
+# File Summary
+
+## Purpose
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+
+## File Format
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  a. A header with the file path (## File: path/to/file)
+  b. The full contents of the file in a code block
+
+## Usage Guidelines
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+
+## Notes
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Security check has been disabled - content may contain sensitive information
+- Files are sorted by Git change count (files with more changes are at the bottom)
+
+# Directory Structure
+```
+.github/
+  workflows/
+    build.yaml
+assets/
+  logo.svg
+data/
+  a-i.yaml
+  analytics.yaml
+  authentication.yaml
+  automation.yaml
+  backup.yaml
+  bookmarking.yaml
+  c-i-c-d.yaml
+  c-m-s.yaml
+  c-r-m.yaml
+  calendar.yaml
+  communication.yaml
+  container.yaml
+  crypting.yaml
+  d-n-s.yaml
+  dashboard.yaml
+  development.yaml
+  diagramming.yaml
+  download.yaml
+  file-sharing.yaml
+  finance.yaml
+  gaming.yaml
+  infra-management.yaml
+  io-t.yaml
+  knowledge-base.yaml
+  mail.yaml
+  media-management.yaml
+  monitoring.yaml
+  networking.yaml
+  photo-management.yaml
+  r-s-s.yaml
+  security.yaml
+  social-media.yaml
+  syncing.yaml
+  tools.yaml
+  writing.yaml
+script/
+  index.js
+  utils.js
+  yaml.js
+tmpl/
+  README.md
+.editorconfig
+.gitignore
+.node-version
+eslint.config.js
+package.json
+README.md
+```
+
+# Files
+
+## File: .github/workflows/build.yaml
+```yaml
+name: Update Repos Info
+
+on:
+  push:
+    branches: [master]
+  schedule:
+    - cron: '22 22 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22.x]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        with:
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+      - run: pnpm build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
+          message: 'chore: autopublish [skip ci]'
+```
+
+## File: assets/logo.svg
+```
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-178.3 -167.1 1000 700"><path d="M79.9 323.1c4 0 7.3 1.4 10.1 4.2 2.8 2.8 4.2 6.2 4.2 10.1V387H43.5c-4 0-7.3-1.4-10.1-4.2-2.8-2.8-4.2-6.2-4.2-10.1v-23.6h53.1v-11.7c0-.7-.2-1.2-.7-1.7-.5-.5-1-.7-1.7-.7H29.2v-11.9h50.7zm2.4 52V361H41.1v11.7c0 .7.2 1.2.7 1.7.5.5 1 .7 1.7.7h38.8zm114.7-52h12.7l-24 63.9H176l-21.5-47.5-20.3 47.5-.2-.1.1.1h-9.6l-25.1-63.9H112l17.3 42.4 18.4-42.4h13.6l19.5 42.4 16.2-42.4zm67.2 0c4 0 7.3 1.4 10.1 4.2 2.8 2.8 4.2 6.2 4.2 10.1V361h-53.1v11.7c0 .7.2 1.2.7 1.7.5.5 1 .7 1.7.7h50.7V387h-50.7c-4 0-7.3-1.4-10.1-4.2-2.8-2.8-4.2-6.2-4.2-10.1v-35.3c0-4 1.4-7.3 4.2-10.1 2.8-2.8 6.2-4.2 10.1-4.2h36.4zm-38.8 26h41.2v-11.7c0-.7-.2-1.2-.7-1.7-.5-.5-1-.7-1.7-.7h-36.4c-.7 0-1.2.2-1.7.7-.5.5-.7 1-.7 1.7v11.7zm129-11.6v2.4h-11.9v-2.4c0-.7-.2-1.2-.7-1.7-.5-.5-1-.7-1.7-.7h-36.4c-.7 0-1.2.2-1.7.7-.5.5-.7 1-.7 1.7v9.3c0 .7.2 1.2.7 1.7.5.5 1 .7 1.7.7h36.4c4 0 7.3 1.4 10.1 4.2 2.8 2.8 4.2 6.2 4.2 10.1v9.3c0 4-1.4 7.3-4.2 10.1-2.8 2.8-6.2 4.2-10.1 4.2h-36.4c-4 0-7.3-1.4-10.1-4.2-2.8-2.8-4.2-6.2-4.2-10.1v-2.4h11.9v2.4c0 .7.2 1.2.7 1.7.5.5 1 .7 1.7.7h36.4c.7 0 1.2-.2 1.7-.7.5-.5.7-1 .7-1.7v-9.3c0-.7-.2-1.2-.7-1.7-.5-.5-1-.7-1.7-.7h-36.4c-4 0-7.3-1.4-10.1-4.2-2.8-2.8-4.2-6.2-4.2-10.1v-9.3c0-4 1.4-7.3 4.2-10.1 2.8-2.8 6.2-4.2 10.1-4.2h36.4c4 0 7.3 1.4 10.1 4.2 2.8 2.7 4.2 6.1 4.2 10.1zm25.2-14.4H416c4 0 7.3 1.4 10.1 4.2 2.8 2.8 4.2 6.2 4.2 10.1v35.3c0 4-1.4 7.3-4.2 10.1-2.8 2.8-6.2 4.2-10.1 4.2h-36.4c-4 0-7.3-1.4-10.1-4.2-2.8-2.8-4.2-6.2-4.2-10.1v-35.3c0-4 1.4-7.3 4.2-10.1 2.8-2.8 6.2-4.2 10.1-4.2zM416 335h-36.4c-.7 0-1.2.2-1.7.7-.5.5-.7 1-.7 1.7v35.3c0 .7.2 1.2.7 1.7.5.5 1 .7 1.7.7H416c.7 0 1.2-.2 1.7-.7.5-.5.7-1 .7-1.7v-35.3c0-.7-.2-1.2-.7-1.7-.5-.4-1-.7-1.7-.7zm107.5-11.9c4 0 7.3 1.4 10.1 4.2 2.8 2.8 4.2 6.2 4.2 10.1V387H526v-49.6c0-.7-.2-1.2-.7-1.7-.5-.5-1.1-.7-1.8-.7h-25.2c-.7 0-1.2.2-1.7.7-.5.5-.7 1-.7 1.7V387H484v-49.6c0-.7-.2-1.2-.7-1.7-.5-.5-1-.7-1.7-.7h-25.3c-.7 0-1.2.2-1.7.7-.5.5-.7 1-.7 1.7V387H442v-63.9h81.5zm76.5 0c4 0 7.3 1.4 10.1 4.2 2.8 2.8 4.2 6.2 4.2 10.1V361h-53.1v11.7c0 .7.2 1.2.7 1.7.5.5 1 .7 1.7.7h50.7V387h-50.7c-4 0-7.3-1.4-10.1-4.2-2.8-2.8-4.2-6.2-4.2-10.1v-35.3c0-4 1.4-7.3 4.2-10.1 2.8-2.8 6.2-4.2 10.1-4.2H600zm-38.8 26h41.2v-11.7c0-.7-.2-1.2-.7-1.7-.5-.5-1-.7-1.7-.7h-36.4c-.7 0-1.2.2-1.7.7-.5.5-.7 1-.7 1.7v11.7z" fill="#494368"/><path fill="#FC60A8" d="M614.2 91l-150-137.6-21.1 23L568.1 91H75.4l125-114.7-21.1-23L29.3 91h-.1v90.7c0 41 39.5 74.4 88 74.4h92.5c48.5 0 88-33.4 88-74.4v-59.6h48v59.6c0 41 39.5 74.4 88 74.4h92.5c48.5 0 88-33.4 88-74.4V91z"/></svg>
+```
+
+## File: data/a-i.yaml
+```yaml
+- name: Ollama
+  url: 'https://github.com/ollama/ollama'
+
+- name: LocalAI
+  url: 'https://github.com/mudler/LocalAI'
+
+- name: Xinference
+  url: 'https://github.com/xorbitsai/inference'
+
+- name: OpenLLM
+  url: 'https://github.com/bentoml/OpenLLM'
+
+- name: Anse
+  url: 'https://github.com/anse-app/anse'
+
+- name: ChatGPT UI
+  url: 'https://github.com/WongSaang/chatgpt-ui'
+
+- name: Chatpad AI
+  url: 'https://github.com/deiucanta/chatpad'
+
+- name: Cheshire-Cat
+  url: 'https://github.com/cheshire-cat-ai/core'
+
+- name: Flowise
+  url: 'https://github.com/FlowiseAI/Flowise'
+
+- name: Lobe Chat
+  url: 'https://github.com/lobehub/lobe-chat'
+
+- name: Open WebUI
+  url: 'https://github.com/open-webui/open-webui'
+
+- name: Serge
+  url: 'https://github.com/serge-chat/serge'
+
+- name: LlamaGPT
+  url: 'https://github.com/getumbrel/llama-gpt'
+
+- name: ComfyUI
+  url: 'https://github.com/comfyanonymous/ComfyUI'
+
+- name: Dify
+  url: 'https://github.com/langgenius/dify'
+
+- name: GaiaNet
+  url: 'https://github.com/GaiaNet-AI/gaianet-node'
+
+- name: Perplexica
+  url: 'https://github.com/ItzCrazyKns/Perplexica'
+
+- name: MindsDB
+  url: https://github.com/mindsdb/mindsdb
+
+- name: JupyterLab
+  url: https://github.com/jupyterlab/jupyterlab
+
+- name: Leon
+  url: https://github.com/leon-ai/leon
+
+- name: 1Backend
+  url: https://github.com/1backend/1backend
+```
+
+## File: data/analytics.yaml
+```yaml
+- name: Matomo
+  url: 'https://github.com/matomo-org/matomo'
+
+- name: Plausible
+  url: 'https://github.com/plausible/analytics'
+
+- name: Ackee
+  url: 'https://github.com/electerious/Ackee'
+
+- name: Umami
+  url: 'https://github.com/umami-software/umami'
+
+- name: GoAccess
+  url: 'https://github.com/allinurl/goaccess'
+
+- name: Pirsch
+  url: 'https://github.com/pirsch-analytics/pirsch'
+
+- name: Fathom
+  url: 'https://github.com/usefathom/fathom'
+
+- name: PostHog
+  url: 'https://github.com/PostHog/posthog'
+
+- name: Openpanel
+  url: 'https://github.com/Openpanel-dev/openpanel'
+
+- name: Medama
+  url: 'https://github.com/medama-io/medama'
+
+- name: Metabase
+  url: https://github.com/metabase/metabase
+
+- name: Redash
+  url: https://github.com/getredash/redash
+
+- name: cube.js
+  url: https://github.com/cube-js/cube
+
+- name: Countly
+  url: https://github.com/Countly/countly-server
+
+- name: RudderStack
+  url: https://github.com/rudderlabs/rudder-server
+
+- name: GoatCounter
+  url: https://github.com/arp242/goatcounter
+
+- name: Open Web Analytics
+  url: https://github.com/Open-Web-Analytics/Open-Web-Analytics
+
+- name: Shynet
+  url: https://github.com/milesmcc/shynet
+
+- name: Rybbit
+  url: https://github.com/rybbit-io/rybbit
+```
+
+## File: data/authentication.yaml
+```yaml
+- name: authentik
+  url: 'https://github.com/goauthentik/authentik'
+
+- name: Logto
+  url: 'https://github.com/logto-io/logto'
+
+- name: Pomerium
+  url: https://github.com/pomerium/pomerium
+
+- name: Pocket ID
+  url: https://github.com/pocket-id/pocket-id
+```
+
+## File: data/automation.yaml
+```yaml
+- name: Activepieces
+  url: 'https://github.com/activepieces/activepieces'
+
+- name: Huginn
+  url: https://github.com/huginn/huginn
+
+- name: Mindustry
+  url: https://github.com/Anuken/Mindustry
+
+- name: StackStorm
+  url: https://github.com/StackStorm/st2
+
+- name: Beehive
+  url: https://github.com/muesli/beehive
+
+- name: Automatisch
+  url: https://github.com/automatisch/automatisch
+
+- name: Actionsflow
+  url: https://github.com/actionsflow/actionsflow
+
+- name: µTask
+  url: https://github.com/ovh/utask
+```
+
+## File: data/backup.yaml
+```yaml
+- name: Duplicati
+  url: 'https://github.com/duplicati/duplicati'
+
+- name: Restic
+  url: 'https://github.com/restic/restic'
+
+- name: BorgBackup
+  url: 'https://github.com/borgbackup/borg'
+
+- name: Kopia
+  url: 'https://github.com/kopia/kopia'
+
+- name: Rclone
+  url: 'https://github.com/rclone/rclone'
+```
+
+## File: data/bookmarking.yaml
+```yaml
+- name: Espial
+  url: 'https://github.com/jonschoning/espial'
+
+- name: NeonLink
+  url: 'https://github.com/AlexSciFier/neonlink'
+
+- name: linkding
+  url: 'https://github.com/sissbruecker/linkding'
+
+- name: LinkAce
+  url: 'https://github.com/Kovah/LinkAce'
+
+- name: Benotes
+  url: 'https://github.com/fr0tt/benotes'
+
+- name: Shaarli
+  url: https://github.com/shaarli/Shaarli
+
+- name: Pinry
+  url: https://github.com/pinry/pinry
+
+- name: unmark
+  url: https://github.com/cdevroe/unmark
+
+- name: Reminiscence
+  url: https://github.com/kanishka-linux/reminiscence
+
+- name: DashMachine
+  url: https://github.com/rmountjoy92/DashMachine
+```
+
+## File: data/c-i-c-d.yaml
+```yaml
+- name: Jenkins
+  url: 'https://github.com/jenkinsci/jenkins'
+
+- name: GitLab CI
+  url: 'https://gitlab.com/gitlab-org/gitlab'
+
+- name: Drone
+  url: 'https://github.com/drone/drone'
+
+- name: ArgoCD
+  url: 'https://github.com/argoproj/argo-cd'
+
+- name: Tekton
+  url: 'https://github.com/tektoncd/pipeline'
+```
+
+## File: data/c-m-s.yaml
+```yaml
+- name: Strapi
+  url: https://github.com/strapi/strapi
+
+- name: Directus
+  url: https://github.com/directus/directus
+
+- name: Wagtail
+  url: https://github.com/wagtail/wagtail
+
+- name: Grav
+  url: https://github.com/getgrav/grav
+
+- name: django CMS
+  url: https://github.com/django-cms/django-cms
+
+- name: october
+  url: https://github.com/octobercms/october
+
+- name: Joomla!
+  url: https://github.com/joomla/joomla-cms
+
+- name: KeystoneJS
+  url: https://github.com/keystonejs/keystone
+
+- name: Umbraco
+  url: https://github.com/umbraco/Umbraco-CMS
+
+- name: Drupal
+  url: https://github.com/drupal/drupal
+
+- name: Refinery CMS
+  url: https://github.com/refinery/refinerycms
+
+- name: Pimcore
+  url: https://github.com/pimcore/pimcore
+
+- name: Bolt
+  url: https://github.com/bolt/bolt
+
+- name: Orchard
+  url: https://github.com/OrchardCMS/Orchard
+
+- name: Microweber
+  url: https://github.com/microweber/microweber
+
+- name: Shoop
+  url: https://github.com/shuup/shuup
+
+- name: Squidex
+  url: https://github.com/Squidex/squidex
+
+- name: Shopware Community Edition
+  url: https://github.com/shopware5/shopware
+
+- name: MODX
+  url: https://github.com/modxcms/revolution
+
+- name: TYPO3
+  url: https://github.com/TYPO3/typo3
+
+- name: PencilBlue
+  url: https://github.com/pencilblue/pencilblue
+
+- name: Bludit
+  url: https://github.com/bludit/bludit
+
+- name: Camaleon CMS
+  url: https://github.com/owen2345/camaleon-cms
+```
+
+## File: data/c-r-m.yaml
+```yaml
+- name: ERPNext
+  url: https://github.com/frappe/erpnext
+
+- name: Monica
+  url: https://github.com/monicahq/monica
+
+- name: snipe-it
+  url: https://github.com/snipe/snipe-it
+
+- name: DOLIBARR ERP & CRM
+  url: https://github.com/Dolibarr/dolibarr
+
+- name: SuiteCRM
+  url: https://github.com/salesagility/SuiteCRM
+
+- name: Open Source POS
+  url: https://github.com/opensourcepos/opensourcepos
+
+- name: grocy
+  url: https://github.com/grocy/grocy
+
+- name: Open Event Server
+  url: https://github.com/fossasia/open-event-server
+
+- name: Erxes
+  url: https://github.com/erxes/erxes
+
+- name: Leantime
+  url: https://github.com/Leantime/leantime
+
+- name: Sharetribe
+  url: https://github.com/sharetribe/sharetribe
+
+- name: Restyaboard
+  url: https://github.com/RestyaPlatform/board
+
+- name: EspoCRM
+  url: https://github.com/espocrm/espocrm
+
+- name: Corteza
+  url: https://github.com/cortezaproject/corteza
+
+- name: ZenTao
+  url: https://github.com/easysoft/zentaopms
+```
+
+## File: data/calendar.yaml
+```yaml
+- name: Cal.com
+  url: 'https://github.com/calcom/cal.com'
+
+- name: MIND
+  url: 'https://github.com/Casvt/MIND'
+
+- name: Rallly
+  url: 'https://github.com/lukevella/rallly'
+
+- name: Easy!Appointments
+  url: https://github.com/alextselegidis/easyappointments
+
+- name: Radicale
+  url: https://github.com/Kozea/Radicale
+
+- name: Baïkal
+  url: https://github.com/sabre-io/Baikal
+
+- name: indico
+  url: https://github.com/indico/indico
+
+- name: sabre/dav
+  url: https://github.com/sabre-io/dav
+```
+
+## File: data/communication.yaml
+```yaml
+- name: Jitsi
+  url: 'https://github.com/jitsi/jitsi-meet'
+
+- name: Matrix
+  url: 'https://github.com/matrix-org/synapse'
+
+- name: Mattermost
+  url: 'https://github.com/mattermost/mattermost-server'
+
+- name: Nextcloud Talk
+  url: 'https://github.com/nextcloud/spreed'
+
+- name: Rocket.Chat
+  url: 'https://github.com/RocketChat/Rocket.Chat'
+
+- name: Signal
+  url: 'https://github.com/signalapp/Signal-Server'
+
+- name: Zulip
+  url: 'https://github.com/zulip/zulip'
+
+- name: Databag
+  url: 'https://github.com/balzack/databag'
+
+- name: Conduit
+  url: 'https://gitlab.com/famedly/conduit'
+
+- name: Revolt
+  url: 'https://github.com/revoltchat/revolt'
+
+- name: Discourse
+  url: https://github.com/discourse/discourse
+
+- name: Chatwoot
+  url: https://github.com/chatwoot/chatwoot
+
+- name: NodeBB
+  url: https://github.com/NodeBB/NodeBB
+
+- name: Flarum
+  url: https://github.com/flarum/flarum
+
+- name: Tinode
+  url: https://github.com/tinode/chat
+
+- name: Lemmy
+  url: https://github.com/LemmyNet/lemmy
+
+- name: Apache Answer
+  url: https://github.com/apache/incubator-answer
+
+- name: Lets-Chat
+  url: https://github.com/sdelements/lets-chat
+
+- name: Tox
+  url: https://github.com/irungentoo/toxcore
+
+- name: Berty
+  url: https://github.com/berty/berty
+
+- name: The Lounge
+  url: https://github.com/thelounge/thelounge
+
+- name: Papercups
+  url: https://github.com/papercups-io/papercups
+
+- name: tmate
+  url: https://github.com/tmate-io/tmate
+
+- name: Openfire
+  url: https://github.com/igniterealtime/Openfire
+
+- name: Zammad
+  url: https://github.com/zammad/zammad
+
+- name: remark42
+  url: https://github.com/umputun/remark42
+
+- name: Jitsi Video Bridge
+  url: https://github.com/jitsi/jitsi-videobridge
+
+- name: Converse.js
+  url: https://github.com/conversejs/converse.js
+
+- name: Kamailio
+  url: https://github.com/kamailio/kamailio
+
+- name: Asterisk
+  url: https://github.com/asterisk/asterisk
+
+- name: TextBelt
+  url: https://github.com/typpo/textbelt
+
+- name: Fider
+  url: https://github.com/getfider/fider
+
+- name: phpBB
+  url: https://github.com/phpbb/phpbb
+
+- name: Loomio
+  url: https://github.com/loomio/loomio
+
+- name: FreeScout
+  url: https://github.com/freescout-help-desk/freescout
+
+- name: Kandan
+  url: https://github.com/kandanapp/kandan
+
+- name: Live Helper Chat
+  url: https://github.com/LiveHelperChat/livehelperchat
+
+- name: Weechat
+  url: https://github.com/weechat/weechat
+
+- name: Helpy
+  url: https://github.com/helpyio/helpy
+
+- name: ZNC
+  url: https://github.com/znc/znc
+
+- name: WBO
+  url: https://github.com/lovasoa/whitebophir
+
+- name: MongooseIM
+  url: https://github.com/esl/MongooseIM
+
+- name: Oragono
+  url: https://github.com/ergochat/ergo
+
+- name: RetroShare
+  url: https://github.com/RetroShare/RetroShare
+
+- name: Movim
+  url: https://github.com/movim/movim
+
+- name: Candy
+  url: https://github.com/candy-chat/candy
+
+- name: Twake
+  url: https://github.com/linagora/Twake
+
+- name: Talkyard
+  url: https://github.com/debiki/talkyard
+
+- name: InspIRCd
+  url: https://github.com/inspircd/inspircd
+
+- name: Spreed
+  url: https://github.com/strukturag/spreed-webrtc
+
+- name: Routr
+  url: https://github.com/fonoster/routr
+
+- name: Kaiwa
+  url: https://github.com/getkaiwa/kaiwa
+
+- name: Freenet
+  url: https://github.com/hyphanet/fred
+```
+
+## File: data/container.yaml
+```yaml
+- name: Portainer
+  url: 'https://github.com/portainer/portainer'
+
+- name: Rancher
+  url: 'https://github.com/rancher/rancher'
+
+- name: Nomad
+  url: 'https://github.com/hashicorp/nomad'
+
+- name: Dockge
+  url: 'https://github.com/louislam/dockge'
+
+- name: Dozzle
+  url: 'https://github.com/amir20/dozzle'
+
+- name: Windows
+  url: 'https://github.com/dockur/windows'
+
+- name: Yacht
+  url: 'https://github.com/SelfhostedPro/Yacht'
+
+- name: IronFunctions
+  url: https://github.com/iron-io/functions
+
+- name: NextCloudPi
+  url: https://github.com/nextcloud/nextcloudpi
+
+- name: DockSTARTer
+  url: https://github.com/GhostWriters/DockSTARTer
+
+- name: inlets
+  url: https://github.com/inlets/inlets-operator
+```
+
+## File: data/crypting.yaml
+```yaml
+- name: lncm/bitcoind
+  url: 'https://github.com/lncm/docker-bitcoind'
+
+- name: OctoBot
+  url: 'https://github.com/Drakkar-Software/OctoBot'
+
+- name: ZeroNet
+  url: https://github.com/HelloZeroNet/ZeroNet
+
+- name: 0bin
+  url: https://github.com/Tygs/0bin
+
+- name: EteSync Server
+  url: https://github.com/etesync/server
+```
+
+## File: data/d-n-s.yaml
+```yaml
+- name: Pi-hole
+  url: 'https://github.com/pi-hole/pi-hole'
+
+- name: AdGuard Home
+  url: 'https://github.com/AdguardTeam/AdGuardHome'
+
+- name: CoreDNS
+  url: https://github.com/coredns/coredns
+
+- name: blocky
+  url: https://github.com/0xERR0R/blocky
+
+- name: nsupdate.info
+  url: https://github.com/nsupdate-info/nsupdate.info
+```
+
+## File: data/dashboard.yaml
+```yaml
+- name: 'dash. '
+  url: 'https://github.com/MauriceNino/dashdot'
+
+- name: Dashy
+  url: 'https://github.com/lissy93/dashy'
+
+- name: Glance
+  url: 'https://github.com/glanceapp/glance'
+
+- name: Heimdall
+  url: 'https://github.com/linuxserver/Heimdall'
+
+- name: Homarr
+  url: 'https://github.com/ajnart/homarr'
+
+- name: Homepage
+  url: 'https://github.com/gethomepage/homepage'
+
+- name: homer
+  url: 'https://github.com/bastienwirtz/homer'
+
+- name: Flame
+  url: 'https://github.com/pawelmalak/flame'
+
+- name: Web Portal
+  url: 'https://github.com/enchant97/web-portal'
+
+- name: Jump
+  url: 'https://github.com/daledavies/jump'
+
+- name: Organizr
+  url: https://github.com/causefx/Organizr
+
+- name: Chartbrew
+  url: https://github.com/chartbrew/chartbrew
+
+- name: Tipboard
+  url: https://github.com/allegro/tipboard
+```
+
+## File: data/development.yaml
+```yaml
+- name: Gitea
+  url: 'https://github.com/go-gitea/gitea'
+
+- name: GitLab
+  url: 'https://gitlab.com/gitlab-org/gitlab'
+
+- name: Jenkins
+  url: 'https://github.com/jenkinsci/jenkins'
+
+- name: SonarQube
+  url: 'https://github.com/SonarSource/sonarqube'
+
+- name: Redmine
+  url: 'https://github.com/redmine/redmine'
+
+- name: Taiga
+  url: 'https://github.com/taigaio/taiga-back'
+
+- name: Atuin
+  url: 'https://github.com/atuinsh/atuin'
+
+- name: Budibase
+  url: 'https://github.com/Budibase/budibase'
+
+- name: code-server
+  url: 'https://github.com/coder/code-server'
+
+- name: Get A Shell
+  url: 'https://github.com/steveiliop56/getashell'
+
+- name: Gitea
+  url: 'https://github.com/go-gitea/gitea'
+
+- name: MinIO
+  url: 'https://github.com/minio/minio'
+
+- name: Sshwifty
+  url: 'https://github.com/nirui/sshwifty'
+
+- name: Planka
+  url: 'https://github.com/plankanban/planka'
+
+- name: Bytebase
+  url: 'https://github.com/bytebase/bytebase'
+
+- name: Elasticsearch
+  url: https://github.com/elastic/elasticsearch
+
+- name: LocalStack
+  url: https://github.com/localstack/localstack
+
+- name: Gogs
+  url: https://github.com/gogs/gogs
+
+- name: Appwrite
+  url: https://github.com/appwrite/appwrite
+
+- name: Kong
+  url: https://github.com/Kong/kong
+
+- name: MeiliSearch
+  url: https://github.com/meilisearch/meilisearch
+
+- name: Sentry
+  url: https://github.com/getsentry/sentry
+
+- name: Mattermost
+  url: https://github.com/mattermost/mattermost
+
+- name: Hasura
+  url: https://github.com/hasura/graphql-engine
+
+- name: OpenFaaS
+  url: https://github.com/openfaas/faas
+
+- name: Wekan
+  url: https://github.com/wekan/wekan
+
+- name: Deeplearning4J
+  url: https://github.com/deeplearning4j/deeplearning4j
+
+- name: Druid
+  url: https://github.com/apache/druid
+
+- name: Typesense
+  url: https://github.com/typesense/typesense
+
+- name: OpenProject
+  url: https://github.com/opf/openproject
+
+- name: gitbucket
+  url: https://github.com/gitbucket/gitbucket
+
+- name: Kanboard
+  url: https://github.com/kanboard/kanboard
+
+- name: sovereign
+  url: https://github.com/sovereign/sovereign
+
+- name: Unleash
+  url: https://github.com/Unleash/unleash
+
+- name: Regexr
+  url: https://github.com/gskinner/regexr
+
+- name: API Platform
+  url: https://github.com/api-platform/api-platform
+
+- name: Coder
+  url: https://github.com/coder/coder
+
+- name: CKAN
+  url: https://github.com/ckan/ckan
+
+- name: KrakenD
+  url: https://github.com/luraproject/lura
+
+- name: JS Bin
+  url: https://github.com/jsbin/jsbin
+
+- name: Cockpit
+  url: https://github.com/agentejo/cockpit
+
+- name: Weblate
+  url: https://github.com/WeblateOrg/weblate
+
+- name: Harp
+  url: https://github.com/sintaxi/harp
+
+- name: Velox
+  url: https://github.com/facebookincubator/velox
+
+- name: Apostrophe 2
+  url: https://github.com/apostrophecms/apostrophe
+
+- name: Strider
+  url: https://github.com/Strider-CD/strider
+
+- name: Lobsters
+  url: https://github.com/lobsters/lobsters
+
+- name: Pico
+  url: https://github.com/picocms/Pico
+
+- name: Flagsmith
+  url: https://github.com/Flagsmith/flagsmith
+
+- name: Octobox
+  url: https://github.com/octobox/octobox
+
+- name: Woodpecker
+  url: https://github.com/woodpecker-ci/woodpecker
+
+- name: Nominatim
+  url: https://github.com/osm-search/Nominatim
+
+- name: Lektor
+  url: https://github.com/lektor/lektor
+
+- name: OpenTripPlanner
+  url: https://github.com/opentripplanner/OpenTripPlanner
+
+- name: ML-Workspace
+  url: https://github.com/ml-tooling/ml-workspace
+
+- name: Gitlist
+  url: https://github.com/klaussilveira/gitlist
+
+- name: EtherCalc
+  url: https://github.com/audreyt/ethercalc
+
+- name: Gitblit
+  url: https://github.com/gitblit-org/gitblit
+
+- name: PHPCI
+  url: https://github.com/dancryer/PHPCI
+
+- name: Nikola
+  url: https://github.com/getnikola/nikola
+
+- name: TileServer GL
+  url: https://github.com/maptiler/tileserver-gl
+
+- name: Selenoid
+  url: https://github.com/aerokube/selenoid
+
+- name: Judge0 API
+  url: https://github.com/judge0/judge0
+
+- name: Bonobo Git Server
+  url: https://github.com/jakubgarfield/Bonobo-Git-Server
+
+- name: MantisBT
+  url: https://github.com/mantisbt/mantisbt
+
+- name: Flatdoc
+  url: https://github.com/rstacruz/flatdoc
+
+- name: metasfresh
+  url: https://github.com/metasfresh/metasfresh
+
+- name: Gazelle
+  url: https://github.com/WhatCD/Gazelle
+
+- name: Wakapi
+  url: https://github.com/muety/wakapi
+
+- name: Gigablast
+  url: https://github.com/gigablast/open-source-search-engine
+
+- name: fx
+  url: https://github.com/metrue/fx
+
+- name: Traduora
+  url: https://github.com/ever-co/ever-traduora
+
+- name: Fusio
+  url: https://github.com/apioo/fusio
+
+- name: DreamFactory
+  url: https://github.com/dreamfactorysoftware/dreamfactory
+
+- name: HuBoard
+  url: https://github.com/huboard/huboard
+
+- name: TaskBoard
+  url: https://github.com/kiswa/TaskBoard
+
+- name: Pootle
+  url: https://github.com/translate/pootle
+
+- name: JBake
+  url: https://github.com/jbake-org/jbake
+
+- name: Shinobi
+  url: https://github.com/moeiscool/Shinobi
+
+- name: Tolgee
+  url: https://github.com/tolgee/tolgee-platform
+
+- name: Kirby
+  url: https://github.com/getkirby/kirby
+
+- name: Accent
+  url: https://github.com/mirego/accent
+```
+
+## File: data/diagramming.yaml
+```yaml
+- name: draw.io
+  url: 'https://github.com/jgraph/drawio'
+
+- name: Excalidraw
+  url: 'https://github.com/excalidraw/excalidraw'
+
+- name: asciiflow
+  url: https://github.com/lewish/asciiflow
+
+- name: My Mind
+  url: https://github.com/ondras/my-mind
+
+- name: Mindmaps
+  url: https://github.com/drichard/mindmaps
+```
+
+## File: data/download.yaml
+```yaml
+- name: autobrr
+  url: 'https://github.com/autobrr/autobrr'
+
+- name: Barrage
+  url: 'https://github.com/maulik9898/barrage'
+
+- name: bitmagnet
+  url: 'https://github.com/bitmagnet-io/bitmagnet'
+
+- name: Deluge
+  url: 'https://github.com/deluge-torrent/deluge'
+
+- name: Mylar3
+  url: 'https://github.com/mylar3/mylar3'
+
+- name: PodFetch
+  url: 'https://github.com/SamTV12345/PodFetch'
+
+- name: qBittorrent
+  url: 'https://github.com/qbittorrent/qBittorrent'
+
+- name: SABnzbd
+  url: 'https://github.com/sabnzbd/sabnzbd'
+
+- name: Transmission
+  url: 'https://github.com/transmission/transmission'
+
+- name: Flood
+  url: 'https://github.com/jesec/flood'
+
+- name: pinchflat
+  url: 'https://github.com/kieraneglin/pinchflat'
+
+- name: WebUI-aria2
+  url: https://github.com/ziahamza/webui-aria2
+
+- name: cloud-torrent
+  url: https://github.com/jpillora/cloud-torrent
+
+- name: pyLoad
+  url: https://github.com/pyload/pyload
+
+- name: YoutubeDL-Material
+  url: https://github.com/Tzahi12345/YoutubeDL-Material
+
+- name: ytdl-webserver
+  url: https://github.com/Algram/ytdl-webserver
+```
+
+## File: data/file-sharing.yaml
+```yaml
+- name: Nextcloud
+  url: 'https://github.com/nextcloud/server'
+
+- name: Seafile
+  url: 'https://github.com/haiwen/seafile'
+
+- name: ProjectSend
+  url: 'https://github.com/projectsend/projectsend'
+
+- name: Pydio Cells
+  url: 'https://github.com/pydio/cells'
+
+- name: File Browser
+  url: 'https://github.com/filebrowser/filebrowser'
+
+- name: Fireshare
+  url: 'https://github.com/ShaneIsrael/fireshare'
+
+- name: ownCloud
+  url: 'https://github.com/owncloud/core'
+
+- name: PairDrop
+  url: 'https://github.com/schlagmichdoch/PairDrop'
+
+- name: send
+  url: 'https://gitlab.com/timvisee/send'
+
+- name: zipline
+  url: 'https://github.com/diced/zipline'
+
+- name: Pingvin Share
+  url: 'https://github.com/stonith404/pingvin-share'
+
+- name: OASIS
+  url: 'https://github.com/machengim/oasis'
+
+- name: Blaze
+  url: 'https://github.com/blenderskool/blaze'
+
+- name: PrivateBin
+  url: 'https://github.com/PrivateBin/PrivateBin'
+
+- name: Gokapi
+  url: 'https://github.com/Forceu/Gokapi'
+
+- name: Fireshare
+  url: 'https://github.com/ShaneIsrael/fireshare'
+
+- name: Zipline
+  url: 'https://github.com/diced/zipline'
+
+- name: Dufs
+  url: 'https://github.com/sigoden/dufs'
+
+- name: Uppy
+  url: 'https://github.com/transloadit/uppy'
+
+- name: Snapdrop
+  url: 'https://github.com/RobinLinus/snapdrop'
+
+- name: PicoShare
+  url: 'https://github.com/mtlynch/picoshare'
+
+- name: LiveSync
+  url: 'https://github.com/vrtmrz/obsidian-livesync'
+
+- name: transfer.sh
+  url: https://github.com/dutchcoders/transfer.sh
+
+- name: Filestash
+  url: https://github.com/mickael-kerjean/filestash
+
+- name: OnionShare
+  url: https://github.com/onionshare/onionshare
+
+- name: h5ai
+  url: https://github.com/lrsjng/h5ai
+
+- name: CryptPad
+  url: https://github.com/cryptpad/cryptpad
+
+- name: SparkleShare
+  url: https://github.com/hbons/SparkleShare
+
+- name: Swift
+  url: https://github.com/openstack/swift
+
+- name: FilePizza
+  url: https://github.com/kern/filepizza
+
+- name: hastebin
+  url: https://github.com/toptal/haste-server
+
+- name: TagSpaces
+  url: https://github.com/tagspaces/tagspaces
+
+- name: instant.io
+  url: https://github.com/webtorrent/instant.io
+
+- name: myDrive
+  url: https://github.com/subnub/myDrive
+
+- name: Magnetissimo
+  url: https://github.com/sergiotapia/magnetissimo
+
+- name: DirectoryLister
+  url: https://github.com/DirectoryLister/DirectoryLister
+
+- name: FileGator
+  url: https://github.com/filegator/filegator
+
+- name: Apaxy
+  url: https://github.com/oupala/apaxy
+
+- name: ShareFest
+  url: https://github.com/Peer5/ShareFest
+
+- name: bittorrent-tracker
+  url: https://github.com/webtorrent/bittorrent-tracker
+
+- name: YouTransfer
+  url: https://github.com/YouTransfer/YouTransfer
+
+- name: Chibisafe
+  url: https://github.com/chibisafe/chibisafe
+
+- name: PsiTransfer
+  url: https://github.com/psi-4ward/psitransfer
+
+- name: Tahoe-LAFS
+  url: https://github.com/tahoe-lafs/tahoe-lafs
+
+- name: Plik
+  url: https://github.com/root-gg/plik
+
+- name: fiche
+  url: https://github.com/solusipse/fiche
+
+- name: ipfs.pics
+  url: https://github.com/ipfspics/ipfspics-server
+
+- name: HRConvert2
+  url: https://github.com/zelon88/HRConvert2
+```
+
+## File: data/finance.yaml
+```yaml
+- name: Actual
+  url: 'https://github.com/actualbudget/actual-server'
+
+- name: Firefly
+  url: 'https://github.com/firefly-iii/firefly-iii'
+
+- name: Wallos
+  url: 'https://github.com/ellite/Wallos'
+
+- name: InvoicePlane
+  url: https://github.com/InvoicePlane/InvoicePlane
+
+- name: Fava
+  url: https://github.com/beancount/fava
+
+- name: IHateMoney
+  url: https://github.com/spiral-project/ihatemoney
+```
+
+## File: data/gaming.yaml
+```yaml
+- name: Factorio
+  url: 'https://github.com/factoriotools/factorio-docker'
+
+- name: Minetest
+  url: 'https://github.com/minetest/minetest'
+
+- name: Minecraft
+  url: 'https://github.com/itzg/docker-minecraft-server'
+
+- name: Terraria
+  url: 'https://github.com/ryansheehan/terraria'
+
+- name: Valheim
+  url: 'https://github.com/lloesche/valheim-server-docker'
+
+- name: Crafty
+  url: 'https://gitlab.com/crafty-controller/crafty-4'
+
+- name: Lodestone
+  url: 'https://github.com/Lodestone-Team/lodestone_core'
+
+- name: NextGBA
+  url: 'https://github.com/meienberger/nextgba'
+
+- name: The Battle for Wesnoth
+  url: https://github.com/wesnoth/wesnoth
+
+- name: untrusted
+  url: https://github.com/AlexNisnevich/untrusted
+
+- name: Hextris
+  url: https://github.com/Hextris/hextris
+
+- name: Teeworlds
+  url: https://github.com/teeworlds/teeworlds
+
+- name: elevatorsaga
+  url: https://github.com/magwo/elevatorsaga
+```
+
+## File: data/infra-management.yaml
+```yaml
+- name: virt-manager
+  url: https://github.com/virt-manager/virt-manager
+
+- name: kube-virt
+  url: https://github.com/kubevirt/kubevirt
+
+- name: OpenWrt
+  url: https://github.com/openwrt/openwrt
+
+- name: openmediavault
+  url: https://github.com/openmediavault/openmediavault
+
+- name: TrueNAS
+  url: https://github.com/truenas/middleware
+
+- name: Runtipi
+  url: https://github.com/runtipi/runtipi
+
+- name: Cockpit
+  url: https://github.com/cockpit-project/cockpit
+
+- name: Proxmox
+  url: https://github.com/tteck/Proxmox
+
+- name: CasaOS
+  url: https://github.com/IceWhaleTech/CasaOS
+
+- name: Cosmos
+  url: 'https://github.com/azukaar/Cosmos-Server'
+
+- name: Terminus
+  url: 'https://github.com/beclab/Terminus'
+
+- name: Traefik
+  url: https://github.com/traefik/traefik
+
+- name: Nginx Proxy Manager
+  url: https://github.com/NginxProxyManager/nginx-proxy-manager
+
+- name: CapRover
+  url: https://github.com/caprover/caprover
+
+- name: Open and cheap DIY IP-KVM based on Raspberry Pi
+  url: https://github.com/pikvm/pikvm
+
+- name: WikiSuite
+  url: https://github.com/kimchi-project/kimchi
+
+- name: Ansible-NAS
+  url: https://github.com/davestephens/ansible-nas
+
+- name: DebOps
+  url: https://github.com/debops/debops
+```
+
+## File: data/io-t.yaml
+```yaml
+- name: Home Assistant
+  url: 'https://github.com/home-assistant/core'
+
+- name: Gladys Assistant
+  url: 'https://github.com/gladysassistant/gladys'
+
+- name: OpenHAB
+  url: 'https://github.com/openhab/openhab-core'
+
+- name: Node-RED
+  url: 'https://github.com/node-red/node-red'
+
+- name: Domoticz
+  url: 'https://github.com/domoticz/domoticz'
+
+- name: Homebridge
+  url: 'https://github.com/homebridge/homebridge'
+
+- name: Scrypted
+  url: 'https://github.com/koush/scrypted'
+
+- name: n8n
+  url: 'https://github.com/n8n-io/n8n'
+
+- name: Thingsboard
+  url: https://github.com/thingsboard/thingsboard
+
+- name: Freeboard
+  url: https://github.com/Freeboard/freeboard
+
+- name: Mozilla Gateway
+  url: https://github.com/WebThingsIO/gateway
+
+- name: Gladys
+  url: https://github.com/GladysAssistant/Gladys
+
+- name: Thingspeak
+  url: https://github.com/iobridge/thingspeak
+
+- name: OpenRemote
+  url: https://github.com/openremote/openremote
+```
+
+## File: data/knowledge-base.yaml
+```yaml
+- name: AFFiNE
+  url: 'https://github.com/toeverything/affine'
+
+- name: ArchiveBox
+  url: 'https://github.com/ArchiveBox/ArchiveBox'
+
+- name: BookStack
+  url: 'https://github.com/BookStackApp/BookStack'
+
+- name: flatnotes
+  url: 'https://github.com/Dullage/flatnotes'
+
+- name: Joplin
+  url: 'https://github.com/laurent22/joplin'
+
+- name: Linkwarden
+  url: 'https://github.com/linkwarden/linkwarden'
+
+- name: NocoDB
+  url: 'https://github.com/nocodb/nocodb'
+
+- name: Note Mark
+  url: 'https://github.com/enchant97/note-mark/'
+
+- name: Outline
+  url: 'https://github.com/outline/outline'
+
+- name: Paperless-ngx
+  url: 'https://github.com/paperless-ngx/paperless-ngx'
+
+- name: Tasks.md
+  url: 'https://github.com/BaldissaraMatheus/Tasks.md'
+
+- name: Trilium Notes
+  url: 'https://github.com/zadam/trilium'
+
+- name: Logseq
+  url: 'https://github.com/logseq/logseq'
+
+- name: Docmost
+  url: 'https://github.com/docmost/docmost'
+
+- name: Docspell
+  url: 'https://github.com/eikek/docspell'
+
+- name: Papermerge
+  url: 'https://github.com/ciur/papermerge'
+
+- name: Servas
+  url: 'https://github.com/beromir/Servas'
+
+- name: Documize
+  url: 'https://github.com/documize/community'
+
+- name: HedgeDoc
+  url: 'https://github.com/hedgedoc/hedgedoc'
+
+- name: Wiki.js
+  url: https://github.com/requarks/wiki
+
+- name: Focalboard
+  url: https://github.com/mattermost-community/focalboard
+
+- name: Gollum
+  url: https://github.com/gollum/gollum
+
+- name: Wallabag
+  url: https://github.com/wallabag/wallabag
+
+- name: Laverna
+  url: https://github.com/Laverna/laverna
+
+- name: TiddlyWiki
+  url: https://github.com/TiddlyWiki/TiddlyWiki5
+
+- name: Dokuwiki
+  url: https://github.com/dokuwiki/dokuwiki
+
+- name: daux.io
+  url: https://github.com/justinwalsh/daux.io
+
+- name: CherryTree
+  url: https://github.com/giuspen/cherrytree
+
+- name: Raneto
+  url: https://github.com/ryanlelek/Raneto
+
+- name: Personal management system
+  url: https://github.com/Volmarg/personal-management-system
+
+- name: django-wiki
+  url: https://github.com/django-wiki/django-wiki
+
+- name: Sakai
+  url: https://github.com/sakaiproject/sakai
+
+- name: Teedy
+  url: https://github.com/sismics/docs
+
+- name: Gitit
+  url: https://github.com/jgm/gitit
+
+- name: PartKeepr
+  url: https://github.com/partkeepr/PartKeepr
+
+- name: Tracks
+  url: https://github.com/TracksApp/tracks
+
+- name: Awesome Certificates
+  url: https://github.com/PanXProject/awesome-certificates
+
+- name: Snibox
+  url: https://github.com/snibox/snibox
+
+- name: jingo
+  url: https://github.com/claudioc/jingo
+```
+
+## File: data/mail.yaml
+```yaml
+- name: Stalwart
+  url: 'https://github.com/stalwartlabs/mail-server'
+
+- name: mailcow
+  url: 'https://github.com/mailcow/mailcow-dockerized'
+
+- name: listmonk
+  url: 'https://github.com/knadh/listmonk'
+
+- name: Mail-in-a-Box
+  url: https://github.com/mail-in-a-box/mailinabox
+
+- name: Listmonk
+  url: https://github.com/knadh/listmonk
+
+- name: Postal
+  url: https://github.com/postalserver/postal
+
+- name: MailHog
+  url: https://github.com/mailhog/MailHog
+
+- name: Mailpile
+  url: https://github.com/mailpile/Mailpile
+
+- name: Roundcube
+  url: https://github.com/roundcube/roundcubemail
+
+- name: MailCatcher
+  url: https://github.com/sj26/mailcatcher
+
+- name: Mailu
+  url: https://github.com/Mailu/Mailu
+
+- name: Tutanota makes encryption easy
+  url: https://github.com/tutao/tutanota
+
+- name: Mailtrain
+  url: https://github.com/Mailtrain-org/mailtrain
+
+- name: Haraka
+  url: https://github.com/haraka/Haraka
+
+- name: RainLoop
+  url: https://github.com/RainLoop/rainloop-webmail
+
+- name: SimpleLogin
+  url: https://github.com/simple-login/app
+
+- name: ProtonMail Web Client
+  url: https://github.com/ProtonMail/WebClients
+
+- name: Modoboa
+  url: https://github.com/modoboa/modoboa
+
+- name: AnonAddy
+  url: https://github.com/anonaddy/anonaddy
+
+- name: Sogo
+  url: https://github.com/Alinto/sogo
+
+- name: wildduck
+  url: https://github.com/nodemailer/wildduck
+```
+
+## File: data/media-management.yaml
+```yaml
+- name: Audiobookshelf
+  url: 'https://github.com/advplyr/audiobookshelf'
+
+- name: Jellyfin
+  url: 'https://github.com/jellyfin/jellyfin'
+
+- name: Emby
+  url: 'https://github.com/MediaBrowser/Emby'
+
+- name: Komga
+  url: 'https://github.com/gotson/komga'
+
+- name: Navidrome
+  url: 'https://github.com/navidrome/navidrome'
+
+- name: Plex
+  url: 'https://github.com/plexinc/pms-docker'
+
+- name: Bazarr
+  url: 'https://github.com/morpheus65535/bazarr'
+
+- name: Booksonic Air
+  url: 'https://github.com/popeen/Booksonic-Air'
+
+- name: Calibre
+  url: 'https://github.com/janeczku/calibre-web'
+
+- name: Jackett
+  url: 'https://github.com/Jackett/Jackett'
+
+- name: Kapowarr
+  url: 'https://github.com/Casvt/Kapowarr'
+
+- name: Kavita
+  url: 'https://github.com/Kareadita/Kavita'
+
+- name: Koillection
+  url: 'https://github.com/benjaminjonard/koillection'
+
+- name: Lidarr
+  url: 'https://github.com/Lidarr/Lidarr'
+
+- name: Maintainerr
+  url: 'https://github.com/jorenn92/Maintainerr'
+
+- name: Overseerr
+  url: 'https://github.com/sct/overseerr'
+
+- name: Radarr
+  url: 'https://github.com/Radarr/Radarr'
+
+- name: Readarr
+  url: 'https://github.com/Readarr/Readarr'
+
+- name: Sonarr
+  url: 'https://github.com/Sonarr/Sonarr'
+
+- name: MoviePilot
+  url: 'https://github.com/jxxghp/MoviePilot'
+
+- name: ErsatzTV
+  url: 'https://github.com/ErsatzTV/ErsatzTV'
+
+- name: Komga
+  url: 'https://github.com/gotson/komga'
+
+- name: Jellyseerr
+  url: 'https://github.com/Fallenbagel/jellyseerr'
+
+- name: Midarr
+  url: 'https://github.com/midarrlabs/midarr-server'
+
+- name: ChineseSubFinder
+  url: 'https://github.com/ChineseSubFinder/ChineseSubFinder'
+
+- name: Prowlarr
+  url: 'https://github.com/Prowlarr/Prowlarr'
+
+- name: SickChill
+  url: 'https://github.com/SickChill/SickChill'
+
+- name: Kodi Home Theater Software
+  url: https://github.com/xbmc/xbmc
+
+- name: koel
+  url: https://github.com/koel/koel
+
+- name: Beets
+  url: https://github.com/beetbox/beets
+
+- name: Streama
+  url: https://github.com/streamaserver/streama
+
+- name: Owncast
+  url: https://github.com/owncast/owncast
+
+- name: MeTube
+  url: https://github.com/alexta69/metube
+
+- name: Sick Beard
+  url: https://github.com/midgetspy/Sick-Beard
+
+- name: Ampache
+  url: https://github.com/ampache/ampache
+
+- name: Headphones
+  url: https://github.com/rembo10/headphones
+
+- name: musikcube
+  url: https://github.com/clangen/musikcube
+
+- name: Restreamer
+  url: https://github.com/datarhei/restreamer
+
+- name: AzuraCast
+  url: https://github.com/AzuraCast/AzuraCast
+
+- name: YouPHPTube
+  url: https://github.com/WWBN/AVideo
+
+- name: MediaCMS
+  url: https://github.com/mediacms-io/mediacms
+
+- name: SiCKRAGE
+  url: https://github.com/SiCKRAGE/SiCKRAGE
+
+- name: cloudtunes
+  url: https://github.com/jkbrzt/cloudtunes
+
+- name: Your Spotify
+  url: https://github.com/Yooooomi/your_spotify
+
+- name: asciinema
+  url: https://github.com/asciinema/asciinema-server
+
+- name: Revive Adserver
+  url: https://github.com/revive-adserver/revive-adserver
+
+- name: NymphCast
+  url: https://github.com/MayaPosch/NymphCast
+
+- name: mStream
+  url: https://github.com/IrosTheBeggar/mStream
+
+- name: peerflix-server
+  url: https://github.com/asapach/peerflix-server
+
+- name: Medusa
+  url: https://github.com/pymedusa/Medusa
+
+- name: Groove Basin
+  url: https://github.com/andrewrk/groovebasin
+
+- name: Volumio
+  url: https://github.com/volumio/Volumio2
+
+- name: COPS
+  url: https://github.com/seblucas/cops
+
+- name: CyTube
+  url: https://github.com/calzoneman/sync
+
+- name: Mango
+  url: https://github.com/getmango/Mango
+
+- name: Podgrab
+  url: https://github.com/akhilrex/podgrab
+
+- name: gonic
+  url: https://github.com/sentriz/gonic
+
+- name: Flox
+  url: https://github.com/devfake/flox
+
+- name: Mediacrush
+  url: https://github.com/MediaCrush/MediaCrush
+
+- name: Gerbera
+  url: https://github.com/gerbera/gerbera
+
+- name: Polaris
+  url: https://github.com/agersant/polaris
+
+- name: CherryMusic
+  url: https://github.com/devsnd/cherrymusic
+
+- name: Black Candy
+  url: https://github.com/blackcandy-org/blackcandy
+
+- name: homehost
+  url: https://github.com/ridhwaans/homehost
+
+- name: LMS
+  url: https://github.com/epoupon/lms
+
+- name: nefarious
+  url: https://github.com/lardbit/nefarious
+```
+
+## File: data/monitoring.yaml
+```yaml
+- name: Grafana
+  url: 'https://github.com/grafana/grafana'
+
+- name: Prometheus
+  url: 'https://github.com/prometheus/prometheus'
+
+- name: Zabbix
+  url: 'https://github.com/zabbix/zabbix'
+
+- name: Nagios
+  url: 'https://github.com/NagiosEnterprises/nagioscore'
+
+- name: Netdata
+  url: 'https://github.com/netdata/netdata'
+
+- name: Uptime Kuma
+  url: 'https://github.com/louislam/uptime-kuma'
+
+- name: Change Detection
+  url: 'https://github.com/dgtlmoon/changedetection.io'
+
+- name: Glances
+  url: 'https://github.com/nicolargo/glances'
+
+- name: Beszel
+  url: 'https://github.com/henrygd/beszel'
+
+- name: Monocker
+  url: 'https://github.com/petersem/monocker'
+
+- name: Doku
+  url: 'https://github.com/amerkurev/doku'
+
+- name: Cachet
+  url: https://github.com/cachethq/cachet
+
+- name: Healthchecks
+  url: https://github.com/healthchecks/healthchecks
+
+- name: LibreNMS
+  url: https://github.com/librenms/librenms
+
+- name: HertzBeat
+  url: https://github.com/apache/hertzbeat
+
+- name: Errbit
+  url: https://github.com/errbit/errbit
+
+- name: Motion
+  url: https://github.com/Motion-Project/motion
+
+- name: Open source APM and DataDog alternative
+  url: https://github.com/uptrace/uptrace
+
+- name: cState
+  url: https://github.com/cstate/cstate
+
+- name: Homer
+  url: https://github.com/sipcapture/homer
+
+- name: highlight.io
+  url: https://github.com/highlight/highlight
+```
+
+## File: data/networking.yaml
+```yaml
+- name: Tailscale
+  url: 'https://github.com/tailscale/tailscale'
+
+- name: Wireguard
+  url: 'https://github.com/WireGuard/wireguard'
+
+- name: ZeroTier
+  url: 'https://github.com/zerotier/ZeroTierOne'
+
+- name: SmokePing
+  url: 'https://github.com/oetiker/SmokePing'
+
+- name: ntopng
+  url: 'https://github.com/ntop/ntopng'
+
+- name: Netmaker
+  url: https://github.com/gravitl/netmaker
+
+- name: iodine
+  url: https://github.com/yarrick/iodine
+
+- name: Tinyproxy
+  url: https://github.com/tinyproxy/tinyproxy
+
+- name: innernet
+  url: https://github.com/tonarino/innernet
+
+- name: Redbird
+  url: https://github.com/OptimalBits/redbird
+
+- name: sish
+  url: https://github.com/antoniomika/sish
+
+- name: Squid
+  url: https://github.com/squid-cache/squid
+```
+
+## File: data/photo-management.yaml
+```yaml
+- name: LibrePhotos
+  url: 'https://github.com/LibrePhotos/librephotos'
+
+- name: immich
+  url: 'https://github.com/immich-app/immich'
+
+- name: PhotoPrism
+  url: 'https://github.com/photoprism/photoprism'
+
+- name: Ente
+  url: 'https://github.com/ente-io/ente'
+
+- name: HomeGallery
+  url: 'https://github.com/xemle/home-gallery'
+
+- name: Photoview
+  url: 'https://github.com/photoview/photoview'
+
+- name: Lychee
+  url: https://github.com/electerious/Lychee
+
+- name: Expose
+  url: https://github.com/Jack000/Expose
+
+- name: Piwigo
+  url: https://github.com/Piwigo/Piwigo
+
+- name: PiGallery 2
+  url: https://github.com/bpatrik/pigallery2
+
+- name: Photonix
+  url: https://github.com/photonixapp/photonix
+```
+
+## File: data/r-s-s.yaml
+```yaml
+- name: FreshRSS
+  url: 'https://github.com/FreshRSS/FreshRSS'
+
+- name: RSS
+  url: 'https://github.com/ssddanbrown/rss'
+
+- name: RSSHub
+  url: 'https://github.com/DIYgod/RSSHub'
+
+- name: Tiny Tiny RSS
+  url: 'https://gitlab.tt-rss.org/tt-rss/tt-rss'
+
+- name: CommaFeed
+  url: 'https://github.com/Athou/commafeed'
+
+- name: Miniflux
+  url: 'https://github.com/miniflux/v2'
+
+- name: Fusion
+  url: 'https://github.com/0x2E/fusion'
+
+- name: RSS-Bridge
+  url: https://github.com/RSS-Bridge/rss-bridge
+
+- name: NewsBlur
+  url: https://github.com/samuelclay/NewsBlur
+
+- name: Feedbin
+  url: https://github.com/feedbin/feedbin
+
+- name: Selfoss
+  url: https://github.com/fossar/selfoss
+```
+
+## File: data/security.yaml
+```yaml
+- name: 2FAuth
+  url: 'https://github.com/Bubka/2FAuth'
+
+- name: Bitwarden
+  url: 'https://github.com/bitwarden/server'
+
+- name: Passbolt
+  url: 'https://github.com/passbolt/passbolt_api'
+
+- name: vaultwarden
+  url: 'https://github.com/dani-garcia/vaultwarden'
+
+- name: SWAG
+  url: 'https://github.com/linuxserver/docker-swag'
+
+- name: Keycloak
+  url: https://github.com/keycloak/keycloak
+
+- name: Personal Security Checklist
+  url: https://github.com/Lissy93/personal-security-checklist
+
+- name: KeeWeb
+  url: https://github.com/keeweb/keeweb
+
+- name: Vuls
+  url: https://github.com/future-architect/vuls
+
+- name: Wazuh
+  url: https://github.com/wazuh/wazuh
+
+- name: OpenCTI
+  url: https://github.com/OpenCTI-Platform/opencti
+
+- name: bunkerized-nginx
+  url: https://github.com/bunkerity/bunkerweb
+
+- name: TheHive
+  url: https://github.com/TheHive-Project/TheHive
+
+- name: FreeRADIUS
+  url: https://github.com/FreeRADIUS/freeradius-server
+
+- name: King Phisher
+  url: https://github.com/rsmusllp/king-phisher
+
+- name: Padloc
+  url: https://github.com/padloc/padloc
+
+- name: Teampass
+  url: https://github.com/nilsteampassnet/TeamPass
+
+- name: Maza ad blocking
+  url: https://github.com/tanrax/maza-ad-blocking
+
+- name: Cortex
+  url: https://github.com/TheHive-Project/Cortex
+
+- name: GoCrack
+  url: https://github.com/mandiant/gocrack
+```
+
+## File: data/social-media.yaml
+```yaml
+- name: Mastodon
+  url: 'https://github.com/mastodon/mastodon'
+
+- name: Pleroma
+  url: 'https://git.pleroma.social/pleroma/pleroma'
+
+- name: Diaspora
+  url: 'https://github.com/diaspora/diaspora'
+
+- name: Friendica
+  url: 'https://github.com/friendica/friendica'
+
+- name: PixelFed
+  url: 'https://github.com/pixelfed/pixelfed'
+
+- name: GoToSocial
+  url: 'https://github.com/superseriousbusiness/gotosocial'
+
+- name: Libreddit
+  url: 'https://github.com/libreddit/libreddit'
+
+- name: Mixpost
+  url: 'https://github.com/inovector/mixpost'
+
+- name: Nitter
+  url: 'https://github.com/zedeus/nitter'
+
+- name: HumHub
+  url: 'https://github.com/humhub/humhub'
+
+- name: Misskey
+  url: https://github.com/misskey-dev/misskey
+
+- name: Isso
+  url: https://github.com/isso-comments/isso
+
+- name: ThinkUp
+  url: https://github.com/ThinkUpLLC/ThinkUp
+
+- name: Vanilla Forums
+  url: https://github.com/vanilla/vanilla
+
+- name: Bootcamp
+  url: https://github.com/vitorfs/bootcamp
+
+- name: flaskbb
+  url: https://github.com/flaskbb/flaskbb
+
+- name: Misago
+  url: https://github.com/rafalp/Misago
+
+- name: Elgg
+  url: https://github.com/Elgg/Elgg
+
+- name: Pump.io
+  url: https://github.com/pump-io/pump.io
+
+- name: Coral
+  url: https://github.com/coralproject/talk
+
+- name: OSSN
+  url: https://github.com/opensource-socialnetwork/opensource-socialnetwork
+
+- name: twister
+  url: https://github.com/miguelfreitas/twister-core
+
+- name: MyBB
+  url: https://github.com/mybb/mybb
+
+- name: Thredded
+  url: https://github.com/thredded/thredded
+
+- name: Socioboard
+  url: https://github.com/socioboard/Socioboard-5.0
+
+- name: Known
+  url: https://github.com/idno/known
+```
+
+## File: data/syncing.yaml
+```yaml
+- name: Baikal
+  url: 'https://github.com/ckulka/baikal-docker'
+
+- name: Syncthing
+  url: 'https://github.com/syncthing/syncthing'
+
+- name: Radicale
+  url: 'https://github.com/Kozea/Radicale'
+
+- name: Firefox Sync Server
+  url: https://github.com/mozilla-services/syncserver
+
+- name: xBrowserSync
+  url: https://github.com/xbrowsersync/app
+```
+
+## File: data/tools.yaml
+```yaml
+- name: IT-Tools
+  url: 'https://github.com/CorentinTh/it-tools'
+
+- name: Moodist
+  url: 'https://github.com/remvze/moodist'
+
+- name: Penpot
+  url: 'https://github.com/penpot/penpot'
+
+- name: Ryot
+  url: 'https://github.com/IgnisDa/ryot'
+
+- name: Shlink
+  url: 'https://github.com/shlinkio/shlink'
+
+- name: Stirling-PDF
+  url: 'https://github.com/Stirling-Tools/Stirling-PDF'
+
+- name: Tandoor Recipes
+  url: 'https://github.com/TandoorRecipes/recipes'
+
+- name: TeslaMate
+  url: 'https://github.com/teslamate-org/teslamate'
+
+- name: Snapp
+  url: 'https://github.com/urania-dev/snapp'
+
+- name: jetlog
+  url: 'https://github.com/pbogre/jetlog'
+
+- name: PdfDing
+  url: 'https://codeberg.org/mrmn/PdfDing'
+
+- name: Zimit
+  url: 'https://github.com/openzim/zimit'
+
+- name: Hoarder
+  url: 'https://github.com/hoarder-app/hoarder'
+
+- name: MicroBin
+  url: 'https://github.com/szabodanika/microbin'
+
+- name: Kutt
+  url: 'https://github.com/thedevs-network/kutt'
+
+- name: Sink
+  url: 'https://github.com/ccbikai/sink'
+
+- name: LittleLink-Server
+  url: 'https://github.com/techno-tim/littlelink-server'
+
+- name: Wishthis
+  url: 'https://github.com/wishthis/wishthis'
+
+- name: UpSnap
+  url: 'https://github.com/seriousm4x/UpSnap'
+
+- name: SerpBear
+  url: 'https://github.com/towfiqi/serpbear'
+
+- name: Vikunja
+  url: 'https://github.com/go-vikunja/vikunja'
+
+- name: M4TT72 Terminal
+  url: 'https://github.com/m4tt72/terminal'
+
+- name: 'Commento++'
+  url: 'https://github.com/souramoo/commentoplusplus'
+
+- name: revealjs
+  url: https://github.com/hakimel/reveal.js
+
+- name: RustDesk
+  url: https://github.com/rustdesk/rustdesk
+
+- name: Postwoman
+  url: https://github.com/hoppscotch/hoppscotch
+
+- name: ToolJet
+  url: https://github.com/ToolJet/ToolJet
+
+- name: CyberChef
+  url: https://github.com/gchq/CyberChef
+
+- name: Habitica
+  url: https://github.com/HabitRPG/habitica
+
+- name: YOURLS
+  url: https://github.com/YOURLS/YOURLS
+
+- name: ActivityWatch
+  url: https://github.com/ActivityWatch/activitywatch
+
+- name: Gotify
+  url: https://github.com/gotify/server
+
+- name: Shiori
+  url: https://github.com/go-shiori/shiori
+
+- name: Centrifugo
+  url: https://github.com/centrifugal/centrifugo
+
+- name: OS.js
+  url: https://github.com/os-js/OS.js
+
+- name: GateOne
+  url: https://github.com/liftoff/GateOne
+
+- name: Grist
+  url: https://github.com/gristlabs/grist-core
+
+- name: Snapcast
+  url: https://github.com/badaix/snapcast
+
+- name: ONLYOFFICE
+  url: https://github.com/ONLYOFFICE/DocumentServer
+
+- name: Polr
+  url: https://github.com/cydrobolt/polr
+
+- name: osTicket
+  url: https://github.com/osTicket/osTicket
+
+- name: Nullboard
+  url: https://github.com/apankrat/nullboard
+
+- name: uMap
+  url: https://github.com/umap-project/umap
+
+- name: PixelCraft
+  url: https://github.com/rgab1508/PixelCraft
+```
+
+## File: data/writing.yaml
+```yaml
+- name: WordPress
+  url: 'https://github.com/WordPress/WordPress'
+
+- name: Ghost
+  url: 'https://github.com/TryGhost/Ghost'
+
+- name: Hexo
+  url: 'https://github.com/hexojs/hexo'
+
+- name: Hugo
+  url: 'https://github.com/gohugoio/hugo'
+
+- name: Jekyll
+  url: 'https://github.com/jekyll/jekyll'
+
+- name: Haven
+  url: 'https://github.com/havenweb/haven'
+
+- name: LinkStack
+  url: 'https://github.com/LinkStackOrg/linkstack-docker'
+
+- name: Memos
+  url: 'https://github.com/usememos/memos'
+
+- name: Typemill
+  url: 'https://github.com/typemill/typemill'
+
+- name: BroadcastChannel
+  url: 'https://github.com/ccbikai/BroadcastChannel'
+
+- name: LetsMarkdown
+  url: 'https://github.com/Cveinnt/LetsMarkdown.com'
+
+- name: Novel
+  url: 'https://github.com/steven-tey/novel'
+
+- name: Etherpad
+  url: https://github.com/ether/etherpad-lite
+
+- name: mdBook
+  url: https://github.com/rust-lang/mdBook
+
+- name: Boostnote
+  url: https://github.com/BoostIO/BoostNote-Legacy
+
+- name: Leanote
+  url: https://github.com/leanote/leanote
+
+- name: ShareLaTex
+  url: https://github.com/overleaf/overleaf
+
+- name: Pelican
+  url: https://github.com/getpelican/pelican
+
+- name: HackMD
+  url: https://github.com/hackmdio/codimd
+
+- name: dillinger
+  url: https://github.com/joemccann/dillinger
+
+- name: Publify
+  url: https://github.com/publify/publify
+
+- name: Metalsmith
+  url: https://github.com/metalsmith/metalsmith
+
+- name: WriteFreely
+  url: https://github.com/writefreely/writefreely
+
+- name: Canvas
+  url: https://github.com/austintoddj/canvas
+
+- name: OpenSign™
+  url: https://github.com/OpenSignLabs/OpenSign
+
+- name: Dnote
+  url: https://github.com/dnote/dnote
+
+- name: Plume
+  url: https://github.com/Plume-org/Plume
+
+- name: OpenNote
+  url: https://github.com/FoxUSA/OpenNote
+
+- name: htmly
+  url: https://github.com/danpros/htmly
+
+- name: minimalist-web-notepad
+  url: https://github.com/pereorga/minimalist-web-notepad
+
+- name: sleek
+  url: https://github.com/ransome1/sleek
+
+- name: oTranscribe
+  url: https://github.com/oTranscribe/oTranscribe
+
+- name: Writing
+  url: https://github.com/josephernest/writing
+```
+
+## File: script/index.js
+```javascript
+import fs from 'node:fs'
+import path from 'node:path'
+import yaml from 'yaml'
+import { markdownTable } from 'markdown-table'
+
+import { getYAMLFiles } from './yaml.js'
+import { getBadge, getRepoInfo, getTitle, toPascalCase } from './utils.js'
+
+const dataDir = './data'
+const yamlFiles = getYAMLFiles(dataDir)
+
+const categoryList = await Promise.all(
+  yamlFiles
+    .map((yamlFile) => {
+      const filePath = path.join(dataDir, yamlFile)
+      const data = fs.readFileSync(filePath, 'utf8')
+      const apps = yaml.parse(data)
+      return {
+        apps,
+        name: toPascalCase(yamlFile.replace('.yaml', '')),
+      }
+    })
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map(async (category) => {
+      category.apps = await Promise.all(
+        category.apps.map(async (project) => {
+          project.info = await getRepoInfo(project.url)
+          return project
+        }),
+      )
+      category.apps = category.apps.sort((a, b) => b.info.stars - a.info.stars)
+      console.info(category.name)
+      console.table(category.apps)
+      return category
+    }),
+)
+
+const markdown = categoryList
+  .map((category) => {
+    const list = [['Name', 'Info', 'Description']].concat(
+      category.apps.map(project => [
+        getTitle(project),
+        [
+          getBadge(project, 'stars'),
+          getBadge(project, 'language'),
+          // getBadge(project, 'license')
+        ].join(' '),
+        project.description || project.info?.description,
+      ]),
+    )
+    const appsMd = markdownTable(list)
+    return `### ${category.name}\n\n${appsMd}`
+  })
+  .join('\n\n')
+
+const readme = fs.readFileSync('./tmpl/README.md', 'utf8')
+
+fs.writeFileSync('./README.md', readme.replace('<!-- Apps -->', markdown))
+```
+
+## File: script/utils.js
+```javascript
+import hostedGitInfo from 'hosted-git-info'
+
+export function toPascalCase(str) {
+  return str
+    .replace(/^\w|[A-Z]|\b\w/g, (word, index) => {
+      return index === 0 ? word.toUpperCase() : word.toUpperCase()
+    }).replace(/\s+/g, '').replace(/-/g, '')
+}
+
+export async function getRepoInfo(url) {
+  const repo = hostedGitInfo.fromUrl(url)
+  try {
+    if (!repo) {
+      const info = new URL(url)
+      const [user, project] = info.pathname.slice(1).split('/')
+      const res = await fetch(`${info.origin}/api/v4/projects/${encodeURIComponent(`${user}/${project}`)}`)
+      const data = await res.json()
+      return {
+        type: 'gitlab',
+        user,
+        project,
+        stars: data.star_count,
+        description: data.description,
+        language: data.language,
+        topics: data.topics || [],
+      }
+    }
+    if (repo.type === 'github') {
+      const res = await fetch(`https://api.github.com/repos/${repo.user}/${repo.project}`, {
+        headers: {
+          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        },
+      })
+      const data = await res.json()
+      return {
+        type: 'github',
+        user: repo.user,
+        project: repo.project,
+        stars: data.stargazers_count,
+        description: data.description,
+        language: data.language,
+        topics: data.topics || [],
+      }
+    }
+    if (repo.type === 'gitlab') {
+      const res = await fetch(`https://gitlab.com/api/v4/projects/${encodeURIComponent(`${repo.user}/${repo.project}`)}`)
+      const data = await res.json()
+      return {
+        type: 'gitlab',
+        user: repo.user,
+        project: repo.project,
+        stars: data.star_count,
+        description: data.description,
+        language: data.language,
+        topics: data.topics || [],
+      }
+    }
+  }
+  catch (e) {
+    console.error(url, repo, e)
+    return {}
+  }
+
+  return {}
+}
+
+export function getBadge(project, type) {
+  if (project.info.type === 'github') {
+    if (type === 'stars') {
+      return `![${project.name}](https://img.shields.io/${project.info.type}/stars/${project.info.user}/${project.info.project}?style=flat)`
+    }
+    if (type === 'license') {
+      return `![${project.name}](https://img.shields.io/${project.info.type}/license/${project.info.user}/${project.info.project}?style=flat)`
+    }
+    if (type === 'language') {
+      return `![${project.name}](https://img.shields.io/${project.info.type}/languages/top/${project.info.user}/${project.info.project}?style=flat)`
+    }
+  }
+  else if (project.info.type === 'gitlab') {
+    const url = new URL(project.url)
+    if (type === 'stars') {
+      return `![${project.name}](https://img.shields.io/${project.info.type}/stars/${encodeURIComponent(`${project.info.user}/${project.info.project}`)}?style=flat&gitlab_url=${url.origin})`
+    }
+    if (type === 'license') {
+      return `![${project.name}](https://img.shields.io/${project.info.type}/license/${encodeURIComponent(`${project.info.user}/${project.info.project}`)}?style=flat&gitlab_url=${url.origin})`
+    }
+    if (type === 'language') {
+      return `![${project.name}](https://img.shields.io/${project.info.type}/languages/count/${encodeURIComponent(`${project.info.user}/${project.info.project}`)}?style=flat&gitlab_url=${url.origin})`
+    }
+  }
+  else {
+    return ''
+  }
+}
+
+export function getTitle(project) {
+  return `[${project.name}](${project.url})`
+}
+```
+
+## File: script/yaml.js
+```javascript
+import fs from 'node:fs'
+import path from 'node:path'
+
+export function getYAMLFiles(directory) {
+  const files = fs.readdirSync(directory)
+  const yamlFiles = files.filter(file => path.extname(file) === '.yaml')
+  return yamlFiles
+}
+```
+
+## File: tmpl/README.md
+```markdown
+<div align="center">
+  <img width="500" height="350" src="assets/logo.svg" alt="Awesome Homelab">
+</div>
+
+# Awesome Homelab
+
+**Curating Top Open Source Apps for Homelab Enthusiasts.**
+
+[![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+
+---
+
+[Submit App](https://github.com/ccbikai/awesome-homelab/issues/new)
+
+## Sponsors
+
+<a href="https://mkdirs.com/?via=miantiao">
+  <img src="https://mkdirs.com/favicon.ico" width="16" height="16" />
+  <strong>Mkdirs</strong>
+</a>
+
+## Apps
+
+<!-- Apps -->
+```
+
+## File: .editorconfig
+```
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = false
+insert_final_newline = false
+```
+
+## File: .gitignore
+```
+# Created by https://www.toptal.com/developers/gitignore/api/node
+# Edit at https://www.toptal.com/developers/gitignore?templates=node
+
+### Node ###
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Directory for instrumented libs generated by jscoverage/JSCover
+lib-cov
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Bower dependency directory (https://bower.io/)
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Snowpack dependency directory (https://snowpack.dev/)
+web_modules/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+# Comment in the public line in if your project uses Gatsby and not Next.js
+# https://nextjs.org/blog/next-9-1#public-directory-support
+# public
+
+# vuepress build output
+.vuepress/dist
+
+# vuepress v2.x temp and cache directory
+.temp
+
+# Docusaurus cache and generated files
+.docusaurus
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+### Node Patch ###
+# Serverless Webpack directories
+.webpack/
+
+# Optional stylelint cache
+
+# SvelteKit build / generate output
+.svelte-kit
+
+# End of https://www.toptal.com/developers/gitignore/api/node
+```
+
+## File: .node-version
+```
+v22
+```
+
+## File: eslint.config.js
+```javascript
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  formatters: true,
+  ignores: [
+    '*.md',
+  ],
+  rules: {
+    'no-console': 'off',
+    'node/prefer-global/process': 'off',
+  },
+})
+```
+
+## File: package.json
+```json
+{
+  "name": "awesome-homelab",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.4.0",
+  "description": "Awesome Homelab",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "script/index.js",
+  "scripts": {
+    "dev": "node --env-file .env script/index.js",
+    "build": "node script/index.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "postinstall": "simple-git-hooks"
+  },
+  "dependencies": {
+    "hosted-git-info": "^7.0.2",
+    "markdown-table": "^3.0.3",
+    "yaml": "^2.4.5"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.0.0",
+    "eslint": "^9.9.1",
+    "eslint-plugin-format": "^0.1.2",
+    "lint-staged": "^15.2.10",
+    "simple-git-hooks": "^2.11.1"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}
+```
+
+## File: README.md
+```markdown
+<div align="center">
+  <img width="500" height="350" src="assets/logo.svg" alt="Awesome Homelab">
+</div>
+
+# Awesome Homelab
+
+**Curating Top Open Source Apps for Homelab Enthusiasts.**
+
+[![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+
+---
+
+[Submit App](https://github.com/ccbikai/awesome-homelab/issues/new)
+
+## Sponsors
+
+<a href="https://mkdirs.com/?via=miantiao">
+  <img src="https://mkdirs.com/favicon.ico" width="16" height="16" />
+  <strong>Mkdirs</strong>
+</a>
+
+## Apps
+
+### AI
+
+| Name                                                    | Info                                                                                                                                                                              | Description                                                                                                                                                                                                                                                                                                                                             |
+| ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Ollama](https://github.com/ollama/ollama)              | ![Ollama](https://img.shields.io/github/stars/ollama/ollama?style=flat) ![Ollama](https://img.shields.io/github/languages/top/ollama/ollama?style=flat)                           | Get up and running with OpenAI gpt-oss, DeepSeek-R1, Gemma 3 and other models.                                                                                                                                                                                                                                                                          |
+| [Dify](https://github.com/langgenius/dify)              | ![Dify](https://img.shields.io/github/stars/langgenius/dify?style=flat) ![Dify](https://img.shields.io/github/languages/top/langgenius/dify?style=flat)                           | Production-ready platform for agentic workflow development.                                                                                                                                                                                                                                                                                             |
+| [Open WebUI](https://github.com/open-webui/open-webui)  | ![Open WebUI](https://img.shields.io/github/stars/open-webui/open-webui?style=flat) ![Open WebUI](https://img.shields.io/github/languages/top/open-webui/open-webui?style=flat)   | User-friendly AI Interface (Supports Ollama, OpenAI API, ...)                                                                                                                                                                                                                                                                                           |
+| [ComfyUI](https://github.com/comfyanonymous/ComfyUI)    | ![ComfyUI](https://img.shields.io/github/stars/comfyanonymous/ComfyUI?style=flat) ![ComfyUI](https://img.shields.io/github/languages/top/comfyanonymous/ComfyUI?style=flat)       | The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.                                                                                                                                                                                                                                                        |
+| [Lobe Chat](https://github.com/lobehub/lobe-chat)       | ![Lobe Chat](https://img.shields.io/github/stars/lobehub/lobe-chat?style=flat) ![Lobe Chat](https://img.shields.io/github/languages/top/lobehub/lobe-chat?style=flat)             | 🤯 Lobe Chat - an open-source, modern design AI chat framework. Supports multiple AI providers (OpenAI / Claude 4 / Gemini / DeepSeek / Ollama / Qwen), Knowledge Base (file upload / RAG ), one click install MCP Marketplace and Artifacts / Thinking. One-click FREE deployment of your private AI Agent application.                                |
+| [Flowise](https://github.com/FlowiseAI/Flowise)         | ![Flowise](https://img.shields.io/github/stars/FlowiseAI/Flowise?style=flat) ![Flowise](https://img.shields.io/github/languages/top/FlowiseAI/Flowise?style=flat)                 | Build AI Agents, Visually                                                                                                                                                                                                                                                                                                                               |
+| [MindsDB](https://github.com/mindsdb/mindsdb)           | ![MindsDB](https://img.shields.io/github/stars/mindsdb/mindsdb?style=flat) ![MindsDB](https://img.shields.io/github/languages/top/mindsdb/mindsdb?style=flat)                     | Federated query engine for AI - The only MCP Server you'll ever need                                                                                                                                                                                                                                                                                    |
+| [LocalAI](https://github.com/mudler/LocalAI)            | ![LocalAI](https://img.shields.io/github/stars/mudler/LocalAI?style=flat) ![LocalAI](https://img.shields.io/github/languages/top/mudler/LocalAI?style=flat)                       | :robot: The free, Open Source alternative to OpenAI, Claude and others. Self-hosted and local-first. Drop-in replacement for OpenAI,  running on consumer-grade hardware. No GPU required. Runs gguf, transformers, diffusers and many more. Features: Generate Text, Audio, Video, Images, Voice Cloning, Distributed, P2P and decentralized inference |
+| [Perplexica](https://github.com/ItzCrazyKns/Perplexica) | ![Perplexica](https://img.shields.io/github/stars/ItzCrazyKns/Perplexica?style=flat) ![Perplexica](https://img.shields.io/github/languages/top/ItzCrazyKns/Perplexica?style=flat) | Perplexica is an AI-powered answering engine. It is an Open source alternative to Perplexity AI                                                                                                                                                                                                                                                         |
+| [Leon](https://github.com/leon-ai/leon)                 | ![Leon](https://img.shields.io/github/stars/leon-ai/leon?style=flat) ![Leon](https://img.shields.io/github/languages/top/leon-ai/leon?style=flat)                                 | 🧠 Leon is your open-source personal assistant.                                                                                                                                                                                                                                                                                                         |
+| [JupyterLab](https://github.com/jupyterlab/jupyterlab)  | ![JupyterLab](https://img.shields.io/github/stars/jupyterlab/jupyterlab?style=flat) ![JupyterLab](https://img.shields.io/github/languages/top/jupyterlab/jupyterlab?style=flat)   | JupyterLab computational environment.                                                                                                                                                                                                                                                                                                                   |
+| [OpenLLM](https://github.com/bentoml/OpenLLM)           | ![OpenLLM](https://img.shields.io/github/stars/bentoml/OpenLLM?style=flat) ![OpenLLM](https://img.shields.io/github/languages/top/bentoml/OpenLLM?style=flat)                     | Run any open-source LLMs, such as DeepSeek and Llama, as OpenAI compatible API endpoint in the cloud.                                                                                                                                                                                                                                                   |
+| [LlamaGPT](https://github.com/getumbrel/llama-gpt)      | ![LlamaGPT](https://img.shields.io/github/stars/getumbrel/llama-gpt?style=flat) ![LlamaGPT](https://img.shields.io/github/languages/top/getumbrel/llama-gpt?style=flat)           | A self-hosted, offline, ChatGPT-like chatbot. Powered by Llama 2. 100% private, with no data leaving your device. New: Code Llama support!                                                                                                                                                                                                              |
+| [Xinference](https://github.com/xorbitsai/inference)    | ![Xinference](https://img.shields.io/github/stars/xorbitsai/inference?style=flat) ![Xinference](https://img.shields.io/github/languages/top/xorbitsai/inference?style=flat)       | Replace OpenAI GPT with another LLM in your app by changing a single line of code. Xinference gives you the freedom to use any LLM you need. With Xinference, you're empowered to run inference with any open-source language models, speech recognition models, and multimodal models, whether in the cloud, on-premises, or even on your laptop.      |
+| [Serge](https://github.com/serge-chat/serge)            | ![Serge](https://img.shields.io/github/stars/serge-chat/serge?style=flat) ![Serge](https://img.shields.io/github/languages/top/serge-chat/serge?style=flat)                       | A web interface for chatting with Alpaca through llama.cpp. Fully dockerized, with an easy to use API.                                                                                                                                                                                                                                                  |
+| [GaiaNet](https://github.com/GaiaNet-AI/gaianet-node)   | ![GaiaNet](https://img.shields.io/github/stars/GaiaNet-AI/gaianet-node?style=flat) ![GaiaNet](https://img.shields.io/github/languages/top/GaiaNet-AI/gaianet-node?style=flat)     | Install, run and deploy your own decentralized AI agent service                                                                                                                                                                                                                                                                                         |
+| [Cheshire-Cat](https://github.com/cheshire-cat-ai/core) | ![Cheshire-Cat](https://img.shields.io/github/stars/cheshire-cat-ai/core?style=flat) ![Cheshire-Cat](https://img.shields.io/github/languages/top/cheshire-cat-ai/core?style=flat) | AI agent microservice                                                                                                                                                                                                                                                                                                                                   |
+| [1Backend](https://github.com/1backend/1backend)        | ![1Backend](https://img.shields.io/github/stars/1backend/1backend?style=flat) ![1Backend](https://img.shields.io/github/languages/top/1backend/1backend?style=flat)               | Build AI (or any) apps with scalable microservices & microfrontends.                                                                                                                                                                                                                                                                                    |
+| [Anse](https://github.com/anse-app/anse)                | ![Anse](https://img.shields.io/github/stars/anse-app/anse?style=flat) ![Anse](https://img.shields.io/github/languages/top/anse-app/anse?style=flat)                               | Supercharged experience for multiple models such as ChatGPT, DALL-E and Stable Diffusion.                                                                                                                                                                                                                                                               |
+| [ChatGPT UI](https://github.com/WongSaang/chatgpt-ui)   | ![ChatGPT UI](https://img.shields.io/github/stars/WongSaang/chatgpt-ui?style=flat) ![ChatGPT UI](https://img.shields.io/github/languages/top/WongSaang/chatgpt-ui?style=flat)     | A ChatGPT web client that supports multiple users, multiple languages, and multiple database connections for persistent data storage. Provides Docker images and quick deployment scripts.                                                                                                                                                              |
+| [Chatpad AI](https://github.com/deiucanta/chatpad)      | ![Chatpad AI](https://img.shields.io/github/stars/deiucanta/chatpad?style=flat) ![Chatpad AI](https://img.shields.io/github/languages/top/deiucanta/chatpad?style=flat)           | Not just another ChatGPT user-interface!                                                                                                                                                                                                                                                                                                                |
+
+### Analytics
+
+| Name                                                                           | Info                                                                                                                                                                                                                            | Description                                                                                                                                                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Metabase](https://github.com/metabase/metabase)                               | ![Metabase](https://img.shields.io/github/stars/metabase/metabase?style=flat) ![Metabase](https://img.shields.io/github/languages/top/metabase/metabase?style=flat)                                                             | The easy-to-use open source Business Intelligence and Embedded Analytics tool that lets everyone work with data :bar_chart:                                                                                                                                                                                                 |
+| [Umami](https://github.com/umami-software/umami)                               | ![Umami](https://img.shields.io/github/stars/umami-software/umami?style=flat) ![Umami](https://img.shields.io/github/languages/top/umami-software/umami?style=flat)                                                             | Umami is a modern, privacy-focused alternative to Google Analytics.                                                                                                                                                                                                                                                         |
+| [PostHog](https://github.com/PostHog/posthog)                                  | ![PostHog](https://img.shields.io/github/stars/PostHog/posthog?style=flat) ![PostHog](https://img.shields.io/github/languages/top/PostHog/posthog?style=flat)                                                                   | 🦔 PostHog provides open-source web & product analytics, session recording, feature flagging and A/B testing that you can self-host. Get started - free.                                                                                                                                                                    |
+| [Redash](https://github.com/getredash/redash)                                  | ![Redash](https://img.shields.io/github/stars/getredash/redash?style=flat) ![Redash](https://img.shields.io/github/languages/top/getredash/redash?style=flat)                                                                   | Make Your Company Data Driven. Connect to any data source, easily visualize, dashboard and share your data.                                                                                                                                                                                                                 |
+| [Plausible](https://github.com/plausible/analytics)                            | ![Plausible](https://img.shields.io/github/stars/plausible/analytics?style=flat) ![Plausible](https://img.shields.io/github/languages/top/plausible/analytics?style=flat)                                                       | Simple, open source, lightweight and privacy-friendly web analytics alternative to Google Analytics.                                                                                                                                                                                                                        |
+| [Matomo](https://github.com/matomo-org/matomo)                                 | ![Matomo](https://img.shields.io/github/stars/matomo-org/matomo?style=flat) ![Matomo](https://img.shields.io/github/languages/top/matomo-org/matomo?style=flat)                                                                 | Empowering People Ethically 🚀 — Matomo is hiring! Join us → https://matomo.org/jobs Matomo is the leading open-source alternative to Google Analytics, giving you complete control and built-in privacy. Easily collect, visualise, and analyse data from websites & apps. Star us on GitHub ⭐️  – Pull Requests welcome!  |
+| [GoAccess](https://github.com/allinurl/goaccess)                               | ![GoAccess](https://img.shields.io/github/stars/allinurl/goaccess?style=flat) ![GoAccess](https://img.shields.io/github/languages/top/allinurl/goaccess?style=flat)                                                             | GoAccess is a real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.                                                                                                                                                                                            |
+| [cube.js](https://github.com/cube-js/cube)                                     | ![cube.js](https://img.shields.io/github/stars/cube-js/cube?style=flat) ![cube.js](https://img.shields.io/github/languages/top/cube-js/cube?style=flat)                                                                         | 📊 Cube Core is open-source semantic layer and LookML alternative for AI, BI and embedded analytics                                                                                                                                                                                                                         |
+| [Rybbit](https://github.com/rybbit-io/rybbit)                                  | ![Rybbit](https://img.shields.io/github/stars/rybbit-io/rybbit?style=flat) ![Rybbit](https://img.shields.io/github/languages/top/rybbit-io/rybbit?style=flat)                                                                   | 🐸 Rybbit - open-source and privacy-friendly alternative to Google Analytics that is 10x more intuitive.                                                                                                                                                                                                                    |
+| [Fathom](https://github.com/usefathom/fathom)                                  | ![Fathom](https://img.shields.io/github/stars/usefathom/fathom?style=flat) ![Fathom](https://img.shields.io/github/languages/top/usefathom/fathom?style=flat)                                                                   | Fathom Lite. Simple, privacy-focused website analytics. Built with Golang & Preact.                                                                                                                                                                                                                                         |
+| [Countly](https://github.com/Countly/countly-server)                           | ![Countly](https://img.shields.io/github/stars/Countly/countly-server?style=flat) ![Countly](https://img.shields.io/github/languages/top/Countly/countly-server?style=flat)                                                     | Countly is a product analytics platform that helps teams track, analyze and act-on their user actions and behaviour on mobile, web and desktop applications.                                                                                                                                                                |
+| [GoatCounter](https://github.com/arp242/goatcounter)                           | ![GoatCounter](https://img.shields.io/github/stars/arp242/goatcounter?style=flat) ![GoatCounter](https://img.shields.io/github/languages/top/arp242/goatcounter?style=flat)                                                     | Easy web analytics. No tracking of personal data.                                                                                                                                                                                                                                                                           |
+| [Openpanel](https://github.com/Openpanel-dev/openpanel)                        | ![Openpanel](https://img.shields.io/github/stars/Openpanel-dev/openpanel?style=flat) ![Openpanel](https://img.shields.io/github/languages/top/Openpanel-dev/openpanel?style=flat)                                               | Openpanel is an open-source web and product analytics platform that combines the power of Mixpanel with the ease of Plausible and one of the best Google Analytics replacements.                                                                                                                                            |
+| [Ackee](https://github.com/electerious/Ackee)                                  | ![Ackee](https://img.shields.io/github/stars/electerious/Ackee?style=flat) ![Ackee](https://img.shields.io/github/languages/top/electerious/Ackee?style=flat)                                                                   | Self-hosted, Node.js based analytics tool for those who care about privacy.                                                                                                                                                                                                                                                 |
+| [RudderStack](https://github.com/rudderlabs/rudder-server)                     | ![RudderStack](https://img.shields.io/github/stars/rudderlabs/rudder-server?style=flat) ![RudderStack](https://img.shields.io/github/languages/top/rudderlabs/rudder-server?style=flat)                                         | Privacy and Security focused Segment-alternative, in Golang and React                                                                                                                                                                                                                                                       |
+| [Shynet](https://github.com/milesmcc/shynet)                                   | ![Shynet](https://img.shields.io/github/stars/milesmcc/shynet?style=flat) ![Shynet](https://img.shields.io/github/languages/top/milesmcc/shynet?style=flat)                                                                     | Modern, privacy-friendly, and detailed web analytics that works without cookies or JS.                                                                                                                                                                                                                                      |
+| [Open Web Analytics](https://github.com/Open-Web-Analytics/Open-Web-Analytics) | ![Open Web Analytics](https://img.shields.io/github/stars/Open-Web-Analytics/Open-Web-Analytics?style=flat) ![Open Web Analytics](https://img.shields.io/github/languages/top/Open-Web-Analytics/Open-Web-Analytics?style=flat) | Official repository for Open Web Analytics which is an open source alternative to commercial tools such as Google Analytics. Stay in control of the data you collect about the use of your website or app.  Please consider sponsoring this project.                                                                        |
+| [Pirsch](https://github.com/pirsch-analytics/pirsch)                           | ![Pirsch](https://img.shields.io/github/stars/pirsch-analytics/pirsch?style=flat) ![Pirsch](https://img.shields.io/github/languages/top/pirsch-analytics/pirsch?style=flat)                                                     | Pirsch is a drop-in, server-side, no-cookie, and privacy-focused analytics solution for Go.                                                                                                                                                                                                                                 |
+| [Medama](https://github.com/medama-io/medama)                                  | ![Medama](https://img.shields.io/github/stars/medama-io/medama?style=flat) ![Medama](https://img.shields.io/github/languages/top/medama-io/medama?style=flat)                                                                   | Self-hostable, privacy-focused website analytics.                                                                                                                                                                                                                                                                           |
+
+### Authentication
+
+| Name                                                  | Info                                                                                                                                                                          | Description                                                                                                                                |
+| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| [authentik](https://github.com/goauthentik/authentik) | ![authentik](https://img.shields.io/github/stars/goauthentik/authentik?style=flat) ![authentik](https://img.shields.io/github/languages/top/goauthentik/authentik?style=flat) | The authentication glue you need.                                                                                                          |
+| [Logto](https://github.com/logto-io/logto)            | ![Logto](https://img.shields.io/github/stars/logto-io/logto?style=flat) ![Logto](https://img.shields.io/github/languages/top/logto-io/logto?style=flat)                       | 🧑‍🚀 Authentication and authorization infrastructure for SaaS and AI apps, built on OIDC and OAuth 2.1 with multi-tenancy, SSO, and RBAC. |
+| [Pocket ID](https://github.com/pocket-id/pocket-id)   | ![Pocket ID](https://img.shields.io/github/stars/pocket-id/pocket-id?style=flat) ![Pocket ID](https://img.shields.io/github/languages/top/pocket-id/pocket-id?style=flat)     | A simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to your services.                             |
+| [Pomerium](https://github.com/pomerium/pomerium)      | ![Pomerium](https://img.shields.io/github/stars/pomerium/pomerium?style=flat) ![Pomerium](https://img.shields.io/github/languages/top/pomerium/pomerium?style=flat)           | Pomerium is an identity and context-aware access proxy.                                                                                    |
+
+### Automation
+
+| Name                                                         | Info                                                                                                                                                                                        | Description                                                                                                                                                                                                                                                                                                                                                |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Huginn](https://github.com/huginn/huginn)                   | ![Huginn](https://img.shields.io/github/stars/huginn/huginn?style=flat) ![Huginn](https://img.shields.io/github/languages/top/huginn/huginn?style=flat)                                     | Create agents that monitor and act on your behalf.  Your agents are standing by!                                                                                                                                                                                                                                                                           |
+| [Mindustry](https://github.com/Anuken/Mindustry)             | ![Mindustry](https://img.shields.io/github/stars/Anuken/Mindustry?style=flat) ![Mindustry](https://img.shields.io/github/languages/top/Anuken/Mindustry?style=flat)                         | The automation tower defense RTS                                                                                                                                                                                                                                                                                                                           |
+| [Activepieces](https://github.com/activepieces/activepieces) | ![Activepieces](https://img.shields.io/github/stars/activepieces/activepieces?style=flat) ![Activepieces](https://img.shields.io/github/languages/top/activepieces/activepieces?style=flat) | AI Agents & MCPs & AI Workflow Automation • (~400 MCP servers for AI agents) • AI Automation / AI Agent with MCPs • AI Workflows & AI Agents • MCPs for AI Agents                                                                                                                                                                                          |
+| [Automatisch](https://github.com/automatisch/automatisch)    | ![Automatisch](https://img.shields.io/github/stars/automatisch/automatisch?style=flat) ![Automatisch](https://img.shields.io/github/languages/top/automatisch/automatisch?style=flat)       | The open source Zapier alternative. Build workflow automation without spending time and money.                                                                                                                                                                                                                                                             |
+| [Beehive](https://github.com/muesli/beehive)                 | ![Beehive](https://img.shields.io/github/stars/muesli/beehive?style=flat) ![Beehive](https://img.shields.io/github/languages/top/muesli/beehive?style=flat)                                 | A flexible event/agent & automation system with lots of bees 🐝                                                                                                                                                                                                                                                                                            |
+| [StackStorm](https://github.com/StackStorm/st2)              | ![StackStorm](https://img.shields.io/github/stars/StackStorm/st2?style=flat) ![StackStorm](https://img.shields.io/github/languages/top/StackStorm/st2?style=flat)                           | StackStorm (aka "IFTTT for Ops") is event-driven automation for auto-remediation, incident responses, troubleshooting, deployments, and more for DevOps and SREs. Includes rules engine, workflow, 160 integration packs with 6000+ actions (see https://exchange.stackstorm.org) and ChatOps. Installer at https://docs.stackstorm.com/install/index.html |
+| [Actionsflow](https://github.com/actionsflow/actionsflow)    | ![Actionsflow](https://img.shields.io/github/stars/actionsflow/actionsflow?style=flat) ![Actionsflow](https://img.shields.io/github/languages/top/actionsflow/actionsflow?style=flat)       | The free Zapier/IFTTT alternative for developers to automate your workflows based on Github actions                                                                                                                                                                                                                                                        |
+| [µTask](https://github.com/ovh/utask)                        | ![µTask](https://img.shields.io/github/stars/ovh/utask?style=flat) ![µTask](https://img.shields.io/github/languages/top/ovh/utask?style=flat)                                               | µTask is an automation engine that models and executes business processes declared in yaml. ✏️📋                                                                                                                                                                                                                                                           |
+
+### Backup
+
+| Name                                                | Info                                                                                                                                                                      | Description                                                                                                                                                                        |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Rclone](https://github.com/rclone/rclone)          | ![Rclone](https://img.shields.io/github/stars/rclone/rclone?style=flat) ![Rclone](https://img.shields.io/github/languages/top/rclone/rclone?style=flat)                   | "rsync for cloud storage" - Google Drive, S3, Dropbox, Backblaze B2, One Drive, Swift, Hubic, Wasabi, Google Cloud Storage, Azure Blob, Azure Files, Yandex Files                  |
+| [Restic](https://github.com/restic/restic)          | ![Restic](https://img.shields.io/github/stars/restic/restic?style=flat) ![Restic](https://img.shields.io/github/languages/top/restic/restic?style=flat)                   | Fast, secure, efficient backup program                                                                                                                                             |
+| [Duplicati](https://github.com/duplicati/duplicati) | ![Duplicati](https://img.shields.io/github/stars/duplicati/duplicati?style=flat) ![Duplicati](https://img.shields.io/github/languages/top/duplicati/duplicati?style=flat) | Store securely encrypted backups in the cloud!                                                                                                                                     |
+| [BorgBackup](https://github.com/borgbackup/borg)    | ![BorgBackup](https://img.shields.io/github/stars/borgbackup/borg?style=flat) ![BorgBackup](https://img.shields.io/github/languages/top/borgbackup/borg?style=flat)       | Deduplicating archiver with compression and authenticated encryption.                                                                                                              |
+| [Kopia](https://github.com/kopia/kopia)             | ![Kopia](https://img.shields.io/github/stars/kopia/kopia?style=flat) ![Kopia](https://img.shields.io/github/languages/top/kopia/kopia?style=flat)                         | Cross-platform backup tool for Windows, macOS & Linux with fast, incremental backups, client-side end-to-end encryption, compression and data deduplication. CLI and GUI included. |
+
+### Bookmarking
+
+| Name                                                           | Info                                                                                                                                                                                            | Description                                                                                                                                                                     |
+| -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [linkding](https://github.com/sissbruecker/linkding)           | ![linkding](https://img.shields.io/github/stars/sissbruecker/linkding?style=flat) ![linkding](https://img.shields.io/github/languages/top/sissbruecker/linkding?style=flat)                     | Self-hosted bookmark manager that is designed be to be minimal, fast, and easy to set up using Docker.                                                                          |
+| [Shaarli](https://github.com/shaarli/Shaarli)                  | ![Shaarli](https://img.shields.io/github/stars/shaarli/Shaarli?style=flat) ![Shaarli](https://img.shields.io/github/languages/top/shaarli/Shaarli?style=flat)                                   | The personal, minimalist, super-fast, database free, bookmarking service - community repo                                                                                       |
+| [Pinry](https://github.com/pinry/pinry)                        | ![Pinry](https://img.shields.io/github/stars/pinry/pinry?style=flat) ![Pinry](https://img.shields.io/github/languages/top/pinry/pinry?style=flat)                                               | Pinry, a tiling image board system for people who want to save, tag, and share images, videos and webpages in an easy to skim through format. It's open-source and self-hosted. |
+| [LinkAce](https://github.com/Kovah/LinkAce)                    | ![LinkAce](https://img.shields.io/github/stars/Kovah/LinkAce?style=flat) ![LinkAce](https://img.shields.io/github/languages/top/Kovah/LinkAce?style=flat)                                       | LinkAce is a self-hosted archive to collect links of your favorite websites.                                                                                                    |
+| [Reminiscence](https://github.com/kanishka-linux/reminiscence) | ![Reminiscence](https://img.shields.io/github/stars/kanishka-linux/reminiscence?style=flat) ![Reminiscence](https://img.shields.io/github/languages/top/kanishka-linux/reminiscence?style=flat) | Self-Hosted Bookmark And Archive Manager                                                                                                                                        |
+| [unmark](https://github.com/cdevroe/unmark)                    | ![unmark](https://img.shields.io/github/stars/cdevroe/unmark?style=flat) ![unmark](https://img.shields.io/github/languages/top/cdevroe/unmark?style=flat)                                       | An open source to do app for bookmarks.                                                                                                                                         |
+| [DashMachine](https://github.com/rmountjoy92/DashMachine)      | ![DashMachine](https://img.shields.io/github/stars/rmountjoy92/DashMachine?style=flat) ![DashMachine](https://img.shields.io/github/languages/top/rmountjoy92/DashMachine?style=flat)           | Another web application bookmark dashboard, with fun features.                                                                                                                  |
+| [Espial](https://github.com/jonschoning/espial)                | ![Espial](https://img.shields.io/github/stars/jonschoning/espial?style=flat) ![Espial](https://img.shields.io/github/languages/top/jonschoning/espial?style=flat)                               |  Espial is an open-source, web-based bookmarking server.                                                                                                                        |
+| [Benotes](https://github.com/fr0tt/benotes)                    | ![Benotes](https://img.shields.io/github/stars/fr0tt/benotes?style=flat) ![Benotes](https://img.shields.io/github/languages/top/fr0tt/benotes?style=flat)                                       | An open source self hosted notes and bookmarks taking web app.                                                                                                                  |
+| [NeonLink](https://github.com/AlexSciFier/neonlink)            | ![NeonLink](https://img.shields.io/github/stars/AlexSciFier/neonlink?style=flat) ![NeonLink](https://img.shields.io/github/languages/top/AlexSciFier/neonlink?style=flat)                       | Simple self-hosted bookmark service.                                                                                                                                            |
+
+### Calendar
+
+| Name                                                                    | Info                                                                                                                                                                                                              | Description                                                                                                                      |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| [Cal.com](https://github.com/calcom/cal.com)                            | ![Cal.com](https://img.shields.io/github/stars/calcom/cal.com?style=flat) ![Cal.com](https://img.shields.io/github/languages/top/calcom/cal.com?style=flat)                                                       | Scheduling infrastructure for absolutely everyone.                                                                               |
+| [Rallly](https://github.com/lukevella/rallly)                           | ![Rallly](https://img.shields.io/github/stars/lukevella/rallly?style=flat) ![Rallly](https://img.shields.io/github/languages/top/lukevella/rallly?style=flat)                                                     | Rallly is an open-source scheduling and collaboration tool designed to make organizing events and meetings easier.               |
+| [Radicale](https://github.com/Kozea/Radicale)                           | ![Radicale](https://img.shields.io/github/stars/Kozea/Radicale?style=flat) ![Radicale](https://img.shields.io/github/languages/top/Kozea/Radicale?style=flat)                                                     | A simple CalDAV (calendar) and CardDAV (contact) server.                                                                         |
+| [Easy!Appointments](https://github.com/alextselegidis/easyappointments) | ![Easy!Appointments](https://img.shields.io/github/stars/alextselegidis/easyappointments?style=flat) ![Easy!Appointments](https://img.shields.io/github/languages/top/alextselegidis/easyappointments?style=flat) | :date: Easy!Appointments - Self Hosted Appointment Scheduler                                                                     |
+| [Baïkal](https://github.com/sabre-io/Baikal)                            | ![Baïkal](https://img.shields.io/github/stars/sabre-io/Baikal?style=flat) ![Baïkal](https://img.shields.io/github/languages/top/sabre-io/Baikal?style=flat)                                                       | Baïkal is a Calendar+Contacts server                                                                                             |
+| [indico](https://github.com/indico/indico)                              | ![indico](https://img.shields.io/github/stars/indico/indico?style=flat) ![indico](https://img.shields.io/github/languages/top/indico/indico?style=flat)                                                           | Indico - A feature-rich event management system, made @ CERN, the place where the Web was born.                                  |
+| [sabre/dav](https://github.com/sabre-io/dav)                            | ![sabre/dav](https://img.shields.io/github/stars/sabre-io/dav?style=flat) ![sabre/dav](https://img.shields.io/github/languages/top/sabre-io/dav?style=flat)                                                       | sabre/dav is a CalDAV, CardDAV and WebDAV framework for PHP                                                                      |
+| [MIND](https://github.com/Casvt/MIND)                                   | ![MIND](https://img.shields.io/github/stars/Casvt/MIND?style=flat) ![MIND](https://img.shields.io/github/languages/top/Casvt/MIND?style=flat)                                                                     | A simple self hosted reminder application that can send push notifications to your device. Set the reminder and forget about it! |
+
+### CICD
+
+| Name                                              | Info                                                                                                                                                                                                                                    | Description                                                                                                                                                                                                                  |
+| ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Drone](https://github.com/drone/drone)           | ![Drone](https://img.shields.io/github/stars/drone/drone?style=flat) ![Drone](https://img.shields.io/github/languages/top/drone/drone?style=flat)                                                                                       | Harness Open Source is an end-to-end developer platform with Source Control Management, CI/CD Pipelines, Hosted Developer Environments, and Artifact Registries.                                                             |
+| [Jenkins](https://github.com/jenkinsci/jenkins)   | ![Jenkins](https://img.shields.io/github/stars/jenkinsci/jenkins?style=flat) ![Jenkins](https://img.shields.io/github/languages/top/jenkinsci/jenkins?style=flat)                                                                       | Jenkins automation server                                                                                                                                                                                                    |
+| [ArgoCD](https://github.com/argoproj/argo-cd)     | ![ArgoCD](https://img.shields.io/github/stars/argoproj/argo-cd?style=flat) ![ArgoCD](https://img.shields.io/github/languages/top/argoproj/argo-cd?style=flat)                                                                           | Declarative Continuous Deployment for Kubernetes                                                                                                                                                                             |
+| [Tekton](https://github.com/tektoncd/pipeline)    | ![Tekton](https://img.shields.io/github/stars/tektoncd/pipeline?style=flat) ![Tekton](https://img.shields.io/github/languages/top/tektoncd/pipeline?style=flat)                                                                         | A cloud-native Pipeline resource.                                                                                                                                                                                            |
+| [GitLab CI](https://gitlab.com/gitlab-org/gitlab) | ![GitLab CI](https://img.shields.io/gitlab/stars/gitlab-org%2Fgitlab?style=flat&gitlab_url=https://gitlab.com) ![GitLab CI](https://img.shields.io/gitlab/languages/count/gitlab-org%2Fgitlab?style=flat&gitlab_url=https://gitlab.com) | GitLab is an open source end-to-end software development platform with built-in version control, issue tracking, code review, CI/CD, and more. Self-host GitLab on your own servers, in a container, or on a cloud provider. |
+
+### CMS
+
+| Name                                                                | Info                                                                                                                                                                                                      | Description                                                                                                                                                     |
+| ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Strapi](https://github.com/strapi/strapi)                          | ![Strapi](https://img.shields.io/github/stars/strapi/strapi?style=flat) ![Strapi](https://img.shields.io/github/languages/top/strapi/strapi?style=flat)                                                   | 🚀 Strapi is the leading open-source headless CMS. It’s 100% JavaScript/TypeScript, fully customizable, and developer-first.                                    |
+| [Directus](https://github.com/directus/directus)                    | ![Directus](https://img.shields.io/github/stars/directus/directus?style=flat) ![Directus](https://img.shields.io/github/languages/top/directus/directus?style=flat)                                       | The flexible backend for all your projects 🐰 Turn your DB into a headless CMS, admin panels, or apps with a custom UI, instant APIs, auth & more.              |
+| [Wagtail](https://github.com/wagtail/wagtail)                       | ![Wagtail](https://img.shields.io/github/stars/wagtail/wagtail?style=flat) ![Wagtail](https://img.shields.io/github/languages/top/wagtail/wagtail?style=flat)                                             | A Django content management system focused on flexibility and user experience                                                                                   |
+| [Grav](https://github.com/getgrav/grav)                             | ![Grav](https://img.shields.io/github/stars/getgrav/grav?style=flat) ![Grav](https://img.shields.io/github/languages/top/getgrav/grav?style=flat)                                                         | Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS powered by PHP, Markdown, Twig, and Symfony                                          |
+| [october](https://github.com/octobercms/october)                    | ![october](https://img.shields.io/github/stars/octobercms/october?style=flat) ![october](https://img.shields.io/github/languages/top/octobercms/october?style=flat)                                       | Self-hosted CMS platform based on the Laravel PHP Framework.                                                                                                    |
+| [django CMS](https://github.com/django-cms/django-cms)              | ![django CMS](https://img.shields.io/github/stars/django-cms/django-cms?style=flat) ![django CMS](https://img.shields.io/github/languages/top/django-cms/django-cms?style=flat)                           | The easy-to-use and developer-friendly enterprise CMS powered by Django                                                                                         |
+| [KeystoneJS](https://github.com/keystonejs/keystone)                | ![KeystoneJS](https://img.shields.io/github/stars/keystonejs/keystone?style=flat) ![KeystoneJS](https://img.shields.io/github/languages/top/keystonejs/keystone?style=flat)                               | The superpowered headless CMS for Node.js — built with GraphQL and React                                                                                        |
+| [Umbraco](https://github.com/umbraco/Umbraco-CMS)                   | ![Umbraco](https://img.shields.io/github/stars/umbraco/Umbraco-CMS?style=flat) ![Umbraco](https://img.shields.io/github/languages/top/umbraco/Umbraco-CMS?style=flat)                                     | Umbraco is a free and open source .NET content management system helping you deliver delightful digital experiences.                                            |
+| [Joomla!](https://github.com/joomla/joomla-cms)                     | ![Joomla!](https://img.shields.io/github/stars/joomla/joomla-cms?style=flat) ![Joomla!](https://img.shields.io/github/languages/top/joomla/joomla-cms?style=flat)                                         | Home of the Joomla! Content Management System                                                                                                                   |
+| [Drupal](https://github.com/drupal/drupal)                          | ![Drupal](https://img.shields.io/github/stars/drupal/drupal?style=flat) ![Drupal](https://img.shields.io/github/languages/top/drupal/drupal?style=flat)                                                   | Verbatim mirror of the git.drupal.org repository for Drupal core. Please see the https://github.com/drupal/drupal#contributing. PRs are not accepted on GitHub. |
+| [Bolt](https://github.com/bolt/bolt)                                | ![Bolt](https://img.shields.io/github/stars/bolt/bolt?style=flat) ![Bolt](https://img.shields.io/github/languages/top/bolt/bolt?style=flat)                                                               | Bolt is a simple CMS written in PHP. It is based on Silex and Symfony components, uses Twig and either SQLite, MySQL or PostgreSQL.                             |
+| [Refinery CMS](https://github.com/refinery/refinerycms)             | ![Refinery CMS](https://img.shields.io/github/stars/refinery/refinerycms?style=flat) ![Refinery CMS](https://img.shields.io/github/languages/top/refinery/refinerycms?style=flat)                         | An extendable Ruby on Rails CMS that supports Rails 6.0+                                                                                                        |
+| [Pimcore](https://github.com/pimcore/pimcore)                       | ![Pimcore](https://img.shields.io/github/stars/pimcore/pimcore?style=flat) ![Pimcore](https://img.shields.io/github/languages/top/pimcore/pimcore?style=flat)                                             | Core Framework for the Open Core Data & Experience Management Platform (PIM, MDM, CDP, DAM, DXP/CMS & Digital Commerce)                                         |
+| [Microweber](https://github.com/microweber/microweber)              | ![Microweber](https://img.shields.io/github/stars/microweber/microweber?style=flat) ![Microweber](https://img.shields.io/github/languages/top/microweber/microweber?style=flat)                           | Drag and Drop Website Builder and CMS with E-commerce                                                                                                           |
+| [Squidex](https://github.com/Squidex/squidex)                       | ![Squidex](https://img.shields.io/github/stars/Squidex/squidex?style=flat) ![Squidex](https://img.shields.io/github/languages/top/Squidex/squidex?style=flat)                                             | Headless CMS and Content Managment Hub                                                                                                                          |
+| [Orchard](https://github.com/OrchardCMS/Orchard)                    | ![Orchard](https://img.shields.io/github/stars/OrchardCMS/Orchard?style=flat) ![Orchard](https://img.shields.io/github/languages/top/OrchardCMS/Orchard?style=flat)                                       | Orchard is a free, open source, community-focused Content Management System built on the ASP.NET MVC platform.                                                  |
+| [Shoop](https://github.com/shuup/shuup)                             | ![Shoop](https://img.shields.io/github/stars/shuup/shuup?style=flat) ![Shoop](https://img.shields.io/github/languages/top/shuup/shuup?style=flat)                                                         | E-Commerce Platform                                                                                                                                             |
+| [PencilBlue](https://github.com/pencilblue/pencilblue)              | ![PencilBlue](https://img.shields.io/github/stars/pencilblue/pencilblue?style=flat) ![PencilBlue](https://img.shields.io/github/languages/top/pencilblue/pencilblue?style=flat)                           | Business class content management for Node.js (plugins, server cluster management, data-driven pages)                                                           |
+| [MODX](https://github.com/modxcms/revolution)                       | ![MODX](https://img.shields.io/github/stars/modxcms/revolution?style=flat) ![MODX](https://img.shields.io/github/languages/top/modxcms/revolution?style=flat)                                             | MODX Revolution - Content Management Framework                                                                                                                  |
+| [Bludit](https://github.com/bludit/bludit)                          | ![Bludit](https://img.shields.io/github/stars/bludit/bludit?style=flat) ![Bludit](https://img.shields.io/github/languages/top/bludit/bludit?style=flat)                                                   | Simple, Fast, Secure, Flat-File CMS                                                                                                                             |
+| [Shopware Community Edition](https://github.com/shopware5/shopware) | ![Shopware Community Edition](https://img.shields.io/github/stars/shopware5/shopware?style=flat) ![Shopware Community Edition](https://img.shields.io/github/languages/top/shopware5/shopware?style=flat) | Shopware 5 core                                                                                                                                                 |
+| [Camaleon CMS](https://github.com/owen2345/camaleon-cms)            | ![Camaleon CMS](https://img.shields.io/github/stars/owen2345/camaleon-cms?style=flat) ![Camaleon CMS](https://img.shields.io/github/languages/top/owen2345/camaleon-cms?style=flat)                       | Camaleon CMS is a dynamic and advanced content management system based on Ruby on Rails                                                                         |
+| [TYPO3](https://github.com/TYPO3/typo3)                             | ![TYPO3](https://img.shields.io/github/stars/TYPO3/typo3?style=flat) ![TYPO3](https://img.shields.io/github/languages/top/TYPO3/typo3?style=flat)                                                         | The TYPO3 Core - Enterprise Content Management System. Synchronized mirror of https://review.typo3.org/q/project:Packages/TYPO3.CMS                             |
+
+### Communication
+
+| Name                                                                 | Info                                                                                                                                                                                                                            | Description                                                                                                                                                                                                                                 |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Discourse](https://github.com/discourse/discourse)                  | ![Discourse](https://img.shields.io/github/stars/discourse/discourse?style=flat) ![Discourse](https://img.shields.io/github/languages/top/discourse/discourse?style=flat)                                                       | A platform for community discussion. Free, open, simple.                                                                                                                                                                                    |
+| [Rocket.Chat](https://github.com/RocketChat/Rocket.Chat)             | ![Rocket.Chat](https://img.shields.io/github/stars/RocketChat/Rocket.Chat?style=flat) ![Rocket.Chat](https://img.shields.io/github/languages/top/RocketChat/Rocket.Chat?style=flat)                                             | The communications platform that puts data protection first.                                                                                                                                                                                |
+| [Mattermost](https://github.com/mattermost/mattermost-server)        | ![Mattermost](https://img.shields.io/github/stars/mattermost/mattermost-server?style=flat) ![Mattermost](https://img.shields.io/github/languages/top/mattermost/mattermost-server?style=flat)                                   | Mattermost is an open source platform for secure collaboration across the entire software development lifecycle..                                                                                                                           |
+| [Jitsi](https://github.com/jitsi/jitsi-meet)                         | ![Jitsi](https://img.shields.io/github/stars/jitsi/jitsi-meet?style=flat) ![Jitsi](https://img.shields.io/github/languages/top/jitsi/jitsi-meet?style=flat)                                                                     | Jitsi Meet - Secure, Simple and Scalable Video Conferences that you use as a standalone app or embed in your web application.                                                                                                               |
+| [Chatwoot](https://github.com/chatwoot/chatwoot)                     | ![Chatwoot](https://img.shields.io/github/stars/chatwoot/chatwoot?style=flat) ![Chatwoot](https://img.shields.io/github/languages/top/chatwoot/chatwoot?style=flat)                                                             | Open-source live-chat, email support, omni-channel desk. An alternative to Intercom, Zendesk, Salesforce Service Cloud etc. 🔥💬                                                                                                            |
+| [Zulip](https://github.com/zulip/zulip)                              | ![Zulip](https://img.shields.io/github/stars/zulip/zulip?style=flat) ![Zulip](https://img.shields.io/github/languages/top/zulip/zulip?style=flat)                                                                               | Zulip server and web application. Open-source team chat that helps teams stay productive and focused.                                                                                                                                       |
+| [Flarum](https://github.com/flarum/flarum)                           | ![Flarum](https://img.shields.io/github/stars/flarum/flarum?style=flat) ![Flarum](https://img.shields.io/github/languages/top/flarum/flarum?style=flat)                                                                         | Simple forum software for building great communities.                                                                                                                                                                                       |
+| [Apache Answer](https://github.com/apache/incubator-answer)          | ![Apache Answer](https://img.shields.io/github/stars/apache/incubator-answer?style=flat) ![Apache Answer](https://img.shields.io/github/languages/top/apache/incubator-answer?style=flat)                                       | A Q&A platform software for teams at any scales. Whether it's a community forum, help center, or knowledge management platform, you can always count on Apache Answer.                                                                      |
+| [NodeBB](https://github.com/NodeBB/NodeBB)                           | ![NodeBB](https://img.shields.io/github/stars/NodeBB/NodeBB?style=flat) ![NodeBB](https://img.shields.io/github/languages/top/NodeBB/NodeBB?style=flat)                                                                         | Node.js based forum software built for the modern web                                                                                                                                                                                       |
+| [Lemmy](https://github.com/LemmyNet/lemmy)                           | ![Lemmy](https://img.shields.io/github/stars/LemmyNet/lemmy?style=flat) ![Lemmy](https://img.shields.io/github/languages/top/LemmyNet/lemmy?style=flat)                                                                         | 🐀 A link aggregator and forum for the fediverse                                                                                                                                                                                            |
+| [Tinode](https://github.com/tinode/chat)                             | ![Tinode](https://img.shields.io/github/stars/tinode/chat?style=flat) ![Tinode](https://img.shields.io/github/languages/top/tinode/chat?style=flat)                                                                             | Instant messaging platform. Backend in Go. Clients: Swift iOS, Java Android, JS webapp, scriptable command line; chatbots                                                                                                                   |
+| [Matrix](https://github.com/matrix-org/synapse)                      | ![Matrix](https://img.shields.io/github/stars/matrix-org/synapse?style=flat) ![Matrix](https://img.shields.io/github/languages/top/matrix-org/synapse?style=flat)                                                               | Synapse: Matrix homeserver written in Python/Twisted.                                                                                                                                                                                       |
+| [Signal](https://github.com/signalapp/Signal-Server)                 | ![Signal](https://img.shields.io/github/stars/signalapp/Signal-Server?style=flat) ![Signal](https://img.shields.io/github/languages/top/signalapp/Signal-Server?style=flat)                                                     | Server supporting the Signal Private Messenger applications on Android, Desktop, and iOS                                                                                                                                                    |
+| [Lets-Chat](https://github.com/sdelements/lets-chat)                 | ![Lets-Chat](https://img.shields.io/github/stars/sdelements/lets-chat?style=flat) ![Lets-Chat](https://img.shields.io/github/languages/top/sdelements/lets-chat?style=flat)                                                     | Self-hosted chat app for small teams                                                                                                                                                                                                        |
+| [Berty](https://github.com/berty/berty)                              | ![Berty](https://img.shields.io/github/stars/berty/berty?style=flat) ![Berty](https://img.shields.io/github/languages/top/berty/berty?style=flat)                                                                               | Berty is a secure peer-to-peer messaging app that works with or without internet access, cellular data or trust in the network                                                                                                              |
+| [Tox](https://github.com/irungentoo/toxcore)                         | ![Tox](https://img.shields.io/github/stars/irungentoo/toxcore?style=flat) ![Tox](https://img.shields.io/github/languages/top/irungentoo/toxcore?style=flat)                                                                     | The future of online communications.                                                                                                                                                                                                        |
+| [The Lounge](https://github.com/thelounge/thelounge)                 | ![The Lounge](https://img.shields.io/github/stars/thelounge/thelounge?style=flat) ![The Lounge](https://img.shields.io/github/languages/top/thelounge/thelounge?style=flat)                                                     | 💬  ‎ Modern, responsive, cross-platform, self-hosted web IRC client                                                                                                                                                                        |
+| [tmate](https://github.com/tmate-io/tmate)                           | ![tmate](https://img.shields.io/github/stars/tmate-io/tmate?style=flat) ![tmate](https://img.shields.io/github/languages/top/tmate-io/tmate?style=flat)                                                                         | Instant Terminal Sharing                                                                                                                                                                                                                    |
+| [Papercups](https://github.com/papercups-io/papercups)               | ![Papercups](https://img.shields.io/github/stars/papercups-io/papercups?style=flat) ![Papercups](https://img.shields.io/github/languages/top/papercups-io/papercups?style=flat)                                                 | Open-source live customer chat                                                                                                                                                                                                              |
+| [remark42](https://github.com/umputun/remark42)                      | ![remark42](https://img.shields.io/github/stars/umputun/remark42?style=flat) ![remark42](https://img.shields.io/github/languages/top/umputun/remark42?style=flat)                                                               | comment engine                                                                                                                                                                                                                              |
+| [Zammad](https://github.com/zammad/zammad)                           | ![Zammad](https://img.shields.io/github/stars/zammad/zammad?style=flat) ![Zammad](https://img.shields.io/github/languages/top/zammad/zammad?style=flat)                                                                         | Zammad is a web based open source helpdesk/customer support system.                                                                                                                                                                         |
+| [FreeScout](https://github.com/freescout-help-desk/freescout)        | ![FreeScout](https://img.shields.io/github/stars/freescout-help-desk/freescout?style=flat) ![FreeScout](https://img.shields.io/github/languages/top/freescout-help-desk/freescout?style=flat)                                   | FreeScout — Free self-hosted help desk & shared mailbox (Zendesk / Help Scout alternative)                                                                                                                                                  |
+| [Fider](https://github.com/getfider/fider)                           | ![Fider](https://img.shields.io/github/stars/getfider/fider?style=flat) ![Fider](https://img.shields.io/github/languages/top/getfider/fider?style=flat)                                                                         | Open platform to collect and prioritize feedback                                                                                                                                                                                            |
+| [TextBelt](https://github.com/typpo/textbelt)                        | ![TextBelt](https://img.shields.io/github/stars/typpo/textbelt?style=flat) ![TextBelt](https://img.shields.io/github/languages/top/typpo/textbelt?style=flat)                                                                   | Free API for outgoing SMS                                                                                                                                                                                                                   |
+| [Converse.js](https://github.com/conversejs/converse.js)             | ![Converse.js](https://img.shields.io/github/stars/conversejs/converse.js?style=flat) ![Converse.js](https://img.shields.io/github/languages/top/conversejs/converse.js?style=flat)                                             | Web-based XMPP/Jabber chat written in JavaScript                                                                                                                                                                                            |
+| [Weechat](https://github.com/weechat/weechat)                        | ![Weechat](https://img.shields.io/github/stars/weechat/weechat?style=flat) ![Weechat](https://img.shields.io/github/languages/top/weechat/weechat?style=flat)                                                                   | The extensible chat client.                                                                                                                                                                                                                 |
+| [Jitsi Video Bridge](https://github.com/jitsi/jitsi-videobridge)     | ![Jitsi Video Bridge](https://img.shields.io/github/stars/jitsi/jitsi-videobridge?style=flat) ![Jitsi Video Bridge](https://img.shields.io/github/languages/top/jitsi/jitsi-videobridge?style=flat)                             | Jitsi Videobridge is a WebRTC compatible video router or SFU that lets build highly scalable video conferencing infrastructure (i.e., up to hundreds of conferences per server).                                                            |
+| [Openfire](https://github.com/igniterealtime/Openfire)               | ![Openfire](https://img.shields.io/github/stars/igniterealtime/Openfire?style=flat) ![Openfire](https://img.shields.io/github/languages/top/igniterealtime/Openfire?style=flat)                                                 | An XMPP server licensed under the Open Source Apache License.                                                                                                                                                                               |
+| [Oragono](https://github.com/ergochat/ergo)                          | ![Oragono](https://img.shields.io/github/stars/ergochat/ergo?style=flat) ![Oragono](https://img.shields.io/github/languages/top/ergochat/ergo?style=flat)                                                                       | A modern IRC server (daemon/ircd) written in Go.                                                                                                                                                                                            |
+| [Asterisk](https://github.com/asterisk/asterisk)                     | ![Asterisk](https://img.shields.io/github/stars/asterisk/asterisk?style=flat) ![Asterisk](https://img.shields.io/github/languages/top/asterisk/asterisk?style=flat)                                                             | The official Asterisk Project repository.                                                                                                                                                                                                   |
+| [Kandan](https://github.com/kandanapp/kandan)                        | ![Kandan](https://img.shields.io/github/stars/kandanapp/kandan?style=flat) ![Kandan](https://img.shields.io/github/languages/top/kandanapp/kandan?style=flat)                                                                   | Kandan is an Open Source Alternative to HipChat                                                                                                                                                                                             |
+| [Kamailio](https://github.com/kamailio/kamailio)                     | ![Kamailio](https://img.shields.io/github/stars/kamailio/kamailio?style=flat) ![Kamailio](https://img.shields.io/github/languages/top/kamailio/kamailio?style=flat)                                                             | Kamailio - The Open Source SIP Server for large VoIP and real-time communication platforms -                                                                                                                                                |
+| [Loomio](https://github.com/loomio/loomio)                           | ![Loomio](https://img.shields.io/github/stars/loomio/loomio?style=flat) ![Loomio](https://img.shields.io/github/languages/top/loomio/loomio?style=flat)                                                                         | Loomio is a collaborative decision making tool                                                                                                                                                                                              |
+| [WBO](https://github.com/lovasoa/whitebophir)                        | ![WBO](https://img.shields.io/github/stars/lovasoa/whitebophir?style=flat) ![WBO](https://img.shields.io/github/languages/top/lovasoa/whitebophir?style=flat)                                                                   | Online collaborative Whiteboard that is simple, free, easy to use and  to deploy                                                                                                                                                            |
+| [Helpy](https://github.com/helpyio/helpy)                            | ![Helpy](https://img.shields.io/github/stars/helpyio/helpy?style=flat) ![Helpy](https://img.shields.io/github/languages/top/helpyio/helpy?style=flat)                                                                           | Helpy is a modern, open source helpdesk customer support application. Features include knowledgebase, community discussions and support tickets integrated with email.                                                                      |
+| [Revolt](https://github.com/revoltchat/revolt)                       | ![Revolt](https://img.shields.io/github/stars/revoltchat/revolt?style=flat) ![Revolt](https://img.shields.io/github/languages/top/revoltchat/revolt?style=flat)                                                                 | Repository for miscellaneous repository management and discussions: https://github.com/revoltchat/revolt/discussions                                                                                                                        |
+| [Live Helper Chat](https://github.com/LiveHelperChat/livehelperchat) | ![Live Helper Chat](https://img.shields.io/github/stars/LiveHelperChat/livehelperchat?style=flat) ![Live Helper Chat](https://img.shields.io/github/languages/top/LiveHelperChat/livehelperchat?style=flat)                     | Live Helper Chat - live support for your website. Featuring web and mobile apps, Voice & Video & ScreenShare. Supports Telegram, Twilio (whatsapp), Facebook messenger including building a bot.                                            |
+| [ZNC](https://github.com/znc/znc)                                    | ![ZNC](https://img.shields.io/github/stars/znc/znc?style=flat) ![ZNC](https://img.shields.io/github/languages/top/znc/znc?style=flat)                                                                                           | Official repository for the ZNC IRC bouncer                                                                                                                                                                                                 |
+| [Nextcloud Talk](https://github.com/nextcloud/spreed)                | ![Nextcloud Talk](https://img.shields.io/github/stars/nextcloud/spreed?style=flat) ![Nextcloud Talk](https://img.shields.io/github/languages/top/nextcloud/spreed?style=flat)                                                   | 🗨️ Nextcloud Talk – chat, video & audio calls for Nextcloud                                                                                                                                                                                |
+| [phpBB](https://github.com/phpbb/phpbb)                              | ![phpBB](https://img.shields.io/github/stars/phpbb/phpbb?style=flat) ![phpBB](https://img.shields.io/github/languages/top/phpbb/phpbb?style=flat)                                                                               |  phpBB Development: phpBB is a popular open-source bulletin board written in PHP. This repository also contains the history of version 2.                                                                                                   |
+| [Twake](https://github.com/linagora/Twake)                           | ![Twake](https://img.shields.io/github/stars/linagora/Twake?style=flat) ![Twake](https://img.shields.io/github/languages/top/linagora/Twake?style=flat)                                                                         | Twake is a secure open source collaboration platform to improve organizational productivity.                                                                                                                                                |
+| [RetroShare](https://github.com/RetroShare/RetroShare)               | ![RetroShare](https://img.shields.io/github/stars/RetroShare/RetroShare?style=flat) ![RetroShare](https://img.shields.io/github/languages/top/RetroShare/RetroShare?style=flat)                                                 | RetroShare is a Free and Open Source cross-platform, Friend-2-Friend and secure decentralised communication platform.                                                                                                                       |
+| [Movim](https://github.com/movim/movim)                              | ![Movim](https://img.shields.io/github/stars/movim/movim?style=flat) ![Movim](https://img.shields.io/github/languages/top/movim/movim?style=flat)                                                                               | Movim - Decentralized social platform                                                                                                                                                                                                       |
+| [Talkyard](https://github.com/debiki/talkyard)                       | ![Talkyard](https://img.shields.io/github/stars/debiki/talkyard?style=flat) ![Talkyard](https://img.shields.io/github/languages/top/debiki/talkyard?style=flat)                                                                 | A community discussion platform: Brings together the main features from StackOverflow, Slack, Discourse, Reddit, and Disqus blog comments.                                                                                                  |
+| [MongooseIM](https://github.com/esl/MongooseIM)                      | ![MongooseIM](https://img.shields.io/github/stars/esl/MongooseIM?style=flat) ![MongooseIM](https://img.shields.io/github/languages/top/esl/MongooseIM?style=flat)                                                               | MongooseIM is Erlang Solutions' robust, scalable and efficient XMPP server, aimed at large installations. Specifically designed for enterprise purposes, it is fault-tolerant and can utilise the resources of multiple clustered machines. |
+| [Routr](https://github.com/fonoster/routr)                           | ![Routr](https://img.shields.io/github/stars/fonoster/routr?style=flat) ![Routr](https://img.shields.io/github/languages/top/fonoster/routr?style=flat)                                                                         | ⚡ The future of programmable SIP servers.                                                                                                                                                                                                   |
+| [Databag](https://github.com/balzack/databag)                        | ![Databag](https://img.shields.io/github/stars/balzack/databag?style=flat) ![Databag](https://img.shields.io/github/languages/top/balzack/databag?style=flat)                                                                   | fast & lightweight self-hosted messenger                                                                                                                                                                                                    |
+| [Kaiwa](https://github.com/getkaiwa/kaiwa)                           | ![Kaiwa](https://img.shields.io/github/stars/getkaiwa/kaiwa?style=flat) ![Kaiwa](https://img.shields.io/github/languages/top/getkaiwa/kaiwa?style=flat)                                                                         | [UNMAINTAINED] A modern XMPP Web client                                                                                                                                                                                                     |
+| [Candy](https://github.com/candy-chat/candy)                         | ![Candy](https://img.shields.io/github/stars/candy-chat/candy?style=flat) ![Candy](https://img.shields.io/github/languages/top/candy-chat/candy?style=flat)                                                                     | JavaScript-based multi-user chat client for XMPP.                                                                                                                                                                                           |
+| [InspIRCd](https://github.com/inspircd/inspircd)                     | ![InspIRCd](https://img.shields.io/github/stars/inspircd/inspircd?style=flat) ![InspIRCd](https://img.shields.io/github/languages/top/inspircd/inspircd?style=flat)                                                             | A modular C++ IRC server (ircd).                                                                                                                                                                                                            |
+| [Freenet](https://github.com/hyphanet/fred)                          | ![Freenet](https://img.shields.io/github/stars/hyphanet/fred?style=flat) ![Freenet](https://img.shields.io/github/languages/top/hyphanet/fred?style=flat)                                                                       | Freenet REference Daemon                                                                                                                                                                                                                    |
+| [Spreed](https://github.com/strukturag/spreed-webrtc)                | ![Spreed](https://img.shields.io/github/stars/strukturag/spreed-webrtc?style=flat) ![Spreed](https://img.shields.io/github/languages/top/strukturag/spreed-webrtc?style=flat)                                                   | WebRTC audio/video call and conferencing server.                                                                                                                                                                                            |
+| [Conduit](https://gitlab.com/famedly/conduit)                        | ![Conduit](https://img.shields.io/gitlab/stars/famedly%2Fconduit?style=flat&gitlab_url=https://gitlab.com) ![Conduit](https://img.shields.io/gitlab/languages/count/famedly%2Fconduit?style=flat&gitlab_url=https://gitlab.com) | Conduit is a simple, fast and reliable chat server powered by Matrix https://conduit.rs                                                                                                                                                     |
+
+### Container
+
+| Name                                                       | Info                                                                                                                                                                                    | Description                                                                                                                                                                                                                                               |
+| ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Windows](https://github.com/dockur/windows)               | ![Windows](https://img.shields.io/github/stars/dockur/windows?style=flat) ![Windows](https://img.shields.io/github/languages/top/dockur/windows?style=flat)                             | Windows inside a Docker container.                                                                                                                                                                                                                        |
+| [Portainer](https://github.com/portainer/portainer)        | ![Portainer](https://img.shields.io/github/stars/portainer/portainer?style=flat) ![Portainer](https://img.shields.io/github/languages/top/portainer/portainer?style=flat)               | Making Docker and Kubernetes management easy.                                                                                                                                                                                                             |
+| [Rancher](https://github.com/rancher/rancher)              | ![Rancher](https://img.shields.io/github/stars/rancher/rancher?style=flat) ![Rancher](https://img.shields.io/github/languages/top/rancher/rancher?style=flat)                           | Complete container management platform                                                                                                                                                                                                                    |
+| [Dockge](https://github.com/louislam/dockge)               | ![Dockge](https://img.shields.io/github/stars/louislam/dockge?style=flat) ![Dockge](https://img.shields.io/github/languages/top/louislam/dockge?style=flat)                             | A fancy, easy-to-use and reactive self-hosted docker compose.yaml stack-oriented manager                                                                                                                                                                  |
+| [Nomad](https://github.com/hashicorp/nomad)                | ![Nomad](https://img.shields.io/github/stars/hashicorp/nomad?style=flat) ![Nomad](https://img.shields.io/github/languages/top/hashicorp/nomad?style=flat)                               | Nomad is an easy-to-use, flexible, and performant workload orchestrator that can deploy a mix of microservice, batch, containerized, and non-containerized applications. Nomad is easy to operate and scale and has native Consul and Vault integrations. |
+| [Dozzle](https://github.com/amir20/dozzle)                 | ![Dozzle](https://img.shields.io/github/stars/amir20/dozzle?style=flat) ![Dozzle](https://img.shields.io/github/languages/top/amir20/dozzle?style=flat)                                 | Realtime log viewer for containers.  Supports Docker, Swarm and K8s.                                                                                                                                                                                      |
+| [IronFunctions](https://github.com/iron-io/functions)      | ![IronFunctions](https://img.shields.io/github/stars/iron-io/functions?style=flat) ![IronFunctions](https://img.shields.io/github/languages/top/iron-io/functions?style=flat)           | IronFunctions - the serverless microservices platform by                                                                                                                                                                                                  |
+| [NextCloudPi](https://github.com/nextcloud/nextcloudpi)    | ![NextCloudPi](https://img.shields.io/github/stars/nextcloud/nextcloudpi?style=flat) ![NextCloudPi](https://img.shields.io/github/languages/top/nextcloud/nextcloudpi?style=flat)       | 📦 Build code for NextcloudPi: Raspberry Pi, Odroid, Rock64, curl installer...                                                                                                                                                                            |
+| [DockSTARTer](https://github.com/GhostWriters/DockSTARTer) | ![DockSTARTer](https://img.shields.io/github/stars/GhostWriters/DockSTARTer?style=flat) ![DockSTARTer](https://img.shields.io/github/languages/top/GhostWriters/DockSTARTer?style=flat) | DockSTARTer helps you get started with running apps in Docker.                                                                                                                                                                                            |
+| [inlets](https://github.com/inlets/inlets-operator)        | ![inlets](https://img.shields.io/github/stars/inlets/inlets-operator?style=flat) ![inlets](https://img.shields.io/github/languages/top/inlets/inlets-operator?style=flat)               | Get public TCP LoadBalancers for local Kubernetes clusters                                                                                                                                                                                                |
+| [Yacht](https://github.com/SelfhostedPro/Yacht)            | ![Yacht](https://img.shields.io/github/stars/SelfhostedPro/Yacht?style=flat) ![Yacht](https://img.shields.io/github/languages/top/SelfhostedPro/Yacht?style=flat)                       | A web interface for managing docker containers with an emphasis on templating to provide 1 click deployments. Think of it like a decentralized app store for servers that anyone can make packages for.                                                   |
+
+### CRM
+
+| Name                                                               | Info                                                                                                                                                                                                    | Description                                                                                                                                                                                                                                                                                     |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [ERPNext](https://github.com/frappe/erpnext)                       | ![ERPNext](https://img.shields.io/github/stars/frappe/erpnext?style=flat) ![ERPNext](https://img.shields.io/github/languages/top/frappe/erpnext?style=flat)                                             | Free and Open Source Enterprise Resource Planning (ERP)                                                                                                                                                                                                                                         |
+| [Monica](https://github.com/monicahq/monica)                       | ![Monica](https://img.shields.io/github/stars/monicahq/monica?style=flat) ![Monica](https://img.shields.io/github/languages/top/monicahq/monica?style=flat)                                             | Personal CRM. Remember everything about your friends, family and business relationships.                                                                                                                                                                                                        |
+| [snipe-it](https://github.com/snipe/snipe-it)                      | ![snipe-it](https://img.shields.io/github/stars/snipe/snipe-it?style=flat) ![snipe-it](https://img.shields.io/github/languages/top/snipe/snipe-it?style=flat)                                           | A free open source IT asset/license management system                                                                                                                                                                                                                                           |
+| [Leantime](https://github.com/Leantime/leantime)                   | ![Leantime](https://img.shields.io/github/stars/Leantime/leantime?style=flat) ![Leantime](https://img.shields.io/github/languages/top/Leantime/leantime?style=flat)                                     | Leantime is a goals focused project management system for non-project managers. Building with ADHD, Autism, and dyslexia in mind.                                                                                                                                                               |
+| [grocy](https://github.com/grocy/grocy)                            | ![grocy](https://img.shields.io/github/stars/grocy/grocy?style=flat) ![grocy](https://img.shields.io/github/languages/top/grocy/grocy?style=flat)                                                       | ERP beyond your fridge - Grocy is a web-based self-hosted groceries & household management solution for your home                                                                                                                                                                               |
+| [DOLIBARR ERP & CRM](https://github.com/Dolibarr/dolibarr)         | ![DOLIBARR ERP & CRM](https://img.shields.io/github/stars/Dolibarr/dolibarr?style=flat) ![DOLIBARR ERP & CRM](https://img.shields.io/github/languages/top/Dolibarr/dolibarr?style=flat)                 | Dolibarr ERP CRM is a modern software package to manage your company or foundation's activity (contacts, suppliers, invoices, orders, stocks, agenda, accounting, ...). it's an open source Web application (written in PHP) designed for businesses of any sizes, foundations and freelancers. |
+| [SuiteCRM](https://github.com/salesagility/SuiteCRM)               | ![SuiteCRM](https://img.shields.io/github/stars/salesagility/SuiteCRM?style=flat) ![SuiteCRM](https://img.shields.io/github/languages/top/salesagility/SuiteCRM?style=flat)                             | SuiteCRM - Open source CRM for the world                                                                                                                                                                                                                                                        |
+| [Open Source POS](https://github.com/opensourcepos/opensourcepos)  | ![Open Source POS](https://img.shields.io/github/stars/opensourcepos/opensourcepos?style=flat) ![Open Source POS](https://img.shields.io/github/languages/top/opensourcepos/opensourcepos?style=flat)   | Open Source Point of Sale is a web based point of sale application written in PHP using CodeIgniter framework. It uses MySQL as the data back end and has a Bootstrap 3 based user interface.                                                                                                   |
+| [Erxes](https://github.com/erxes/erxes)                            | ![Erxes](https://img.shields.io/github/stars/erxes/erxes?style=flat) ![Erxes](https://img.shields.io/github/languages/top/erxes/erxes?style=flat)                                                       | Experience Operating System (XOS) that unifies marketing, sales, operations, and support — run your core business seamlessly while replacing HubSpot, Zendesk, Linear, Wix and more.                                                                                                            |
+| [Open Event Server](https://github.com/fossasia/open-event-server) | ![Open Event Server](https://img.shields.io/github/stars/fossasia/open-event-server?style=flat) ![Open Event Server](https://img.shields.io/github/languages/top/fossasia/open-event-server?style=flat) | The Open Event Organizer Server to Manage Events https://test-api.eventyay.com                                                                                                                                                                                                                  |
+| [EspoCRM](https://github.com/espocrm/espocrm)                      | ![EspoCRM](https://img.shields.io/github/stars/espocrm/espocrm?style=flat) ![EspoCRM](https://img.shields.io/github/languages/top/espocrm/espocrm?style=flat)                                           | EspoCRM – Open Source CRM Application                                                                                                                                                                                                                                                           |
+| [Sharetribe](https://github.com/sharetribe/sharetribe)             | ![Sharetribe](https://img.shields.io/github/stars/sharetribe/sharetribe?style=flat) ![Sharetribe](https://img.shields.io/github/languages/top/sharetribe/sharetribe?style=flat)                         | Sharetribe Go is Sharetribe's old source-available marketplace software, which was also available as a hosted SaaS product. Sharetribe Go is no longer actively maintained.                                                                                                                     |
+| [Restyaboard](https://github.com/RestyaPlatform/board)             | ![Restyaboard](https://img.shields.io/github/stars/RestyaPlatform/board?style=flat) ![Restyaboard](https://img.shields.io/github/languages/top/RestyaPlatform/board?style=flat)                         | Trello like kanban board. Based on Restya platform.                                                                                                                                                                                                                                             |
+| [Corteza](https://github.com/cortezaproject/corteza)               | ![Corteza](https://img.shields.io/github/stars/cortezaproject/corteza?style=flat) ![Corteza](https://img.shields.io/github/languages/top/cortezaproject/corteza?style=flat)                             | Low-code platform                                                                                                                                                                                                                                                                               |
+| [ZenTao](https://github.com/easysoft/zentaopms)                    | ![ZenTao](https://img.shields.io/github/stars/easysoft/zentaopms?style=flat) ![ZenTao](https://img.shields.io/github/languages/top/easysoft/zentaopms?style=flat)                                       | Zentao is an agile(scrum) project management system/tool, Free Upgrade Forever!​                                                                                                                                                                                                                |
+
+### Crypting
+
+| Name                                                     | Info                                                                                                                                                                                | Description                                                                  |
+| -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| [ZeroNet](https://github.com/HelloZeroNet/ZeroNet)       | ![ZeroNet](https://img.shields.io/github/stars/HelloZeroNet/ZeroNet?style=flat) ![ZeroNet](https://img.shields.io/github/languages/top/HelloZeroNet/ZeroNet?style=flat)             | ZeroNet - Decentralized websites using Bitcoin crypto and BitTorrent network |
+| [OctoBot](https://github.com/Drakkar-Software/OctoBot)   | ![OctoBot](https://img.shields.io/github/stars/Drakkar-Software/OctoBot?style=flat) ![OctoBot](https://img.shields.io/github/languages/top/Drakkar-Software/OctoBot?style=flat)     | Open source crypto trading bot                                               |
+| [EteSync Server](https://github.com/etesync/server)      | ![EteSync Server](https://img.shields.io/github/stars/etesync/server?style=flat) ![EteSync Server](https://img.shields.io/github/languages/top/etesync/server?style=flat)           | The Etebase server (so you can run your own)                                 |
+| [0bin](https://github.com/Tygs/0bin)                     | ![0bin](https://img.shields.io/github/stars/Tygs/0bin?style=flat) ![0bin](https://img.shields.io/github/languages/top/Tygs/0bin?style=flat)                                         | Client side encrypted pastebin                                               |
+| [lncm/bitcoind](https://github.com/lncm/docker-bitcoind) | ![lncm/bitcoind](https://img.shields.io/github/stars/lncm/docker-bitcoind?style=flat) ![lncm/bitcoind](https://img.shields.io/github/languages/top/lncm/docker-bitcoind?style=flat) | Flexible multi-arch (amd & amd64) Bitcoin Core Docker image                  |
+
+### Dashboard
+
+| Name                                                  | Info                                                                                                                                                                          | Description                                                                                                                             |
+| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| [Glance](https://github.com/glanceapp/glance)         | ![Glance](https://img.shields.io/github/stars/glanceapp/glance?style=flat) ![Glance](https://img.shields.io/github/languages/top/glanceapp/glance?style=flat)                 | A self-hosted dashboard that puts all your feeds in one place                                                                           |
+| [Homepage](https://github.com/gethomepage/homepage)   | ![Homepage](https://img.shields.io/github/stars/gethomepage/homepage?style=flat) ![Homepage](https://img.shields.io/github/languages/top/gethomepage/homepage?style=flat)     | A highly customizable homepage (or startpage / application dashboard) with Docker and service API integrations.                         |
+| [Dashy](https://github.com/lissy93/dashy)             | ![Dashy](https://img.shields.io/github/stars/lissy93/dashy?style=flat) ![Dashy](https://img.shields.io/github/languages/top/lissy93/dashy?style=flat)                         | 🚀 A self-hostable personal dashboard built for you. Includes status-checking, widgets, themes, icon packs, a UI editor and tons more!  |
+| [homer](https://github.com/bastienwirtz/homer)        | ![homer](https://img.shields.io/github/stars/bastienwirtz/homer?style=flat) ![homer](https://img.shields.io/github/languages/top/bastienwirtz/homer?style=flat)               | A very simple static homepage for your server.                                                                                          |
+| [Heimdall](https://github.com/linuxserver/Heimdall)   | ![Heimdall](https://img.shields.io/github/stars/linuxserver/Heimdall?style=flat) ![Heimdall](https://img.shields.io/github/languages/top/linuxserver/Heimdall?style=flat)     | An Application dashboard and launcher                                                                                                   |
+| [Homarr](https://github.com/ajnart/homarr)            | ![Homarr](https://img.shields.io/github/stars/ajnart/homarr?style=flat) ![Homarr](https://img.shields.io/github/languages/top/ajnart/homarr?style=flat)                       | Customizable browser's home page to interact with your homeserver's Docker containers (e.g. Sonarr/Radarr)                              |
+| [Flame](https://github.com/pawelmalak/flame)          | ![Flame](https://img.shields.io/github/stars/pawelmalak/flame?style=flat) ![Flame](https://img.shields.io/github/languages/top/pawelmalak/flame?style=flat)                   | Flame is self-hosted startpage for your server. Easily manage your apps and bookmarks with built-in editors.                            |
+| [Organizr](https://github.com/causefx/Organizr)       | ![Organizr](https://img.shields.io/github/stars/causefx/Organizr?style=flat) ![Organizr](https://img.shields.io/github/languages/top/causefx/Organizr?style=flat)             | HTPC/Homelab Services Organizer - Written in PHP                                                                                        |
+| [Chartbrew](https://github.com/chartbrew/chartbrew)   | ![Chartbrew](https://img.shields.io/github/stars/chartbrew/chartbrew?style=flat) ![Chartbrew](https://img.shields.io/github/languages/top/chartbrew/chartbrew?style=flat)     | Open-source web platform used to create live reporting dashboards from APIs, MongoDB, Firestore, MySQL, PostgreSQL, and more  📈📊      |
+| [dash. ](https://github.com/MauriceNino/dashdot)      | ![dash. ](https://img.shields.io/github/stars/MauriceNino/dashdot?style=flat) ![dash. ](https://img.shields.io/github/languages/top/MauriceNino/dashdot?style=flat)           | A simple, modern server dashboard, primarily used by smaller private servers                                                            |
+| [Tipboard](https://github.com/allegro/tipboard)       | ![Tipboard](https://img.shields.io/github/stars/allegro/tipboard?style=flat) ![Tipboard](https://img.shields.io/github/languages/top/allegro/tipboard?style=flat)             | Tipboard - in-house, tasty, local dashboarding system                                                                                   |
+| [Jump](https://github.com/daledavies/jump)            | ![Jump](https://img.shields.io/github/stars/daledavies/jump?style=flat) ![Jump](https://img.shields.io/github/languages/top/daledavies/jump?style=flat)                       | Jump is a self-hosted startpage and real-time status page for your server designed to be simple, stylish, fast and secure.              |
+| [Web Portal](https://github.com/enchant97/web-portal) | ![Web Portal](https://img.shields.io/github/stars/enchant97/web-portal?style=flat) ![Web Portal](https://img.shields.io/github/languages/top/enchant97/web-portal?style=flat) | Web Portal is a all-in-one web dashboard, providing many widgets to build a personal portal. With the ability to load external plugins. |
+
+### Development
+
+| Name                                                                    | Info                                                                                                                                                                                                                              | Description                                                                                                                                                                                                                                                                                                                                                   |
+| ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Elasticsearch](https://github.com/elastic/elasticsearch)               | ![Elasticsearch](https://img.shields.io/github/stars/elastic/elasticsearch?style=flat) ![Elasticsearch](https://img.shields.io/github/languages/top/elastic/elasticsearch?style=flat)                                             | Free and Open Source, Distributed, RESTful Search Engine                                                                                                                                                                                                                                                                                                      |
+| [code-server](https://github.com/coder/code-server)                     | ![code-server](https://img.shields.io/github/stars/coder/code-server?style=flat) ![code-server](https://img.shields.io/github/languages/top/coder/code-server?style=flat)                                                         | VS Code in the browser                                                                                                                                                                                                                                                                                                                                        |
+| [LocalStack](https://github.com/localstack/localstack)                  | ![LocalStack](https://img.shields.io/github/stars/localstack/localstack?style=flat) ![LocalStack](https://img.shields.io/github/languages/top/localstack/localstack?style=flat)                                                   | 💻 A fully functional local AWS cloud stack. Develop and test your cloud & Serverless apps offline                                                                                                                                                                                                                                                            |
+| [MinIO](https://github.com/minio/minio)                                 | ![MinIO](https://img.shields.io/github/stars/minio/minio?style=flat) ![MinIO](https://img.shields.io/github/languages/top/minio/minio?style=flat)                                                                                 | MinIO is a high-performance, S3 compatible object store, open sourced under GNU AGPLv3 license.                                                                                                                                                                                                                                                               |
+| [MeiliSearch](https://github.com/meilisearch/meilisearch)               | ![MeiliSearch](https://img.shields.io/github/stars/meilisearch/meilisearch?style=flat) ![MeiliSearch](https://img.shields.io/github/languages/top/meilisearch/meilisearch?style=flat)                                             | A lightning-fast search engine API bringing AI-powered hybrid search to your sites and applications.                                                                                                                                                                                                                                                          |
+| [Appwrite](https://github.com/appwrite/appwrite)                        | ![Appwrite](https://img.shields.io/github/stars/appwrite/appwrite?style=flat) ![Appwrite](https://img.shields.io/github/languages/top/appwrite/appwrite?style=flat)                                                               | Build like a team of hundreds_                                                                                                                                                                                                                                                                                                                                |
+| [Gitea](https://github.com/go-gitea/gitea)                              | ![Gitea](https://img.shields.io/github/stars/go-gitea/gitea?style=flat) ![Gitea](https://img.shields.io/github/languages/top/go-gitea/gitea?style=flat)                                                                           | Git with a cup of tea! Painless self-hosted all-in-one software development service, including Git hosting, code review, team collaboration, package registry and CI/CD                                                                                                                                                                                       |
+| [Gitea](https://github.com/go-gitea/gitea)                              | ![Gitea](https://img.shields.io/github/stars/go-gitea/gitea?style=flat) ![Gitea](https://img.shields.io/github/languages/top/go-gitea/gitea?style=flat)                                                                           | Git with a cup of tea! Painless self-hosted all-in-one software development service, including Git hosting, code review, team collaboration, package registry and CI/CD                                                                                                                                                                                       |
+| [Gogs](https://github.com/gogs/gogs)                                    | ![Gogs](https://img.shields.io/github/stars/gogs/gogs?style=flat) ![Gogs](https://img.shields.io/github/languages/top/gogs/gogs?style=flat)                                                                                       | Gogs is a painless self-hosted Git service                                                                                                                                                                                                                                                                                                                    |
+| [Sentry](https://github.com/getsentry/sentry)                           | ![Sentry](https://img.shields.io/github/stars/getsentry/sentry?style=flat) ![Sentry](https://img.shields.io/github/languages/top/getsentry/sentry?style=flat)                                                                     | Developer-first error tracking and performance monitoring                                                                                                                                                                                                                                                                                                     |
+| [Kong](https://github.com/Kong/kong)                                    | ![Kong](https://img.shields.io/github/stars/Kong/kong?style=flat) ![Kong](https://img.shields.io/github/languages/top/Kong/kong?style=flat)                                                                                       | 🦍 The Cloud-Native Gateway for APIs & AI                                                                                                                                                                                                                                                                                                                     |
+| [Mattermost](https://github.com/mattermost/mattermost)                  | ![Mattermost](https://img.shields.io/github/stars/mattermost/mattermost?style=flat) ![Mattermost](https://img.shields.io/github/languages/top/mattermost/mattermost?style=flat)                                                   | Mattermost is an open source platform for secure collaboration across the entire software development lifecycle..                                                                                                                                                                                                                                             |
+| [Hasura](https://github.com/hasura/graphql-engine)                      | ![Hasura](https://img.shields.io/github/stars/hasura/graphql-engine?style=flat) ![Hasura](https://img.shields.io/github/languages/top/hasura/graphql-engine?style=flat)                                                           | Blazing fast, instant realtime GraphQL APIs on all your data with fine grained access control, also trigger webhooks on database events.                                                                                                                                                                                                                      |
+| [Budibase](https://github.com/Budibase/budibase)                        | ![Budibase](https://img.shields.io/github/stars/Budibase/budibase?style=flat) ![Budibase](https://img.shields.io/github/languages/top/Budibase/budibase?style=flat)                                                               | Create business apps and automate workflows in minutes. Supports PostgreSQL, MySQL, MariaDB, MSSQL, MongoDB, Rest API, Docker, K8s, and more 🚀 No code / Low code platform..                                                                                                                                                                                 |
+| [Atuin](https://github.com/atuinsh/atuin)                               | ![Atuin](https://img.shields.io/github/stars/atuinsh/atuin?style=flat) ![Atuin](https://img.shields.io/github/languages/top/atuinsh/atuin?style=flat)                                                                             | ✨ Magical shell history                                                                                                                                                                                                                                                                                                                                       |
+| [OpenFaaS](https://github.com/openfaas/faas)                            | ![OpenFaaS](https://img.shields.io/github/stars/openfaas/faas?style=flat) ![OpenFaaS](https://img.shields.io/github/languages/top/openfaas/faas?style=flat)                                                                       | OpenFaaS - Serverless Functions Made Simple                                                                                                                                                                                                                                                                                                                   |
+| [Typesense](https://github.com/typesense/typesense)                     | ![Typesense](https://img.shields.io/github/stars/typesense/typesense?style=flat) ![Typesense](https://img.shields.io/github/languages/top/typesense/typesense?style=flat)                                                         | Open Source alternative to Algolia + Pinecone and an Easier-to-Use alternative to ElasticSearch ⚡ 🔍 ✨ Fast, typo tolerant, in-memory fuzzy Search Engine for building delightful search experiences                                                                                                                                                          |
+| [Jenkins](https://github.com/jenkinsci/jenkins)                         | ![Jenkins](https://img.shields.io/github/stars/jenkinsci/jenkins?style=flat) ![Jenkins](https://img.shields.io/github/languages/top/jenkinsci/jenkins?style=flat)                                                                 | Jenkins automation server                                                                                                                                                                                                                                                                                                                                     |
+| [Wekan](https://github.com/wekan/wekan)                                 | ![Wekan](https://img.shields.io/github/stars/wekan/wekan?style=flat) ![Wekan](https://img.shields.io/github/languages/top/wekan/wekan?style=flat)                                                                                 | The Open Source kanban (built with Meteor). Keep variable/table/field names camelCase. For translations, only add Pull Request changes to wekan/i18n/en.i18n.json , other translations are done at https://app.transifex.com/wekan/wekan only.                                                                                                                |
+| [Deeplearning4J](https://github.com/deeplearning4j/deeplearning4j)      | ![Deeplearning4J](https://img.shields.io/github/stars/deeplearning4j/deeplearning4j?style=flat) ![Deeplearning4J](https://img.shields.io/github/languages/top/deeplearning4j/deeplearning4j?style=flat)                           | Suite of tools for deploying and training deep learning models using the JVM. Highlights include model import for keras, tensorflow, and onnx/pytorch, a modular and tiny c++ library for running math code and a java based math library on top of the core c++ library. Also includes samediff: a pytorch/tensorflow like library for running deep learn... |
+| [Druid](https://github.com/apache/druid)                                | ![Druid](https://img.shields.io/github/stars/apache/druid?style=flat) ![Druid](https://img.shields.io/github/languages/top/apache/druid?style=flat)                                                                               | Apache Druid: a high performance real-time analytics database.                                                                                                                                                                                                                                                                                                |
+| [Bytebase](https://github.com/bytebase/bytebase)                        | ![Bytebase](https://img.shields.io/github/stars/bytebase/bytebase?style=flat) ![Bytebase](https://img.shields.io/github/languages/top/bytebase/bytebase?style=flat)                                                               | World's most advanced database DevSecOps solution for Developer, Security, DBA and Platform Engineering teams. The GitHub/GitLab for database DevSecOps.                                                                                                                                                                                                      |
+| [OpenProject](https://github.com/opf/openproject)                       | ![OpenProject](https://img.shields.io/github/stars/opf/openproject?style=flat) ![OpenProject](https://img.shields.io/github/languages/top/opf/openproject?style=flat)                                                             | OpenProject is the leading open source project management software.                                                                                                                                                                                                                                                                                           |
+| [Unleash](https://github.com/Unleash/unleash)                           | ![Unleash](https://img.shields.io/github/stars/Unleash/unleash?style=flat) ![Unleash](https://img.shields.io/github/languages/top/Unleash/unleash?style=flat)                                                                     | Open-source feature management platform                                                                                                                                                                                                                                                                                                                       |
+| [Coder](https://github.com/coder/coder)                                 | ![Coder](https://img.shields.io/github/stars/coder/coder?style=flat) ![Coder](https://img.shields.io/github/languages/top/coder/coder?style=flat)                                                                                 | Secure environments for developers and their agents                                                                                                                                                                                                                                                                                                           |
+| [Planka](https://github.com/plankanban/planka)                          | ![Planka](https://img.shields.io/github/stars/plankanban/planka?style=flat) ![Planka](https://img.shields.io/github/languages/top/plankanban/planka?style=flat)                                                                   | PLANKA is the kanban-style project mastering tool for everyone.                                                                                                                                                                                                                                                                                               |
+| [sovereign](https://github.com/sovereign/sovereign)                     | ![sovereign](https://img.shields.io/github/stars/sovereign/sovereign?style=flat) ![sovereign](https://img.shields.io/github/languages/top/sovereign/sovereign?style=flat)                                                         | A set of Ansible playbooks to build and maintain your own private cloud: email, calendar, contacts, file sync, IRC bouncer, VPN, and more.                                                                                                                                                                                                                    |
+| [Regexr](https://github.com/gskinner/regexr)                            | ![Regexr](https://img.shields.io/github/stars/gskinner/regexr?style=flat) ![Regexr](https://img.shields.io/github/languages/top/gskinner/regexr?style=flat)                                                                       | RegExr is a HTML/JS based tool for creating, testing, and learning about Regular Expressions.                                                                                                                                                                                                                                                                 |
+| [SonarQube](https://github.com/SonarSource/sonarqube)                   | ![SonarQube](https://img.shields.io/github/stars/SonarSource/sonarqube?style=flat) ![SonarQube](https://img.shields.io/github/languages/top/SonarSource/sonarqube?style=flat)                                                     | Continuous Inspection                                                                                                                                                                                                                                                                                                                                         |
+| [gitbucket](https://github.com/gitbucket/gitbucket)                     | ![gitbucket](https://img.shields.io/github/stars/gitbucket/gitbucket?style=flat) ![gitbucket](https://img.shields.io/github/languages/top/gitbucket/gitbucket?style=flat)                                                         | A Git platform powered by Scala with easy installation, high extensibility & GitHub API compatibility                                                                                                                                                                                                                                                         |
+| [Kanboard](https://github.com/kanboard/kanboard)                        | ![Kanboard](https://img.shields.io/github/stars/kanboard/kanboard?style=flat) ![Kanboard](https://img.shields.io/github/languages/top/kanboard/kanboard?style=flat)                                                               | Kanban project management software                                                                                                                                                                                                                                                                                                                            |
+| [API Platform](https://github.com/api-platform/api-platform)            | ![API Platform](https://img.shields.io/github/stars/api-platform/api-platform?style=flat) ![API Platform](https://img.shields.io/github/languages/top/api-platform/api-platform?style=flat)                                       | 🕸️ Create REST and GraphQL APIs, scaffold Jamstack webapps, stream changes in real-time.                                                                                                                                                                                                                                                                     |
+| [KrakenD](https://github.com/luraproject/lura)                          | ![KrakenD](https://img.shields.io/github/stars/luraproject/lura?style=flat) ![KrakenD](https://img.shields.io/github/languages/top/luraproject/lura?style=flat)                                                                   | Ultra performant API Gateway with middlewares. A project hosted at The Linux Foundation                                                                                                                                                                                                                                                                       |
+| [Flagsmith](https://github.com/Flagsmith/flagsmith)                     | ![Flagsmith](https://img.shields.io/github/stars/Flagsmith/flagsmith?style=flat) ![Flagsmith](https://img.shields.io/github/languages/top/Flagsmith/flagsmith?style=flat)                                                         | Flagsmith is an open source feature flagging and remote config service. Self-host or use our hosted version at https://app.flagsmith.com.                                                                                                                                                                                                                     |
+| [Redmine](https://github.com/redmine/redmine)                           | ![Redmine](https://img.shields.io/github/stars/redmine/redmine?style=flat) ![Redmine](https://img.shields.io/github/languages/top/redmine/redmine?style=flat)                                                                     | Mirror of redmine code source - Official Subversion repository is at https://svn.redmine.org/redmine - contact: @vividtone or maeda (at) farend (dot) jp                                                                                                                                                                                                      |
+| [GitLab](https://gitlab.com/gitlab-org/gitlab)                          | ![GitLab](https://img.shields.io/gitlab/stars/gitlab-org%2Fgitlab?style=flat&gitlab_url=https://gitlab.com) ![GitLab](https://img.shields.io/gitlab/languages/count/gitlab-org%2Fgitlab?style=flat&gitlab_url=https://gitlab.com) | GitLab is an open source end-to-end software development platform with built-in version control, issue tracking, code review, CI/CD, and more. Self-host GitLab on your own servers, in a container, or on a cloud provider.                                                                                                                                  |
+| [Woodpecker](https://github.com/woodpecker-ci/woodpecker)               | ![Woodpecker](https://img.shields.io/github/stars/woodpecker-ci/woodpecker?style=flat) ![Woodpecker](https://img.shields.io/github/languages/top/woodpecker-ci/woodpecker?style=flat)                                             | Woodpecker is a simple, yet powerful CI/CD engine with great extensibility.                                                                                                                                                                                                                                                                                   |
+| [Weblate](https://github.com/WeblateOrg/weblate)                        | ![Weblate](https://img.shields.io/github/stars/WeblateOrg/weblate?style=flat) ![Weblate](https://img.shields.io/github/languages/top/WeblateOrg/weblate?style=flat)                                                               | Web based localization tool with tight version control integration.                                                                                                                                                                                                                                                                                           |
+| [Cockpit](https://github.com/agentejo/cockpit)                          | ![Cockpit](https://img.shields.io/github/stars/agentejo/cockpit?style=flat) ![Cockpit](https://img.shields.io/github/languages/top/agentejo/cockpit?style=flat)                                                                   | Add content management functionality to any site - plug & play / headless / api-first CMS                                                                                                                                                                                                                                                                     |
+| [Harp](https://github.com/sintaxi/harp)                                 | ![Harp](https://img.shields.io/github/stars/sintaxi/harp?style=flat) ![Harp](https://img.shields.io/github/languages/top/sintaxi/harp?style=flat)                                                                                 | Static Web Server/Generator/Bundler                                                                                                                                                                                                                                                                                                                           |
+| [CKAN](https://github.com/ckan/ckan)                                    | ![CKAN](https://img.shields.io/github/stars/ckan/ckan?style=flat) ![CKAN](https://img.shields.io/github/languages/top/ckan/ckan?style=flat)                                                                                       | CKAN is an open-source DMS (data management system) for powering data hubs and data portals. CKAN makes it easy to publish, share and use data. It powers catalog.data.gov, open.canada.ca/data, data.humdata.org among many other sites.                                                                                                                     |
+| [Strider](https://github.com/Strider-CD/strider)                        | ![Strider](https://img.shields.io/github/stars/Strider-CD/strider?style=flat) ![Strider](https://img.shields.io/github/languages/top/Strider-CD/strider?style=flat)                                                               | Open Source Continuous Integration & Deployment Server                                                                                                                                                                                                                                                                                                        |
+| [Apostrophe 2](https://github.com/apostrophecms/apostrophe)             | ![Apostrophe 2](https://img.shields.io/github/stars/apostrophecms/apostrophe?style=flat) ![Apostrophe 2](https://img.shields.io/github/languages/top/apostrophecms/apostrophe?style=flat)                                         | A full-featured, open-source content management framework built with Node.js that empowers organizations by combining in-context editing and headless architecture in a full-stack JS environment.                                                                                                                                                            |
+| [Lobsters](https://github.com/lobsters/lobsters)                        | ![Lobsters](https://img.shields.io/github/stars/lobsters/lobsters?style=flat) ![Lobsters](https://img.shields.io/github/languages/top/lobsters/lobsters?style=flat)                                                               | Computing-focused community centered around link aggregation and discussion                                                                                                                                                                                                                                                                                   |
+| [JS Bin](https://github.com/jsbin/jsbin)                                | ![JS Bin](https://img.shields.io/github/stars/jsbin/jsbin?style=flat) ![JS Bin](https://img.shields.io/github/languages/top/jsbin/jsbin?style=flat)                                                                               | Collaborative JavaScript Debugging App                                                                                                                                                                                                                                                                                                                        |
+| [Octobox](https://github.com/octobox/octobox)                           | ![Octobox](https://img.shields.io/github/stars/octobox/octobox?style=flat) ![Octobox](https://img.shields.io/github/languages/top/octobox/octobox?style=flat)                                                                     | 📮 Untangle your GitHub Notifications                                                                                                                                                                                                                                                                                                                         |
+| [Velox](https://github.com/facebookincubator/velox)                     | ![Velox](https://img.shields.io/github/stars/facebookincubator/velox?style=flat) ![Velox](https://img.shields.io/github/languages/top/facebookincubator/velox?style=flat)                                                         | A composable and fully extensible C++ execution engine library for data management systems.                                                                                                                                                                                                                                                                   |
+| [Lektor](https://github.com/lektor/lektor)                              | ![Lektor](https://img.shields.io/github/stars/lektor/lektor?style=flat) ![Lektor](https://img.shields.io/github/languages/top/lektor/lektor?style=flat)                                                                           | The lektor static file content management system                                                                                                                                                                                                                                                                                                              |
+| [Pico](https://github.com/picocms/Pico)                                 | ![Pico](https://img.shields.io/github/stars/picocms/Pico?style=flat) ![Pico](https://img.shields.io/github/languages/top/picocms/Pico?style=flat)                                                                                 | Pico is a stupidly simple, blazing fast, flat file CMS.                                                                                                                                                                                                                                                                                                       |
+| [Nominatim](https://github.com/osm-search/Nominatim)                    | ![Nominatim](https://img.shields.io/github/stars/osm-search/Nominatim?style=flat) ![Nominatim](https://img.shields.io/github/languages/top/osm-search/Nominatim?style=flat)                                                       | Open Source search based on OpenStreetMap data                                                                                                                                                                                                                                                                                                                |
+| [Wakapi](https://github.com/muety/wakapi)                               | ![Wakapi](https://img.shields.io/github/stars/muety/wakapi?style=flat) ![Wakapi](https://img.shields.io/github/languages/top/muety/wakapi?style=flat)                                                                             | 📊 A minimalist, self-hosted WakaTime-compatible backend for coding statistics                                                                                                                                                                                                                                                                                |
+| [Tolgee](https://github.com/tolgee/tolgee-platform)                     | ![Tolgee](https://img.shields.io/github/stars/tolgee/tolgee-platform?style=flat) ![Tolgee](https://img.shields.io/github/languages/top/tolgee/tolgee-platform?style=flat)                                                         | Developer & translator friendly web-based localization platform                                                                                                                                                                                                                                                                                               |
+| [Judge0 API](https://github.com/judge0/judge0)                          | ![Judge0 API](https://img.shields.io/github/stars/judge0/judge0?style=flat) ![Judge0 API](https://img.shields.io/github/languages/top/judge0/judge0?style=flat)                                                                   | 🔥 Robust, scalable, and open-source online code execution system.                                                                                                                                                                                                                                                                                            |
+| [ML-Workspace](https://github.com/ml-tooling/ml-workspace)              | ![ML-Workspace](https://img.shields.io/github/stars/ml-tooling/ml-workspace?style=flat) ![ML-Workspace](https://img.shields.io/github/languages/top/ml-tooling/ml-workspace?style=flat)                                           | 🛠 All-in-one web-based IDE specialized for machine learning and data science.                                                                                                                                                                                                                                                                                |
+| [EtherCalc](https://github.com/audreyt/ethercalc)                       | ![EtherCalc](https://img.shields.io/github/stars/audreyt/ethercalc?style=flat) ![EtherCalc](https://img.shields.io/github/languages/top/audreyt/ethercalc?style=flat)                                                             | Node.js port of Multi-user SocialCalc                                                                                                                                                                                                                                                                                                                         |
+| [Gitlist](https://github.com/klaussilveira/gitlist)                     | ![Gitlist](https://img.shields.io/github/stars/klaussilveira/gitlist?style=flat) ![Gitlist](https://img.shields.io/github/languages/top/klaussilveira/gitlist?style=flat)                                                         | An elegant and modern git repository viewer                                                                                                                                                                                                                                                                                                                   |
+| [Sshwifty](https://github.com/nirui/sshwifty)                           | ![Sshwifty](https://img.shields.io/github/stars/nirui/sshwifty?style=flat) ![Sshwifty](https://img.shields.io/github/languages/top/nirui/sshwifty?style=flat)                                                                     | Web SSH & Telnet (WebSSH & WebTelnet client) 🔮                                                                                                                                                                                                                                                                                                               |
+| [Nikola](https://github.com/getnikola/nikola)                           | ![Nikola](https://img.shields.io/github/stars/getnikola/nikola?style=flat) ![Nikola](https://img.shields.io/github/languages/top/getnikola/nikola?style=flat)                                                                     | A static website and blog generator                                                                                                                                                                                                                                                                                                                           |
+| [Flatdoc](https://github.com/rstacruz/flatdoc)                          | ![Flatdoc](https://img.shields.io/github/stars/rstacruz/flatdoc?style=flat) ![Flatdoc](https://img.shields.io/github/languages/top/rstacruz/flatdoc?style=flat)                                                                   | Build sites fast from Markdown                                                                                                                                                                                                                                                                                                                                |
+| [Selenoid](https://github.com/aerokube/selenoid)                        | ![Selenoid](https://img.shields.io/github/stars/aerokube/selenoid?style=flat) ![Selenoid](https://img.shields.io/github/languages/top/aerokube/selenoid?style=flat)                                                               | Selenium Hub successor running browsers within containers. Scalable, immutable, self hosted Selenium-Grid on any platform with single binary.                                                                                                                                                                                                                 |
+| [TileServer GL](https://github.com/maptiler/tileserver-gl)              | ![TileServer GL](https://img.shields.io/github/stars/maptiler/tileserver-gl?style=flat) ![TileServer GL](https://img.shields.io/github/languages/top/maptiler/tileserver-gl?style=flat)                                           | Vector and raster maps with GL styles. Server side rendering by MapLibre GL Native. Map tile server for MapLibre GL JS, Android, iOS, Leaflet, OpenLayers, GIS via WMTS, etc.                                                                                                                                                                                 |
+| [OpenTripPlanner](https://github.com/opentripplanner/OpenTripPlanner)   | ![OpenTripPlanner](https://img.shields.io/github/stars/opentripplanner/OpenTripPlanner?style=flat) ![OpenTripPlanner](https://img.shields.io/github/languages/top/opentripplanner/OpenTripPlanner?style=flat)                     | An open source multi-modal trip planner                                                                                                                                                                                                                                                                                                                       |
+| [PHPCI](https://github.com/dancryer/PHPCI)                              | ![PHPCI](https://img.shields.io/github/stars/dancryer/PHPCI?style=flat) ![PHPCI](https://img.shields.io/github/languages/top/dancryer/PHPCI?style=flat)                                                                           | PHPCI is a free and open source continuous integration tool specifically designed for PHP.                                                                                                                                                                                                                                                                    |
+| [Gitblit](https://github.com/gitblit-org/gitblit)                       | ![Gitblit](https://img.shields.io/github/stars/gitblit-org/gitblit?style=flat) ![Gitblit](https://img.shields.io/github/languages/top/gitblit-org/gitblit?style=flat)                                                             | pure java git solution                                                                                                                                                                                                                                                                                                                                        |
+| [fx](https://github.com/metrue/fx)                                      | ![fx](https://img.shields.io/github/stars/metrue/fx?style=flat) ![fx](https://img.shields.io/github/languages/top/metrue/fx?style=flat)                                                                                           | A Function as a Service tool makes a function as a  container-based service in seconds.                                                                                                                                                                                                                                                                       |
+| [metasfresh](https://github.com/metasfresh/metasfresh)                  | ![metasfresh](https://img.shields.io/github/stars/metasfresh/metasfresh?style=flat) ![metasfresh](https://img.shields.io/github/languages/top/metasfresh/metasfresh?style=flat)                                                   | We do Open Source ERP - Fast, Flexible & Free Software to scale your Business.                                                                                                                                                                                                                                                                                |
+| [Traduora](https://github.com/ever-co/ever-traduora)                    | ![Traduora](https://img.shields.io/github/stars/ever-co/ever-traduora?style=flat) ![Traduora](https://img.shields.io/github/languages/top/ever-co/ever-traduora?style=flat)                                                       | Ever® Traduora™ - Open Translation Management Platform - https://traduora.co                                                                                                                                                                                                                                                                                  |
+| [Fusio](https://github.com/apioo/fusio)                                 | ![Fusio](https://img.shields.io/github/stars/apioo/fusio?style=flat) ![Fusio](https://img.shields.io/github/languages/top/apioo/fusio?style=flat)                                                                                 | Self-Hosted API Management for Builders                                                                                                                                                                                                                                                                                                                       |
+| [Gazelle](https://github.com/WhatCD/Gazelle)                            | ![Gazelle](https://img.shields.io/github/stars/WhatCD/Gazelle?style=flat) ![Gazelle](https://img.shields.io/github/languages/top/WhatCD/Gazelle?style=flat)                                                                       |                                                                                                                                                                                                                                                                                                                                                               |
+| [Bonobo Git Server](https://github.com/jakubgarfield/Bonobo-Git-Server) | ![Bonobo Git Server](https://img.shields.io/github/stars/jakubgarfield/Bonobo-Git-Server?style=flat) ![Bonobo Git Server](https://img.shields.io/github/languages/top/jakubgarfield/Bonobo-Git-Server?style=flat)                 | Bonobo Git Server for Windows is a web application you can install on your IIS and easily manage and connect to your git repositories. Go to homepage for release and more info.                                                                                                                                                                              |
+| [MantisBT](https://github.com/mantisbt/mantisbt)                        | ![MantisBT](https://img.shields.io/github/stars/mantisbt/mantisbt?style=flat) ![MantisBT](https://img.shields.io/github/languages/top/mantisbt/mantisbt?style=flat)                                                               | Mantis Bug Tracker (MantisBT)                                                                                                                                                                                                                                                                                                                                 |
+| [HuBoard](https://github.com/huboard/huboard)                           | ![HuBoard](https://img.shields.io/github/stars/huboard/huboard?style=flat) ![HuBoard](https://img.shields.io/github/languages/top/huboard/huboard?style=flat)                                                                     | Kanban board for github issues                                                                                                                                                                                                                                                                                                                                |
+| [DreamFactory](https://github.com/dreamfactorysoftware/dreamfactory)    | ![DreamFactory](https://img.shields.io/github/stars/dreamfactorysoftware/dreamfactory?style=flat) ![DreamFactory](https://img.shields.io/github/languages/top/dreamfactorysoftware/dreamfactory?style=flat)                       | DreamFactory API Generation Platform - API Wrapper for SQL Server, Snowflake, MySQL, and more!                                                                                                                                                                                                                                                                |
+| [Gigablast](https://github.com/gigablast/open-source-search-engine)     | ![Gigablast](https://img.shields.io/github/stars/gigablast/open-source-search-engine?style=flat) ![Gigablast](https://img.shields.io/github/languages/top/gigablast/open-source-search-engine?style=flat)                         | Nov 20 2017 -- A distributed open source search engine and spider/crawler written in C/C++ for Linux on Intel/AMD. From gigablast dot com, which has binaries for download. See the README.md file at the very bottom of this page for instructions.                                                                                                          |
+| [Pootle](https://github.com/translate/pootle)                           | ![Pootle](https://img.shields.io/github/stars/translate/pootle?style=flat) ![Pootle](https://img.shields.io/github/languages/top/translate/pootle?style=flat)                                                                     | Online translation tool                                                                                                                                                                                                                                                                                                                                       |
+| [Kirby](https://github.com/getkirby/kirby)                              | ![Kirby](https://img.shields.io/github/stars/getkirby/kirby?style=flat) ![Kirby](https://img.shields.io/github/languages/top/getkirby/kirby?style=flat)                                                                           | Kirby's core application folder                                                                                                                                                                                                                                                                                                                               |
+| [Accent](https://github.com/mirego/accent)                              | ![Accent](https://img.shields.io/github/stars/mirego/accent?style=flat) ![Accent](https://img.shields.io/github/languages/top/mirego/accent?style=flat)                                                                           | The first developer-oriented translation tool. True asynchronous flow between translators and your team.                                                                                                                                                                                                                                                      |
+| [TaskBoard](https://github.com/kiswa/TaskBoard)                         | ![TaskBoard](https://img.shields.io/github/stars/kiswa/TaskBoard?style=flat) ![TaskBoard](https://img.shields.io/github/languages/top/kiswa/TaskBoard?style=flat)                                                                 | A Kanban-inspired app for keeping track of things that need to get done. (Don't forget to read the Wiki page!)                                                                                                                                                                                                                                                |
+| [Shinobi](https://github.com/moeiscool/Shinobi)                         | ![Shinobi](https://img.shields.io/github/stars/moeiscool/Shinobi?style=flat) ![Shinobi](https://img.shields.io/github/languages/top/moeiscool/Shinobi?style=flat)                                                                 | :peace_symbol: :palestinian_territories: Shinobi CE - The Free Open Source CCTV platform written in Node.JS (Camera Recorder - Security Surveillance Software - Restreamer                                                                                                                                                                                    |
+| [JBake](https://github.com/jbake-org/jbake)                             | ![JBake](https://img.shields.io/github/stars/jbake-org/jbake?style=flat) ![JBake](https://img.shields.io/github/languages/top/jbake-org/jbake?style=flat)                                                                         | Java based open source static site/blog generator for developers & designers.                                                                                                                                                                                                                                                                                 |
+| [Taiga](https://github.com/taigaio/taiga-back)                          | ![Taiga](https://img.shields.io/github/stars/taigaio/taiga-back?style=flat) ![Taiga](https://img.shields.io/github/languages/top/taigaio/taiga-back?style=flat)                                                                   |                                                                                                                                                                                                                                                                                                                                                               |
+| [Get A Shell](https://github.com/steveiliop56/getashell)                | ![Get A Shell](https://img.shields.io/github/stars/steveiliop56/getashell?style=flat) ![Get A Shell](https://img.shields.io/github/languages/top/steveiliop56/getashell?style=flat)                                               | Quickly spin up ssh shells from a dead simple UI 🐚                                                                                                                                                                                                                                                                                                           |
+
+### Diagramming
+
+| Name                                                   | Info                                                                                                                                                                            | Description                                                                             |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [Excalidraw](https://github.com/excalidraw/excalidraw) | ![Excalidraw](https://img.shields.io/github/stars/excalidraw/excalidraw?style=flat) ![Excalidraw](https://img.shields.io/github/languages/top/excalidraw/excalidraw?style=flat) | Virtual whiteboard for sketching hand-drawn like diagrams                               |
+| [asciiflow](https://github.com/lewish/asciiflow)       | ![asciiflow](https://img.shields.io/github/stars/lewish/asciiflow?style=flat) ![asciiflow](https://img.shields.io/github/languages/top/lewish/asciiflow?style=flat)             | ASCIIFlow                                                                               |
+| [My Mind](https://github.com/ondras/my-mind)           | ![My Mind](https://img.shields.io/github/stars/ondras/my-mind?style=flat) ![My Mind](https://img.shields.io/github/languages/top/ondras/my-mind?style=flat)                     | Online Mindmapping Software                                                             |
+| [Mindmaps](https://github.com/drichard/mindmaps)       | ![Mindmaps](https://img.shields.io/github/stars/drichard/mindmaps?style=flat) ![Mindmaps](https://img.shields.io/github/languages/top/drichard/mindmaps?style=flat)             | An open source, offline capable, mind mapping application leveraging HTML5 technologies |
+| [draw.io](https://github.com/jgraph/drawio)            | ![draw.io](https://img.shields.io/github/stars/jgraph/drawio?style=flat) ![draw.io](https://img.shields.io/github/languages/top/jgraph/drawio?style=flat)                       | draw.io is a JavaScript, client-side editor for general diagramming.                    |
+
+### DNS
+
+| Name                                                            | Info                                                                                                                                                                                              | Description                                                                       |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| [Pi-hole](https://github.com/pi-hole/pi-hole)                   | ![Pi-hole](https://img.shields.io/github/stars/pi-hole/pi-hole?style=flat) ![Pi-hole](https://img.shields.io/github/languages/top/pi-hole/pi-hole?style=flat)                                     | A black hole for Internet advertisements                                          |
+| [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)      | ![AdGuard Home](https://img.shields.io/github/stars/AdguardTeam/AdGuardHome?style=flat) ![AdGuard Home](https://img.shields.io/github/languages/top/AdguardTeam/AdGuardHome?style=flat)           | Network-wide ads & trackers blocking DNS server                                   |
+| [CoreDNS](https://github.com/coredns/coredns)                   | ![CoreDNS](https://img.shields.io/github/stars/coredns/coredns?style=flat) ![CoreDNS](https://img.shields.io/github/languages/top/coredns/coredns?style=flat)                                     | CoreDNS is a DNS server that chains plugins                                       |
+| [blocky](https://github.com/0xERR0R/blocky)                     | ![blocky](https://img.shields.io/github/stars/0xERR0R/blocky?style=flat) ![blocky](https://img.shields.io/github/languages/top/0xERR0R/blocky?style=flat)                                         | Fast and lightweight DNS proxy as ad-blocker for local network with many features |
+| [nsupdate.info](https://github.com/nsupdate-info/nsupdate.info) | ![nsupdate.info](https://img.shields.io/github/stars/nsupdate-info/nsupdate.info?style=flat) ![nsupdate.info](https://img.shields.io/github/languages/top/nsupdate-info/nsupdate.info?style=flat) | Dynamic DNS service                                                               |
+
+### Download
+
+| Name                                                                   | Info                                                                                                                                                                                                            | Description                                                                                                                                                                    |
+| ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [qBittorrent](https://github.com/qbittorrent/qBittorrent)              | ![qBittorrent](https://img.shields.io/github/stars/qbittorrent/qBittorrent?style=flat) ![qBittorrent](https://img.shields.io/github/languages/top/qbittorrent/qBittorrent?style=flat)                           | qBittorrent BitTorrent client                                                                                                                                                  |
+| [Transmission](https://github.com/transmission/transmission)           | ![Transmission](https://img.shields.io/github/stars/transmission/transmission?style=flat) ![Transmission](https://img.shields.io/github/languages/top/transmission/transmission?style=flat)                     | Official Transmission BitTorrent client repository                                                                                                                             |
+| [WebUI-aria2](https://github.com/ziahamza/webui-aria2)                 | ![WebUI-aria2](https://img.shields.io/github/stars/ziahamza/webui-aria2?style=flat) ![WebUI-aria2](https://img.shields.io/github/languages/top/ziahamza/webui-aria2?style=flat)                                 | The aim for this project is to create the worlds best and hottest interface to interact with aria2. Very simple to use, just download and open index.html in any web browser.  |
+| [cloud-torrent](https://github.com/jpillora/cloud-torrent)             | ![cloud-torrent](https://img.shields.io/github/stars/jpillora/cloud-torrent?style=flat) ![cloud-torrent](https://img.shields.io/github/languages/top/jpillora/cloud-torrent?style=flat)                         | ☁️ Cloud Torrent: a self-hosted remote torrent client                                                                                                                          |
+| [pinchflat](https://github.com/kieraneglin/pinchflat)                  | ![pinchflat](https://img.shields.io/github/stars/kieraneglin/pinchflat?style=flat) ![pinchflat](https://img.shields.io/github/languages/top/kieraneglin/pinchflat?style=flat)                                   | Your next YouTube media manager                                                                                                                                                |
+| [pyLoad](https://github.com/pyload/pyload)                             | ![pyLoad](https://img.shields.io/github/stars/pyload/pyload?style=flat) ![pyLoad](https://img.shields.io/github/languages/top/pyload/pyload?style=flat)                                                         | The free and open-source Download Manager written in pure Python                                                                                                               |
+| [bitmagnet](https://github.com/bitmagnet-io/bitmagnet)                 | ![bitmagnet](https://img.shields.io/github/stars/bitmagnet-io/bitmagnet?style=flat) ![bitmagnet](https://img.shields.io/github/languages/top/bitmagnet-io/bitmagnet?style=flat)                                 | A self-hosted BitTorrent indexer, DHT crawler, content classifier and torrent search engine with web UI, GraphQL API and Servarr stack integration.                            |
+| [YoutubeDL-Material](https://github.com/Tzahi12345/YoutubeDL-Material) | ![YoutubeDL-Material](https://img.shields.io/github/stars/Tzahi12345/YoutubeDL-Material?style=flat) ![YoutubeDL-Material](https://img.shields.io/github/languages/top/Tzahi12345/YoutubeDL-Material?style=flat) | Self-hosted YouTube downloader built on Material Design                                                                                                                        |
+| [SABnzbd](https://github.com/sabnzbd/sabnzbd)                          | ![SABnzbd](https://img.shields.io/github/stars/sabnzbd/sabnzbd?style=flat) ![SABnzbd](https://img.shields.io/github/languages/top/sabnzbd/sabnzbd?style=flat)                                                   | SABnzbd - The automated Usenet download tool                                                                                                                                   |
+| [Flood](https://github.com/jesec/flood)                                | ![Flood](https://img.shields.io/github/stars/jesec/flood?style=flat) ![Flood](https://img.shields.io/github/languages/top/jesec/flood?style=flat)                                                               | A modern web UI for various torrent clients with a Node.js backend and React frontend.                                                                                         |
+| [autobrr](https://github.com/autobrr/autobrr)                          | ![autobrr](https://img.shields.io/github/stars/autobrr/autobrr?style=flat) ![autobrr](https://img.shields.io/github/languages/top/autobrr/autobrr?style=flat)                                                   | Modern, easy to use download automation for torrents and usenet.                                                                                                               |
+| [Deluge](https://github.com/deluge-torrent/deluge)                     | ![Deluge](https://img.shields.io/github/stars/deluge-torrent/deluge?style=flat) ![Deluge](https://img.shields.io/github/languages/top/deluge-torrent/deluge?style=flat)                                         | Deluge BitTorrent client - Git mirror, PRs only                                                                                                                                |
+| [ytdl-webserver](https://github.com/Algram/ytdl-webserver)             | ![ytdl-webserver](https://img.shields.io/github/stars/Algram/ytdl-webserver?style=flat) ![ytdl-webserver](https://img.shields.io/github/languages/top/Algram/ytdl-webserver?style=flat)                         | 📻 Webserver for downloading youtube videos. Ready for docker.                                                                                                                 |
+| [Mylar3](https://github.com/mylar3/mylar3)                             | ![Mylar3](https://img.shields.io/github/stars/mylar3/mylar3?style=flat) ![Mylar3](https://img.shields.io/github/languages/top/mylar3/mylar3?style=flat)                                                         | The python3 version of the automated Comic Book downloader (cbr/cbz) for use with various download clients.                                                                    |
+| [PodFetch](https://github.com/SamTV12345/PodFetch)                     | ![PodFetch](https://img.shields.io/github/stars/SamTV12345/PodFetch?style=flat) ![PodFetch](https://img.shields.io/github/languages/top/SamTV12345/PodFetch?style=flat)                                         |  A sleek and efficient podcast downloader.                                                                                                                                     |
+| [Barrage](https://github.com/maulik9898/barrage)                       | ![Barrage](https://img.shields.io/github/stars/maulik9898/barrage?style=flat) ![Barrage](https://img.shields.io/github/languages/top/maulik9898/barrage?style=flat)                                             | Minimal deluge WebUI                                                                                                                                                           |
+
+### FileSharing
+
+| Name                                                                   | Info                                                                                                                                                                                                                  | Description                                                                                                                                                                                                                                  |
+| ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Nextcloud](https://github.com/nextcloud/server)                       | ![Nextcloud](https://img.shields.io/github/stars/nextcloud/server?style=flat) ![Nextcloud](https://img.shields.io/github/languages/top/nextcloud/server?style=flat)                                                   | ☁️ Nextcloud server, a safe home for all your data                                                                                                                                                                                           |
+| [File Browser](https://github.com/filebrowser/filebrowser)             | ![File Browser](https://img.shields.io/github/stars/filebrowser/filebrowser?style=flat) ![File Browser](https://img.shields.io/github/languages/top/filebrowser/filebrowser?style=flat)                               | 📂 Web File Browser                                                                                                                                                                                                                          |
+| [Uppy](https://github.com/transloadit/uppy)                            | ![Uppy](https://img.shields.io/github/stars/transloadit/uppy?style=flat) ![Uppy](https://img.shields.io/github/languages/top/transloadit/uppy?style=flat)                                                             | The next open source file uploader for web browsers :dog:                                                                                                                                                                                    |
+| [Snapdrop](https://github.com/RobinLinus/snapdrop)                     | ![Snapdrop](https://img.shields.io/github/stars/RobinLinus/snapdrop?style=flat) ![Snapdrop](https://img.shields.io/github/languages/top/RobinLinus/snapdrop?style=flat)                                               | A Progressive Web App for local file sharing                                                                                                                                                                                                 |
+| [transfer.sh](https://github.com/dutchcoders/transfer.sh)              | ![transfer.sh](https://img.shields.io/github/stars/dutchcoders/transfer.sh?style=flat) ![transfer.sh](https://img.shields.io/github/languages/top/dutchcoders/transfer.sh?style=flat)                                 | Easy and fast file sharing from the command-line.                                                                                                                                                                                            |
+| [Seafile](https://github.com/haiwen/seafile)                           | ![Seafile](https://img.shields.io/github/stars/haiwen/seafile?style=flat) ![Seafile](https://img.shields.io/github/languages/top/haiwen/seafile?style=flat)                                                           | Beyond file syncing and sharing, a new way to organize your files with extensible file properties and flexible views                                                                                                                         |
+| [Filestash](https://github.com/mickael-kerjean/filestash)              | ![Filestash](https://img.shields.io/github/stars/mickael-kerjean/filestash?style=flat) ![Filestash](https://img.shields.io/github/languages/top/mickael-kerjean/filestash?style=flat)                                 | :file_folder: The Dropbox like web client for SFTP, S3, FTP, WebDAV, Git, Minio, LDAP, CalDAV, CardDAV, Mysql, Backblaze, ...                                                                                                                |
+| [FilePizza](https://github.com/kern/filepizza)                         | ![FilePizza](https://img.shields.io/github/stars/kern/filepizza?style=flat) ![FilePizza](https://img.shields.io/github/languages/top/kern/filepizza?style=flat)                                                       | :pizza: Peer-to-peer file transfers in your browser                                                                                                                                                                                          |
+| [Dufs](https://github.com/sigoden/dufs)                                | ![Dufs](https://img.shields.io/github/stars/sigoden/dufs?style=flat) ![Dufs](https://img.shields.io/github/languages/top/sigoden/dufs?style=flat)                                                                     | A file server that supports static serving, uploading, searching, accessing control, webdav...                                                                                                                                               |
+| [PairDrop](https://github.com/schlagmichdoch/PairDrop)                 | ![PairDrop](https://img.shields.io/github/stars/schlagmichdoch/PairDrop?style=flat) ![PairDrop](https://img.shields.io/github/languages/top/schlagmichdoch/PairDrop?style=flat)                                       | PairDrop: Transfer Files Cross-Platform. No Setup, No Signup.                                                                                                                                                                                |
+| [ownCloud](https://github.com/owncloud/core)                           | ![ownCloud](https://img.shields.io/github/stars/owncloud/core?style=flat) ![ownCloud](https://img.shields.io/github/languages/top/owncloud/core?style=flat)                                                           | :cloud: ownCloud web server core (Files, DAV, etc.)                                                                                                                                                                                          |
+| [LiveSync](https://github.com/vrtmrz/obsidian-livesync)                | ![LiveSync](https://img.shields.io/github/stars/vrtmrz/obsidian-livesync?style=flat) ![LiveSync](https://img.shields.io/github/languages/top/vrtmrz/obsidian-livesync?style=flat)                                     |                                                                                                                                                                                                                                              |
+| [PrivateBin](https://github.com/PrivateBin/PrivateBin)                 | ![PrivateBin](https://img.shields.io/github/stars/PrivateBin/PrivateBin?style=flat) ![PrivateBin](https://img.shields.io/github/languages/top/PrivateBin/PrivateBin?style=flat)                                       | A minimalist, open source online pastebin where the server has zero knowledge of pasted data. Data is encrypted/decrypted in the browser using 256 bits AES.                                                                                 |
+| [CryptPad](https://github.com/cryptpad/cryptpad)                       | ![CryptPad](https://img.shields.io/github/stars/cryptpad/cryptpad?style=flat) ![CryptPad](https://img.shields.io/github/languages/top/cryptpad/cryptpad?style=flat)                                                   | Collaborative office suite, end-to-end encrypted and open-source.                                                                                                                                                                            |
+| [OnionShare](https://github.com/onionshare/onionshare)                 | ![OnionShare](https://img.shields.io/github/stars/onionshare/onionshare?style=flat) ![OnionShare](https://img.shields.io/github/languages/top/onionshare/onionshare?style=flat)                                       | Securely and anonymously share files, host websites, and chat with friends using the Tor network                                                                                                                                             |
+| [h5ai](https://github.com/lrsjng/h5ai)                                 | ![h5ai](https://img.shields.io/github/stars/lrsjng/h5ai?style=flat) ![h5ai](https://img.shields.io/github/languages/top/lrsjng/h5ai?style=flat)                                                                       | HTTP web server index for Apache httpd, lighttpd and nginx.                                                                                                                                                                                  |
+| [SparkleShare](https://github.com/hbons/SparkleShare)                  | ![SparkleShare](https://img.shields.io/github/stars/hbons/SparkleShare?style=flat) ![SparkleShare](https://img.shields.io/github/languages/top/hbons/SparkleShare?style=flat)                                         | Share and collaborate by syncing with any Git repository instantly. Linux, macOS, and Windows                                                                                                                                                |
+| [TagSpaces](https://github.com/tagspaces/tagspaces)                    | ![TagSpaces](https://img.shields.io/github/stars/tagspaces/tagspaces?style=flat) ![TagSpaces](https://img.shields.io/github/languages/top/tagspaces/tagspaces?style=flat)                                             | TagSpaces is an offline, open source, document manager with tagging support                                                                                                                                                                  |
+| [Pingvin Share](https://github.com/stonith404/pingvin-share)           | ![Pingvin Share](https://img.shields.io/github/stars/stonith404/pingvin-share?style=flat) ![Pingvin Share](https://img.shields.io/github/languages/top/stonith404/pingvin-share?style=flat)                           | A self-hosted file sharing platform that combines lightness and beauty, perfect for seamless and efficient file sharing.                                                                                                                     |
+| [myDrive](https://github.com/subnub/myDrive)                           | ![myDrive](https://img.shields.io/github/stars/subnub/myDrive?style=flat) ![myDrive](https://img.shields.io/github/languages/top/subnub/myDrive?style=flat)                                                           | Node.js and mongoDB Google Drive Clone                                                                                                                                                                                                       |
+| [instant.io](https://github.com/webtorrent/instant.io)                 | ![instant.io](https://img.shields.io/github/stars/webtorrent/instant.io?style=flat) ![instant.io](https://img.shields.io/github/languages/top/webtorrent/instant.io?style=flat)                                       | 🚀 Streaming file transfer over WebTorrent (torrents on the web)                                                                                                                                                                             |
+| [Magnetissimo](https://github.com/sergiotapia/magnetissimo)            | ![Magnetissimo](https://img.shields.io/github/stars/sergiotapia/magnetissimo?style=flat) ![Magnetissimo](https://img.shields.io/github/languages/top/sergiotapia/magnetissimo?style=flat)                             | Web application that indexes all popular torrent sites, and saves it to the local database.                                                                                                                                                  |
+| [FileGator](https://github.com/filegator/filegator)                    | ![FileGator](https://img.shields.io/github/stars/filegator/filegator?style=flat) ![FileGator](https://img.shields.io/github/languages/top/filegator/filegator?style=flat)                                             | Powerful Multi-User File Manager                                                                                                                                                                                                             |
+| [PicoShare](https://github.com/mtlynch/picoshare)                      | ![PicoShare](https://img.shields.io/github/stars/mtlynch/picoshare?style=flat) ![PicoShare](https://img.shields.io/github/languages/top/mtlynch/picoshare?style=flat)                                                 | A minimalist, easy-to-host service for sharing images and other files                                                                                                                                                                        |
+| [Swift](https://github.com/openstack/swift)                            | ![Swift](https://img.shields.io/github/stars/openstack/swift?style=flat) ![Swift](https://img.shields.io/github/languages/top/openstack/swift?style=flat)                                                             | OpenStack Storage (Swift). Mirror of code maintained at opendev.org.                                                                                                                                                                         |
+| [zipline](https://github.com/diced/zipline)                            | ![zipline](https://img.shields.io/github/stars/diced/zipline?style=flat) ![zipline](https://img.shields.io/github/languages/top/diced/zipline?style=flat)                                                             | A ShareX/file upload server that is easy to use, packed with features, and with an easy setup!                                                                                                                                               |
+| [Zipline](https://github.com/diced/zipline)                            | ![Zipline](https://img.shields.io/github/stars/diced/zipline?style=flat) ![Zipline](https://img.shields.io/github/languages/top/diced/zipline?style=flat)                                                             | A ShareX/file upload server that is easy to use, packed with features, and with an easy setup!                                                                                                                                               |
+| [Chibisafe](https://github.com/chibisafe/chibisafe)                    | ![Chibisafe](https://img.shields.io/github/stars/chibisafe/chibisafe?style=flat) ![Chibisafe](https://img.shields.io/github/languages/top/chibisafe/chibisafe?style=flat)                                             | Blazing fast file vault written in TypeScript! 🚀                                                                                                                                                                                            |
+| [Blaze](https://github.com/blenderskool/blaze)                         | ![Blaze](https://img.shields.io/github/stars/blenderskool/blaze?style=flat) ![Blaze](https://img.shields.io/github/languages/top/blenderskool/blaze?style=flat)                                                       | ⚡ File sharing progressive web app built using WebTorrent and WebSockets                                                                                                                                                                     |
+| [DirectoryLister](https://github.com/DirectoryLister/DirectoryLister)  | ![DirectoryLister](https://img.shields.io/github/stars/DirectoryLister/DirectoryLister?style=flat) ![DirectoryLister](https://img.shields.io/github/languages/top/DirectoryLister/DirectoryLister?style=flat)         | 📂 Directory Lister is the easiest way to expose the contents of any web-accessible folder for browsing and sharing.                                                                                                                         |
+| [Gokapi](https://github.com/Forceu/Gokapi)                             | ![Gokapi](https://img.shields.io/github/stars/Forceu/Gokapi?style=flat) ![Gokapi](https://img.shields.io/github/languages/top/Forceu/Gokapi?style=flat)                                                               | Lightweight selfhosted Firefox Send alternative without public upload. AWS S3 supported.                                                                                                                                                     |
+| [Pydio Cells](https://github.com/pydio/cells)                          | ![Pydio Cells](https://img.shields.io/github/stars/pydio/cells?style=flat) ![Pydio Cells](https://img.shields.io/github/languages/top/pydio/cells?style=flat)                                                         | Future-proof content collaboration platform                                                                                                                                                                                                  |
+| [YouTransfer](https://github.com/YouTransfer/YouTransfer)              | ![YouTransfer](https://img.shields.io/github/stars/YouTransfer/YouTransfer?style=flat) ![YouTransfer](https://img.shields.io/github/languages/top/YouTransfer/YouTransfer?style=flat)                                 | The simple but elegant self-hosted file transfer & sharing solution                                                                                                                                                                          |
+| [Apaxy](https://github.com/oupala/apaxy)                               | ![Apaxy](https://img.shields.io/github/stars/oupala/apaxy?style=flat) ![Apaxy](https://img.shields.io/github/languages/top/oupala/apaxy?style=flat)                                                                   | a simple, customisable theme for your apache directory listing                                                                                                                                                                               |
+| [bittorrent-tracker](https://github.com/webtorrent/bittorrent-tracker) | ![bittorrent-tracker](https://img.shields.io/github/stars/webtorrent/bittorrent-tracker?style=flat) ![bittorrent-tracker](https://img.shields.io/github/languages/top/webtorrent/bittorrent-tracker?style=flat)       | 🌊 Simple, robust, BitTorrent tracker (client & server) implementation                                                                                                                                                                       |
+| [PsiTransfer](https://github.com/psi-4ward/psitransfer)                | ![PsiTransfer](https://img.shields.io/github/stars/psi-4ward/psitransfer?style=flat) ![PsiTransfer](https://img.shields.io/github/languages/top/psi-4ward/psitransfer?style=flat)                                     | Simple open source self-hosted file sharing solution.                                                                                                                                                                                        |
+| [ProjectSend](https://github.com/projectsend/projectsend)              | ![ProjectSend](https://img.shields.io/github/stars/projectsend/projectsend?style=flat) ![ProjectSend](https://img.shields.io/github/languages/top/projectsend/projectsend?style=flat)                                 | ProjectSend is a free, open source software that lets you share files with your clients, focused on ease of use and privacy. It supports clients groups, system users roles, statistics, multiple languages, detailed logs... and much more! |
+| [ShareFest](https://github.com/Peer5/ShareFest)                        | ![ShareFest](https://img.shields.io/github/stars/Peer5/ShareFest?style=flat) ![ShareFest](https://img.shields.io/github/languages/top/Peer5/ShareFest?style=flat)                                                     | Web based p2p file sharing built on WebRTC Data Channels API                                                                                                                                                                                 |
+| [Plik](https://github.com/root-gg/plik)                                | ![Plik](https://img.shields.io/github/stars/root-gg/plik?style=flat) ![Plik](https://img.shields.io/github/languages/top/root-gg/plik?style=flat)                                                                     | Plik is a temporary file upload system (Wetransfer like) in Go.                                                                                                                                                                              |
+| [fiche](https://github.com/solusipse/fiche)                            | ![fiche](https://img.shields.io/github/stars/solusipse/fiche?style=flat) ![fiche](https://img.shields.io/github/languages/top/solusipse/fiche?style=flat)                                                             | Command line pastebin for sharing terminal output.                                                                                                                                                                                           |
+| [Tahoe-LAFS](https://github.com/tahoe-lafs/tahoe-lafs)                 | ![Tahoe-LAFS](https://img.shields.io/github/stars/tahoe-lafs/tahoe-lafs?style=flat) ![Tahoe-LAFS](https://img.shields.io/github/languages/top/tahoe-lafs/tahoe-lafs?style=flat)                                       | The Tahoe-LAFS decentralized secure filesystem.                                                                                                                                                                                              |
+| [HRConvert2](https://github.com/zelon88/HRConvert2)                    | ![HRConvert2](https://img.shields.io/github/stars/zelon88/HRConvert2?style=flat) ![HRConvert2](https://img.shields.io/github/languages/top/zelon88/HRConvert2?style=flat)                                             | A self-hosted, drag-and-drop & nosql file conversion server & share tool that supports 445 file formats in 13 languages.                                                                                                                     |
+| [ipfs.pics](https://github.com/ipfspics/ipfspics-server)               | ![ipfs.pics](https://img.shields.io/github/stars/ipfspics/ipfspics-server?style=flat) ![ipfs.pics](https://img.shields.io/github/languages/top/ipfspics/ipfspics-server?style=flat)                                   | Content-addressable, peer-to-peer method of storing and sharing images on the internet.                                                                                                                                                      |
+| [Fireshare](https://github.com/ShaneIsrael/fireshare)                  | ![Fireshare](https://img.shields.io/github/stars/ShaneIsrael/fireshare?style=flat) ![Fireshare](https://img.shields.io/github/languages/top/ShaneIsrael/fireshare?style=flat)                                         | Self host your media and share with unique links                                                                                                                                                                                             |
+| [Fireshare](https://github.com/ShaneIsrael/fireshare)                  | ![Fireshare](https://img.shields.io/github/stars/ShaneIsrael/fireshare?style=flat) ![Fireshare](https://img.shields.io/github/languages/top/ShaneIsrael/fireshare?style=flat)                                         | Self host your media and share with unique links                                                                                                                                                                                             |
+| [OASIS](https://github.com/machengim/oasis)                            | ![OASIS](https://img.shields.io/github/stars/machengim/oasis?style=flat) ![OASIS](https://img.shields.io/github/languages/top/machengim/oasis?style=flat)                                                             | Self-hosted file server                                                                                                                                                                                                                      |
+| [send](https://gitlab.com/timvisee/send)                               | ![send](https://img.shields.io/gitlab/stars/timvisee%2Fsend?style=flat&gitlab_url=https://gitlab.com) ![send](https://img.shields.io/gitlab/languages/count/timvisee%2Fsend?style=flat&gitlab_url=https://gitlab.com) | Simple, private file sharing. https://send.vis.ee/                                                                                                                                                                                           |
+| [hastebin](https://github.com/toptal/haste-server)                     | ![hastebin](https://img.shields.io/github/stars/toptal/haste-server?style=flat) ![hastebin](https://img.shields.io/github/languages/top/toptal/haste-server?style=flat)                                               |                                                                                                                                                                                                                                              |
+
+### Finance
+
+| Name                                                         | Info                                                                                                                                                                                        | Description                                                                             |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [Firefly](https://github.com/firefly-iii/firefly-iii)        | ![Firefly](https://img.shields.io/github/stars/firefly-iii/firefly-iii?style=flat) ![Firefly](https://img.shields.io/github/languages/top/firefly-iii/firefly-iii?style=flat)               | Firefly III: a personal finances manager                                                |
+| [Wallos](https://github.com/ellite/Wallos)                   | ![Wallos](https://img.shields.io/github/stars/ellite/Wallos?style=flat) ![Wallos](https://img.shields.io/github/languages/top/ellite/Wallos?style=flat)                                     | Wallos: Open-Source Personal Subscription Tracker                                       |
+| [Actual](https://github.com/actualbudget/actual-server)      | ![Actual](https://img.shields.io/github/stars/actualbudget/actual-server?style=flat) ![Actual](https://img.shields.io/github/languages/top/actualbudget/actual-server?style=flat)           | Actual's server                                                                         |
+| [InvoicePlane](https://github.com/InvoicePlane/InvoicePlane) | ![InvoicePlane](https://img.shields.io/github/stars/InvoicePlane/InvoicePlane?style=flat) ![InvoicePlane](https://img.shields.io/github/languages/top/InvoicePlane/InvoicePlane?style=flat) | A self-hosted open source application for managing your invoices, clients and payments. |
+| [Fava](https://github.com/beancount/fava)                    | ![Fava](https://img.shields.io/github/stars/beancount/fava?style=flat) ![Fava](https://img.shields.io/github/languages/top/beancount/fava?style=flat)                                       | Fava - web interface for Beancount                                                      |
+| [IHateMoney](https://github.com/spiral-project/ihatemoney)   | ![IHateMoney](https://img.shields.io/github/stars/spiral-project/ihatemoney?style=flat) ![IHateMoney](https://img.shields.io/github/languages/top/spiral-project/ihatemoney?style=flat)     | A simple shared budget manager web application                                          |
+
+### Gaming
+
+| Name                                                          | Info                                                                                                                                                                                                                                                | Description                                                                                                                                                                                                                                            |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Minecraft](https://github.com/itzg/docker-minecraft-server)  | ![Minecraft](https://img.shields.io/github/stars/itzg/docker-minecraft-server?style=flat) ![Minecraft](https://img.shields.io/github/languages/top/itzg/docker-minecraft-server?style=flat)                                                         | Docker image that provides a Minecraft Server for Java Edition that automatically downloads selected version at startup                                                                                                                                |
+| [Minetest](https://github.com/minetest/minetest)              | ![Minetest](https://img.shields.io/github/stars/minetest/minetest?style=flat) ![Minetest](https://img.shields.io/github/languages/top/minetest/minetest?style=flat)                                                                                 | Luanti (formerly Minetest) is an open source voxel game-creation platform with easy modding and game creation                                                                                                                                          |
+| [The Battle for Wesnoth](https://github.com/wesnoth/wesnoth)  | ![The Battle for Wesnoth](https://img.shields.io/github/stars/wesnoth/wesnoth?style=flat) ![The Battle for Wesnoth](https://img.shields.io/github/languages/top/wesnoth/wesnoth?style=flat)                                                         | An open source, turn-based strategy game with a high fantasy theme.                                                                                                                                                                                    |
+| [untrusted](https://github.com/AlexNisnevich/untrusted)       | ![untrusted](https://img.shields.io/github/stars/AlexNisnevich/untrusted?style=flat) ![untrusted](https://img.shields.io/github/languages/top/AlexNisnevich/untrusted?style=flat)                                                                   | A meta-JavaScript adventure game by Alex Nisnevich and Greg Shuflin.                                                                                                                                                                                   |
+| [Teeworlds](https://github.com/teeworlds/teeworlds)           | ![Teeworlds](https://img.shields.io/github/stars/teeworlds/teeworlds?style=flat) ![Teeworlds](https://img.shields.io/github/languages/top/teeworlds/teeworlds?style=flat)                                                                           | A retro multiplayer shooter                                                                                                                                                                                                                            |
+| [elevatorsaga](https://github.com/magwo/elevatorsaga)         | ![elevatorsaga](https://img.shields.io/github/stars/magwo/elevatorsaga?style=flat) ![elevatorsaga](https://img.shields.io/github/languages/top/magwo/elevatorsaga?style=flat)                                                                       | The elevator programming game!                                                                                                                                                                                                                         |
+| [Hextris](https://github.com/Hextris/hextris)                 | ![Hextris](https://img.shields.io/github/stars/Hextris/hextris?style=flat) ![Hextris](https://img.shields.io/github/languages/top/Hextris/hextris?style=flat)                                                                                       | Fast paced HTML5 puzzle game inspired by Tetris!                                                                                                                                                                                                       |
+| [Valheim](https://github.com/lloesche/valheim-server-docker)  | ![Valheim](https://img.shields.io/github/stars/lloesche/valheim-server-docker?style=flat) ![Valheim](https://img.shields.io/github/languages/top/lloesche/valheim-server-docker?style=flat)                                                         | Valheim dedicated gameserver with automatic update, World backup, BepInEx and ValheimPlus mod support                                                                                                                                                  |
+| [Factorio](https://github.com/factoriotools/factorio-docker)  | ![Factorio](https://img.shields.io/github/stars/factoriotools/factorio-docker?style=flat) ![Factorio](https://img.shields.io/github/languages/top/factoriotools/factorio-docker?style=flat)                                                         | Factorio headless server in a Docker container                                                                                                                                                                                                         |
+| [Terraria](https://github.com/ryansheehan/terraria)           | ![Terraria](https://img.shields.io/github/stars/ryansheehan/terraria?style=flat) ![Terraria](https://img.shields.io/github/languages/top/ryansheehan/terraria?style=flat)                                                                           | Dockerfile for terraria                                                                                                                                                                                                                                |
+| [Crafty](https://gitlab.com/crafty-controller/crafty-4)       | ![Crafty](https://img.shields.io/gitlab/stars/crafty-controller%2Fcrafty-4?style=flat&gitlab_url=https://gitlab.com) ![Crafty](https://img.shields.io/gitlab/languages/count/crafty-controller%2Fcrafty-4?style=flat&gitlab_url=https://gitlab.com) | Crafty 4 is the next iteration of our Minecraft Server Wrapper / Controller / Launcher. Boasting a clean new look, rebuilt from the ground up. Crafty 4 brings a whole host of new features such as Bedrock support. With SteamCMD support on the way! |
+| [Lodestone](https://github.com/Lodestone-Team/lodestone_core) | ![Lodestone](https://img.shields.io/github/stars/Lodestone-Team/lodestone_core?style=flat) ![Lodestone](https://img.shields.io/github/languages/top/Lodestone-Team/lodestone_core?style=flat)                                                       | The backend for Lodestone, A free, open source server hosting tool for Minecraft and other multiplayers                                                                                                                                                |
+| [NextGBA](https://github.com/meienberger/nextgba)             | ![NextGBA](https://img.shields.io/github/stars/meienberger/nextgba?style=flat) ![NextGBA](https://img.shields.io/github/languages/top/meienberger/nextgba?style=flat)                                                                               | Self-hosted app to play Gameboy games in your browser 🕹️                                                                                                                                                                                              |
+
+### InfraManagement
+
+| Name                                                                              | Info                                                                                                                                                                                                                                  | Description                                                                                                                                                                                                                                                                    |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Traefik](https://github.com/traefik/traefik)                                     | ![Traefik](https://img.shields.io/github/stars/traefik/traefik?style=flat) ![Traefik](https://img.shields.io/github/languages/top/traefik/traefik?style=flat)                                                                         | The Cloud Native Application Proxy                                                                                                                                                                                                                                             |
+| [CasaOS](https://github.com/IceWhaleTech/CasaOS)                                  | ![CasaOS](https://img.shields.io/github/stars/IceWhaleTech/CasaOS?style=flat) ![CasaOS](https://img.shields.io/github/languages/top/IceWhaleTech/CasaOS?style=flat)                                                                   | CasaOS - A simple, easy-to-use, elegant open-source Personal Cloud system.                                                                                                                                                                                                     |
+| [Nginx Proxy Manager](https://github.com/NginxProxyManager/nginx-proxy-manager)   | ![Nginx Proxy Manager](https://img.shields.io/github/stars/NginxProxyManager/nginx-proxy-manager?style=flat) ![Nginx Proxy Manager](https://img.shields.io/github/languages/top/NginxProxyManager/nginx-proxy-manager?style=flat)     | Docker container for managing Nginx proxy hosts with a simple, powerful interface                                                                                                                                                                                              |
+| [OpenWrt](https://github.com/openwrt/openwrt)                                     | ![OpenWrt](https://img.shields.io/github/stars/openwrt/openwrt?style=flat) ![OpenWrt](https://img.shields.io/github/languages/top/openwrt/openwrt?style=flat)                                                                         | This repository is a mirror of https://git.openwrt.org/openwrt/openwrt.git It is for reference only and is not active for check-ins.  We will continue to accept Pull Requests here. They will be merged via staging trees then into openwrt.git.                              |
+| [Proxmox](https://github.com/tteck/Proxmox)                                       | ![Proxmox](https://img.shields.io/github/stars/tteck/Proxmox?style=flat) ![Proxmox](https://img.shields.io/github/languages/top/tteck/Proxmox?style=flat)                                                                             | Proxmox VE Helper-Scripts                                                                                                                                                                                                                                                      |
+| [CapRover](https://github.com/caprover/caprover)                                  | ![CapRover](https://img.shields.io/github/stars/caprover/caprover?style=flat) ![CapRover](https://img.shields.io/github/languages/top/caprover/caprover?style=flat)                                                                   | Scalable PaaS (automated Docker+nginx) - aka Heroku on Steroids                                                                                                                                                                                                                |
+| [Cockpit](https://github.com/cockpit-project/cockpit)                             | ![Cockpit](https://img.shields.io/github/stars/cockpit-project/cockpit?style=flat) ![Cockpit](https://img.shields.io/github/languages/top/cockpit-project/cockpit?style=flat)                                                         | Cockpit is a web-based graphical interface for servers.                                                                                                                                                                                                                        |
+| [Open and cheap DIY IP-KVM based on Raspberry Pi](https://github.com/pikvm/pikvm) | ![Open and cheap DIY IP-KVM based on Raspberry Pi](https://img.shields.io/github/stars/pikvm/pikvm?style=flat) ![Open and cheap DIY IP-KVM based on Raspberry Pi](https://img.shields.io/github/languages/top/pikvm/pikvm?style=flat) | Open and inexpensive DIY IP-KVM based on Raspberry Pi                                                                                                                                                                                                                          |
+| [Runtipi](https://github.com/runtipi/runtipi)                                     | ![Runtipi](https://img.shields.io/github/stars/runtipi/runtipi?style=flat) ![Runtipi](https://img.shields.io/github/languages/top/runtipi/runtipi?style=flat)                                                                         | Runtipi is a homeserver for everyone! One command setup, one click installs for your favorites self-hosted apps. ✨                                                                                                                                                             |
+| [kube-virt](https://github.com/kubevirt/kubevirt)                                 | ![kube-virt](https://img.shields.io/github/stars/kubevirt/kubevirt?style=flat) ![kube-virt](https://img.shields.io/github/languages/top/kubevirt/kubevirt?style=flat)                                                                 | Kubernetes Virtualization API and runtime in order to define and manage virtual machines.                                                                                                                                                                                      |
+| [openmediavault](https://github.com/openmediavault/openmediavault)                | ![openmediavault](https://img.shields.io/github/stars/openmediavault/openmediavault?style=flat) ![openmediavault](https://img.shields.io/github/languages/top/openmediavault/openmediavault?style=flat)                               | openmediavault is the next generation network attached storage (NAS) solution based on Debian Linux. Thanks to the modular design of the framework it can be enhanced via plugins. openmediavault is primarily designed to be used in home environments or small home offices. |
+| [Cosmos](https://github.com/azukaar/Cosmos-Server)                                | ![Cosmos](https://img.shields.io/github/stars/azukaar/Cosmos-Server?style=flat) ![Cosmos](https://img.shields.io/github/languages/top/azukaar/Cosmos-Server?style=flat)                                                               | ☁️ The Most Secure and Easy Selfhosted Home Server. Take control of your data and privacy without sacrificing security and stability  (Authentication, anti-DDOS, anti-bot)                                                                                                    |
+| [Ansible-NAS](https://github.com/davestephens/ansible-nas)                        | ![Ansible-NAS](https://img.shields.io/github/stars/davestephens/ansible-nas?style=flat) ![Ansible-NAS](https://img.shields.io/github/languages/top/davestephens/ansible-nas?style=flat)                                               | Build a full-featured home server or NAS replacement with an Ubuntu box and this playbook.                                                                                                                                                                                     |
+| [WikiSuite](https://github.com/kimchi-project/kimchi)                             | ![WikiSuite](https://img.shields.io/github/stars/kimchi-project/kimchi?style=flat) ![WikiSuite](https://img.shields.io/github/languages/top/kimchi-project/kimchi?style=flat)                                                         | An HTML5 management interface for KVM guests                                                                                                                                                                                                                                   |
+| [virt-manager](https://github.com/virt-manager/virt-manager)                      | ![virt-manager](https://img.shields.io/github/stars/virt-manager/virt-manager?style=flat) ![virt-manager](https://img.shields.io/github/languages/top/virt-manager/virt-manager?style=flat)                                           | Desktop tool for managing virtual machines via libvirt                                                                                                                                                                                                                         |
+| [Terminus](https://github.com/beclab/Terminus)                                    | ![Terminus](https://img.shields.io/github/stars/beclab/Terminus?style=flat) ![Terminus](https://img.shields.io/github/languages/top/beclab/Terminus?style=flat)                                                                       | Olares: An Open-Source Personal Cloud to Reclaim Your Data                                                                                                                                                                                                                     |
+| [TrueNAS](https://github.com/truenas/middleware)                                  | ![TrueNAS](https://img.shields.io/github/stars/truenas/middleware?style=flat) ![TrueNAS](https://img.shields.io/github/languages/top/truenas/middleware?style=flat)                                                                   | TrueNAS CORE/Enterprise/SCALE Middleware Git Repository                                                                                                                                                                                                                        |
+| [DebOps](https://github.com/debops/debops)                                        | ![DebOps](https://img.shields.io/github/stars/debops/debops?style=flat) ![DebOps](https://img.shields.io/github/languages/top/debops/debops?style=flat)                                                                               | DebOps - Your Debian-based data center in a box                                                                                                                                                                                                                                |
+
+### IoT
+
+| Name                                                          | Info                                                                                                                                                                                          | Description                                                                                                                                                                                                                                                                                                             |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [n8n](https://github.com/n8n-io/n8n)                          | ![n8n](https://img.shields.io/github/stars/n8n-io/n8n?style=flat) ![n8n](https://img.shields.io/github/languages/top/n8n-io/n8n?style=flat)                                                   | Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.                                                                                                                                                                    |
+| [Home Assistant](https://github.com/home-assistant/core)      | ![Home Assistant](https://img.shields.io/github/stars/home-assistant/core?style=flat) ![Home Assistant](https://img.shields.io/github/languages/top/home-assistant/core?style=flat)           | :house_with_garden: Open source home automation that puts local control and privacy first.                                                                                                                                                                                                                              |
+| [Homebridge](https://github.com/homebridge/homebridge)        | ![Homebridge](https://img.shields.io/github/stars/homebridge/homebridge?style=flat) ![Homebridge](https://img.shields.io/github/languages/top/homebridge/homebridge?style=flat)               | HomeKit support for the impatient.                                                                                                                                                                                                                                                                                      |
+| [Node-RED](https://github.com/node-red/node-red)              | ![Node-RED](https://img.shields.io/github/stars/node-red/node-red?style=flat) ![Node-RED](https://img.shields.io/github/languages/top/node-red/node-red?style=flat)                           | Low-code programming for event-driven applications                                                                                                                                                                                                                                                                      |
+| [Thingsboard](https://github.com/thingsboard/thingsboard)     | ![Thingsboard](https://img.shields.io/github/stars/thingsboard/thingsboard?style=flat) ![Thingsboard](https://img.shields.io/github/languages/top/thingsboard/thingsboard?style=flat)         | Open-source IoT Platform - Device management, data collection, processing and visualization.                                                                                                                                                                                                                            |
+| [Freeboard](https://github.com/Freeboard/freeboard)           | ![Freeboard](https://img.shields.io/github/stars/Freeboard/freeboard?style=flat) ![Freeboard](https://img.shields.io/github/languages/top/Freeboard/freeboard?style=flat)                     | A damn-sexy, open source real-time dashboard builder for IOT and other web mashups. A free open-source alternative to Geckoboard.                                                                                                                                                                                       |
+| [Scrypted](https://github.com/koush/scrypted)                 | ![Scrypted](https://img.shields.io/github/stars/koush/scrypted?style=flat) ![Scrypted](https://img.shields.io/github/languages/top/koush/scrypted?style=flat)                                 | Scrypted is a high performance video integration and automation platform                                                                                                                                                                                                                                                |
+| [Domoticz](https://github.com/domoticz/domoticz)              | ![Domoticz](https://img.shields.io/github/stars/domoticz/domoticz?style=flat) ![Domoticz](https://img.shields.io/github/languages/top/domoticz/domoticz?style=flat)                           | Open source Home Automation System                                                                                                                                                                                                                                                                                      |
+| [Gladys Assistant](https://github.com/gladysassistant/gladys) | ![Gladys Assistant](https://img.shields.io/github/stars/gladysassistant/gladys?style=flat) ![Gladys Assistant](https://img.shields.io/github/languages/top/gladysassistant/gladys?style=flat) | A privacy-first, open-source home assistant                                                                                                                                                                                                                                                                             |
+| [Gladys](https://github.com/GladysAssistant/Gladys)           | ![Gladys](https://img.shields.io/github/stars/GladysAssistant/Gladys?style=flat) ![Gladys](https://img.shields.io/github/languages/top/GladysAssistant/Gladys?style=flat)                     | A privacy-first, open-source home assistant                                                                                                                                                                                                                                                                             |
+| [Mozilla Gateway](https://github.com/WebThingsIO/gateway)     | ![Mozilla Gateway](https://img.shields.io/github/stars/WebThingsIO/gateway?style=flat) ![Mozilla Gateway](https://img.shields.io/github/languages/top/WebThingsIO/gateway?style=flat)         | WebThings Gateway - a self-hosted web application for monitoring and controlling a building over the web                                                                                                                                                                                                                |
+| [OpenRemote](https://github.com/openremote/openremote)        | ![OpenRemote](https://img.shields.io/github/stars/openremote/openremote?style=flat) ![OpenRemote](https://img.shields.io/github/languages/top/openremote/openremote?style=flat)               | 100% open-source IoT Platform - Integrate your devices, create rules, and analyse and visualise your data                                                                                                                                                                                                               |
+| [OpenHAB](https://github.com/openhab/openhab-core)            | ![OpenHAB](https://img.shields.io/github/stars/openhab/openhab-core?style=flat) ![OpenHAB](https://img.shields.io/github/languages/top/openhab/openhab-core?style=flat)                       | Core framework of openHAB                                                                                                                                                                                                                                                                                               |
+| [Thingspeak](https://github.com/iobridge/thingspeak)          | ![Thingspeak](https://img.shields.io/github/stars/iobridge/thingspeak?style=flat) ![Thingspeak](https://img.shields.io/github/languages/top/iobridge/thingspeak?style=flat)                   | ThingSpeak is an open source “Internet of Things” application and API to store and retrieve data from things using HTTP over the Internet or via a Local Area Network. With ThingSpeak, you can create sensor logging applications, location tracking applications, and a social network of things with status updates. |
+
+### KnowledgeBase
+
+| Name                                                                                | Info                                                                                                                                                                                                                                      | Description                                                                                                                                                                                                           |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [NocoDB](https://github.com/nocodb/nocodb)                                          | ![NocoDB](https://img.shields.io/github/stars/nocodb/nocodb?style=flat) ![NocoDB](https://img.shields.io/github/languages/top/nocodb/nocodb?style=flat)                                                                                   | 🔥 🔥 🔥 Open Source Airtable Alternative                                                                                                                                                                             |
+| [AFFiNE](https://github.com/toeverything/affine)                                    | ![AFFiNE](https://img.shields.io/github/stars/toeverything/affine?style=flat) ![AFFiNE](https://img.shields.io/github/languages/top/toeverything/affine?style=flat)                                                                       | There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.  |
+| [Joplin](https://github.com/laurent22/joplin)                                       | ![Joplin](https://img.shields.io/github/stars/laurent22/joplin?style=flat) ![Joplin](https://img.shields.io/github/languages/top/laurent22/joplin?style=flat)                                                                             | Joplin - the privacy-focused note taking app with sync capabilities for Windows, macOS, Linux, Android and iOS.                                                                                                       |
+| [Logseq](https://github.com/logseq/logseq)                                          | ![Logseq](https://img.shields.io/github/stars/logseq/logseq?style=flat) ![Logseq](https://img.shields.io/github/languages/top/logseq/logseq?style=flat)                                                                                   | A privacy-first, open-source platform for knowledge management and collaboration. Download link:  http://github.com/logseq/logseq/releases. roadmap: http://trello.com/b/8txSM12G/roadmap                             |
+| [Outline](https://github.com/outline/outline)                                       | ![Outline](https://img.shields.io/github/stars/outline/outline?style=flat) ![Outline](https://img.shields.io/github/languages/top/outline/outline?style=flat)                                                                             | The fastest knowledge base for growing teams. Beautiful, realtime collaborative, feature packed, and markdown compatible.                                                                                             |
+| [Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx)                     | ![Paperless-ngx](https://img.shields.io/github/stars/paperless-ngx/paperless-ngx?style=flat) ![Paperless-ngx](https://img.shields.io/github/languages/top/paperless-ngx/paperless-ngx?style=flat)                                         | A community-supported supercharged document management system: scan, index and archive all your documents                                                                                                             |
+| [Trilium Notes](https://github.com/zadam/trilium)                                   | ![Trilium Notes](https://img.shields.io/github/stars/zadam/trilium?style=flat) ![Trilium Notes](https://img.shields.io/github/languages/top/zadam/trilium?style=flat)                                                                     | Build your personal knowledge base with Trilium Notes                                                                                                                                                                 |
+| [Wiki.js](https://github.com/requarks/wiki)                                         | ![Wiki.js](https://img.shields.io/github/stars/requarks/wiki?style=flat) ![Wiki.js](https://img.shields.io/github/languages/top/requarks/wiki?style=flat)                                                                                 | Wiki.js | A modern and powerful wiki app built on Node.js                                                                                                                                                             |
+| [Focalboard](https://github.com/mattermost-community/focalboard)                    | ![Focalboard](https://img.shields.io/github/stars/mattermost-community/focalboard?style=flat) ![Focalboard](https://img.shields.io/github/languages/top/mattermost-community/focalboard?style=flat)                                       | Focalboard is an open source, self-hosted alternative to Trello, Notion, and Asana.                                                                                                                                   |
+| [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox)                              | ![ArchiveBox](https://img.shields.io/github/stars/ArchiveBox/ArchiveBox?style=flat) ![ArchiveBox](https://img.shields.io/github/languages/top/ArchiveBox/ArchiveBox?style=flat)                                                           | 🗃 Open source self-hosted web archiving. Takes URLs/browser history/bookmarks/Pocket/Pinboard/etc., saves HTML, JS, PDFs, media, and more...                                                                         |
+| [Docmost](https://github.com/docmost/docmost)                                       | ![Docmost](https://img.shields.io/github/stars/docmost/docmost?style=flat) ![Docmost](https://img.shields.io/github/languages/top/docmost/docmost?style=flat)                                                                             | Docmost is an open-source collaborative wiki and documentation software. It is an open-source alternative to Confluence and Notion.                                                                                   |
+| [BookStack](https://github.com/BookStackApp/BookStack)                              | ![BookStack](https://img.shields.io/github/stars/BookStackApp/BookStack?style=flat) ![BookStack](https://img.shields.io/github/languages/top/BookStackApp/BookStack?style=flat)                                                           | A platform to create documentation/wiki content built with PHP & Laravel                                                                                                                                              |
+| [Linkwarden](https://github.com/linkwarden/linkwarden)                              | ![Linkwarden](https://img.shields.io/github/stars/linkwarden/linkwarden?style=flat) ![Linkwarden](https://img.shields.io/github/languages/top/linkwarden/linkwarden?style=flat)                                                           | ⚡️⚡️⚡️ Self-hosted collaborative bookmark manager to collect, read, annotate, and fully preserve what matters, all in one place.                                                                                      |
+| [Gollum](https://github.com/gollum/gollum)                                          | ![Gollum](https://img.shields.io/github/stars/gollum/gollum?style=flat) ![Gollum](https://img.shields.io/github/languages/top/gollum/gollum?style=flat)                                                                                   | A simple, Git-powered wiki with a local frontend and support for many kinds of markup and content.                                                                                                                    |
+| [Wallabag](https://github.com/wallabag/wallabag)                                    | ![Wallabag](https://img.shields.io/github/stars/wallabag/wallabag?style=flat) ![Wallabag](https://img.shields.io/github/languages/top/wallabag/wallabag?style=flat)                                                                       | wallabag is a self hostable application for saving web pages: Save and classify articles. Read them later. Freely.                                                                                                    |
+| [Laverna](https://github.com/Laverna/laverna)                                       | ![Laverna](https://img.shields.io/github/stars/Laverna/laverna?style=flat) ![Laverna](https://img.shields.io/github/languages/top/Laverna/laverna?style=flat)                                                                             | Laverna is a JavaScript note taking application with Markdown editor and encryption support. Consider it like open source alternative to Evernote.                                                                    |
+| [TiddlyWiki](https://github.com/TiddlyWiki/TiddlyWiki5)                             | ![TiddlyWiki](https://img.shields.io/github/stars/TiddlyWiki/TiddlyWiki5?style=flat) ![TiddlyWiki](https://img.shields.io/github/languages/top/TiddlyWiki/TiddlyWiki5?style=flat)                                                         | A self-contained JavaScript wiki for the browser, Node.js, AWS Lambda etc.                                                                                                                                            |
+| [HedgeDoc](https://github.com/hedgedoc/hedgedoc)                                    | ![HedgeDoc](https://img.shields.io/github/stars/hedgedoc/hedgedoc?style=flat) ![HedgeDoc](https://img.shields.io/github/languages/top/hedgedoc/hedgedoc?style=flat)                                                                       | HedgeDoc - Ideas grow better together                                                                                                                                                                                 |
+| [daux.io](https://github.com/justinwalsh/daux.io)                                   | ![daux.io](https://img.shields.io/github/stars/justinwalsh/daux.io?style=flat) ![daux.io](https://img.shields.io/github/languages/top/justinwalsh/daux.io?style=flat)                                                                     | Daux.io is an documentation generator that uses a simple folder structure and Markdown files to create custom documentation on the fly. It helps you create great looking documentation in a developer friendly way.  |
+| [Dokuwiki](https://github.com/dokuwiki/dokuwiki)                                    | ![Dokuwiki](https://img.shields.io/github/stars/dokuwiki/dokuwiki?style=flat) ![Dokuwiki](https://img.shields.io/github/languages/top/dokuwiki/dokuwiki?style=flat)                                                                       | The DokuWiki Open Source Wiki Engine                                                                                                                                                                                  |
+| [CherryTree](https://github.com/giuspen/cherrytree)                                 | ![CherryTree](https://img.shields.io/github/stars/giuspen/cherrytree?style=flat) ![CherryTree](https://img.shields.io/github/languages/top/giuspen/cherrytree?style=flat)                                                                 | cherrytree                                                                                                                                                                                                            |
+| [Personal management system](https://github.com/Volmarg/personal-management-system) | ![Personal management system](https://img.shields.io/github/stars/Volmarg/personal-management-system?style=flat) ![Personal management system](https://img.shields.io/github/languages/top/Volmarg/personal-management-system?style=flat) | Your web application for managing personal data.  personal.management.system.inbox@gmail.com                                                                                                                          |
+| [Awesome Certificates](https://github.com/PanXProject/awesome-certificates)         | ![Awesome Certificates](https://img.shields.io/github/stars/PanXProject/awesome-certificates?style=flat) ![Awesome Certificates](https://img.shields.io/github/languages/top/PanXProject/awesome-certificates?style=flat)                 | Curated list of 20,000+ hours and 200+ free courses with certificates in IT, CS, Design and Business.                                                                                                                 |
+| [Raneto](https://github.com/ryanlelek/Raneto)                                       | ![Raneto](https://img.shields.io/github/stars/ryanlelek/Raneto?style=flat) ![Raneto](https://img.shields.io/github/languages/top/ryanlelek/Raneto?style=flat)                                                                             | Markdown powered Knowledgebase Wiki for Node.js                                                                                                                                                                       |
+| [Papermerge](https://github.com/ciur/papermerge)                                    | ![Papermerge](https://img.shields.io/github/stars/ciur/papermerge?style=flat) ![Papermerge](https://img.shields.io/github/languages/top/ciur/papermerge?style=flat)                                                                       | Open Source Document Management System for Digital Archives (Scanned Documents)                                                                                                                                       |
+| [flatnotes](https://github.com/Dullage/flatnotes)                                   | ![flatnotes](https://img.shields.io/github/stars/Dullage/flatnotes?style=flat) ![flatnotes](https://img.shields.io/github/languages/top/Dullage/flatnotes?style=flat)                                                                     | A self-hosted, database-less note taking web app that utilises a flat folder of markdown files for storage.                                                                                                           |
+| [Documize](https://github.com/documize/community)                                   | ![Documize](https://img.shields.io/github/stars/documize/community?style=flat) ![Documize](https://img.shields.io/github/languages/top/documize/community?style=flat)                                                                     | Modern Confluence alternative designed for internal & external docs, built with Go + EmberJS                                                                                                                          |
+| [Gitit](https://github.com/jgm/gitit)                                               | ![Gitit](https://img.shields.io/github/stars/jgm/gitit?style=flat) ![Gitit](https://img.shields.io/github/languages/top/jgm/gitit?style=flat)                                                                                             | A wiki using HAppS, pandoc, and git                                                                                                                                                                                   |
+| [Teedy](https://github.com/sismics/docs)                                            | ![Teedy](https://img.shields.io/github/stars/sismics/docs?style=flat) ![Teedy](https://img.shields.io/github/languages/top/sismics/docs?style=flat)                                                                                       | Lightweight document management system packed with all the features you can expect from big expensive solutions                                                                                                       |
+| [Docspell](https://github.com/eikek/docspell)                                       | ![Docspell](https://img.shields.io/github/stars/eikek/docspell?style=flat) ![Docspell](https://img.shields.io/github/languages/top/eikek/docspell?style=flat)                                                                             | Assist in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort.                                                                                                 |
+| [django-wiki](https://github.com/django-wiki/django-wiki)                           | ![django-wiki](https://img.shields.io/github/stars/django-wiki/django-wiki?style=flat) ![django-wiki](https://img.shields.io/github/languages/top/django-wiki/django-wiki?style=flat)                                                     | A wiki system with complex functionality for simple integration and a superb interface. Store your knowledge with style: Use django models.                                                                           |
+| [Tasks.md](https://github.com/BaldissaraMatheus/Tasks.md)                           | ![Tasks.md](https://img.shields.io/github/stars/BaldissaraMatheus/Tasks.md?style=flat) ![Tasks.md](https://img.shields.io/github/languages/top/BaldissaraMatheus/Tasks.md?style=flat)                                                     | A self-hosted, Markdown file based task management board                                                                                                                                                              |
+| [Snibox](https://github.com/snibox/snibox)                                          | ![Snibox](https://img.shields.io/github/stars/snibox/snibox?style=flat) ![Snibox](https://img.shields.io/github/languages/top/snibox/snibox?style=flat)                                                                                   | Self-hosted snippet manager                                                                                                                                                                                           |
+| [PartKeepr](https://github.com/partkeepr/PartKeepr)                                 | ![PartKeepr](https://img.shields.io/github/stars/partkeepr/PartKeepr?style=flat) ![PartKeepr](https://img.shields.io/github/languages/top/partkeepr/PartKeepr?style=flat)                                                                 | Open Source Inventory Management                                                                                                                                                                                      |
+| [Tracks](https://github.com/TracksApp/tracks)                                       | ![Tracks](https://img.shields.io/github/stars/TracksApp/tracks?style=flat) ![Tracks](https://img.shields.io/github/languages/top/TracksApp/tracks?style=flat)                                                                             | Tracks is a GTD™ web application, built with Ruby on Rails                                                                                                                                                            |
+| [Sakai](https://github.com/sakaiproject/sakai)                                      | ![Sakai](https://img.shields.io/github/stars/sakaiproject/sakai?style=flat) ![Sakai](https://img.shields.io/github/languages/top/sakaiproject/sakai?style=flat)                                                                           | Sakai is a freely available, feature-rich technology solution for learning, teaching, research and collaboration. Sakai is an open source software suite developed by a diverse and global adopter community.         |
+| [jingo](https://github.com/claudioc/jingo)                                          | ![jingo](https://img.shields.io/github/stars/claudioc/jingo?style=flat) ![jingo](https://img.shields.io/github/languages/top/claudioc/jingo?style=flat)                                                                                   | Node.js based Wiki                                                                                                                                                                                                    |
+| [Servas](https://github.com/beromir/Servas)                                         | ![Servas](https://img.shields.io/github/stars/beromir/Servas?style=flat) ![Servas](https://img.shields.io/github/languages/top/beromir/Servas?style=flat)                                                                                 | A self-hosted bookmark management tool.                                                                                                                                                                               |
+| [Note Mark](https://github.com/enchant97/note-mark/)                                | ![Note Mark](https://img.shields.io/github/stars/enchant97/note-mark?style=flat) ![Note Mark](https://img.shields.io/github/languages/top/enchant97/note-mark?style=flat)                                                                 | Note Mark is a lighting fast, web-based Markdown notes app.                                                                                                                                                           |
+
+### Mail
+
+| Name                                                                | Info                                                                                                                                                                                                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [listmonk](https://github.com/knadh/listmonk)                       | ![listmonk](https://img.shields.io/github/stars/knadh/listmonk?style=flat) ![listmonk](https://img.shields.io/github/languages/top/knadh/listmonk?style=flat)                                             | High performance, self-hosted, newsletter and mailing list manager with a modern dashboard. Single binary app.                                                                                                                                                                                                                                                                                                                                                              |
+| [Listmonk](https://github.com/knadh/listmonk)                       | ![Listmonk](https://img.shields.io/github/stars/knadh/listmonk?style=flat) ![Listmonk](https://img.shields.io/github/languages/top/knadh/listmonk?style=flat)                                             | High performance, self-hosted, newsletter and mailing list manager with a modern dashboard. Single binary app.                                                                                                                                                                                                                                                                                                                                                              |
+| [Postal](https://github.com/postalserver/postal)                    | ![Postal](https://img.shields.io/github/stars/postalserver/postal?style=flat) ![Postal](https://img.shields.io/github/languages/top/postalserver/postal?style=flat)                                       | 📮 A fully featured open source mail delivery platform for incoming & outgoing e-mail                                                                                                                                                                                                                                                                                                                                                                                       |
+| [MailHog](https://github.com/mailhog/MailHog)                       | ![MailHog](https://img.shields.io/github/stars/mailhog/MailHog?style=flat) ![MailHog](https://img.shields.io/github/languages/top/mailhog/MailHog?style=flat)                                             | Web and API based SMTP testing                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| [Mail-in-a-Box](https://github.com/mail-in-a-box/mailinabox)        | ![Mail-in-a-Box](https://img.shields.io/github/stars/mail-in-a-box/mailinabox?style=flat) ![Mail-in-a-Box](https://img.shields.io/github/languages/top/mail-in-a-box/mailinabox?style=flat)               | Mail-in-a-Box helps individuals take back control of their email by defining a one-click, easy-to-deploy SMTP+everything else server: a mail server in a box.                                                                                                                                                                                                                                                                                                               |
+| [mailcow](https://github.com/mailcow/mailcow-dockerized)            | ![mailcow](https://img.shields.io/github/stars/mailcow/mailcow-dockerized?style=flat) ![mailcow](https://img.shields.io/github/languages/top/mailcow/mailcow-dockerized?style=flat)                       | mailcow: dockerized - 🐮 + 🐋 = 💕                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [Stalwart](https://github.com/stalwartlabs/mail-server)             | ![Stalwart](https://img.shields.io/github/stars/stalwartlabs/mail-server?style=flat) ![Stalwart](https://img.shields.io/github/languages/top/stalwartlabs/mail-server?style=flat)                         | All-in-one Mail & Collaboration server. Secure, scalable and fluent in every protocol (IMAP, JMAP, SMTP, CalDAV, CardDAV, WebDAV).                                                                                                                                                                                                                                                                                                                                          |
+| [Mailpile](https://github.com/mailpile/Mailpile)                    | ![Mailpile](https://img.shields.io/github/stars/mailpile/Mailpile?style=flat) ![Mailpile](https://img.shields.io/github/languages/top/mailpile/Mailpile?style=flat)                                       | A free & open modern, fast email client with user-friendly encryption and privacy features                                                                                                                                                                                                                                                                                                                                                                                  |
+| [Tutanota makes encryption easy](https://github.com/tutao/tutanota) | ![Tutanota makes encryption easy](https://img.shields.io/github/stars/tutao/tutanota?style=flat) ![Tutanota makes encryption easy](https://img.shields.io/github/languages/top/tutao/tutanota?style=flat) | Tuta is an email service with a strong focus on security and privacy that lets you encrypt emails, contacts and calendar entries on all your devices.                                                                                                                                                                                                                                                                                                                       |
+| [Mailu](https://github.com/Mailu/Mailu)                             | ![Mailu](https://img.shields.io/github/stars/Mailu/Mailu?style=flat) ![Mailu](https://img.shields.io/github/languages/top/Mailu/Mailu?style=flat)                                                         | Insular email distribution - mail server as Docker images                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| [MailCatcher](https://github.com/sj26/mailcatcher)                  | ![MailCatcher](https://img.shields.io/github/stars/sj26/mailcatcher?style=flat) ![MailCatcher](https://img.shields.io/github/languages/top/sj26/mailcatcher?style=flat)                                   | Catches mail and serves it through a dream.                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| [Roundcube](https://github.com/roundcube/roundcubemail)             | ![Roundcube](https://img.shields.io/github/stars/roundcube/roundcubemail?style=flat) ![Roundcube](https://img.shields.io/github/languages/top/roundcube/roundcubemail?style=flat)                         | The Roundcube Webmail suite                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| [SimpleLogin](https://github.com/simple-login/app)                  | ![SimpleLogin](https://img.shields.io/github/stars/simple-login/app?style=flat) ![SimpleLogin](https://img.shields.io/github/languages/top/simple-login/app?style=flat)                                   | The SimpleLogin back-end and web app                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| [Mailtrain](https://github.com/Mailtrain-org/mailtrain)             | ![Mailtrain](https://img.shields.io/github/stars/Mailtrain-org/mailtrain?style=flat) ![Mailtrain](https://img.shields.io/github/languages/top/Mailtrain-org/mailtrain?style=flat)                         | Self hosted newsletter app                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [Haraka](https://github.com/haraka/Haraka)                          | ![Haraka](https://img.shields.io/github/stars/haraka/Haraka?style=flat) ![Haraka](https://img.shields.io/github/languages/top/haraka/Haraka?style=flat)                                                   | A fast, highly extensible, and event driven SMTP server                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| [ProtonMail Web Client](https://github.com/ProtonMail/WebClients)   | ![ProtonMail Web Client](https://img.shields.io/github/stars/ProtonMail/WebClients?style=flat) ![ProtonMail Web Client](https://img.shields.io/github/languages/top/ProtonMail/WebClients?style=flat)     | Monorepo hosting the proton web clients                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| [AnonAddy](https://github.com/anonaddy/anonaddy)                    | ![AnonAddy](https://img.shields.io/github/stars/anonaddy/anonaddy?style=flat) ![AnonAddy](https://img.shields.io/github/languages/top/anonaddy/anonaddy?style=flat)                                       | Anonymous email forwarding                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [RainLoop](https://github.com/RainLoop/rainloop-webmail)            | ![RainLoop](https://img.shields.io/github/stars/RainLoop/rainloop-webmail?style=flat) ![RainLoop](https://img.shields.io/github/languages/top/RainLoop/rainloop-webmail?style=flat)                       | Simple, modern & fast web-based email client                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| [Modoboa](https://github.com/modoboa/modoboa)                       | ![Modoboa](https://img.shields.io/github/stars/modoboa/modoboa?style=flat) ![Modoboa](https://img.shields.io/github/languages/top/modoboa/modoboa?style=flat)                                             | Mail hosting made simple                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| [wildduck](https://github.com/nodemailer/wildduck)                  | ![wildduck](https://img.shields.io/github/stars/nodemailer/wildduck?style=flat) ![wildduck](https://img.shields.io/github/languages/top/nodemailer/wildduck?style=flat)                                   | Opinionated email server                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| [Sogo](https://github.com/Alinto/sogo)                              | ![Sogo](https://img.shields.io/github/stars/Alinto/sogo?style=flat) ![Sogo](https://img.shields.io/github/languages/top/Alinto/sogo?style=flat)                                                           | SOGo is a very fast and scalable modern collaboration suite (groupware). It offers calendaring, address book management, and a full-featured Webmail client along with resource sharing and permission handling. It also makes use of documented standards (IMAP, CalDAV, CardDAV, etc.) and thereby provides native connectivity (without plugins) to many clients such as Microsoft Outlook, Apple iCal, the iPhone, Mozilla Lightning, and a plethora of mobile devices. |
+
+### MediaManagement
+
+| Name                                                                     | Info                                                                                                                                                                                                                | Description                                                                                                                                                                                                                                                                                                                      |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Jellyfin](https://github.com/jellyfin/jellyfin)                         | ![Jellyfin](https://img.shields.io/github/stars/jellyfin/jellyfin?style=flat) ![Jellyfin](https://img.shields.io/github/languages/top/jellyfin/jellyfin?style=flat)                                                 | The Free Software Media System - Server Backend & API                                                                                                                                                                                                                                                                            |
+| [Kodi Home Theater Software](https://github.com/xbmc/xbmc)               | ![Kodi Home Theater Software](https://img.shields.io/github/stars/xbmc/xbmc?style=flat) ![Kodi Home Theater Software](https://img.shields.io/github/languages/top/xbmc/xbmc?style=flat)                             | Kodi is an award-winning free and open source home theater/media center software and entertainment hub for digital media. With its beautiful interface and powerful skinning engine, it's available for Android, BSD, Linux, macOS, iOS, tvOS and Windows.                                                                       |
+| [Navidrome](https://github.com/navidrome/navidrome)                      | ![Navidrome](https://img.shields.io/github/stars/navidrome/navidrome?style=flat) ![Navidrome](https://img.shields.io/github/languages/top/navidrome/navidrome?style=flat)                                           | 🎧☁️ Your Personal Streaming Service                                                                                                                                                                                                                                                                                             |
+| [koel](https://github.com/koel/koel)                                     | ![koel](https://img.shields.io/github/stars/koel/koel?style=flat) ![koel](https://img.shields.io/github/languages/top/koel/koel?style=flat)                                                                         | Music streaming solution that works.                                                                                                                                                                                                                                                                                             |
+| [Calibre](https://github.com/janeczku/calibre-web)                       | ![Calibre](https://img.shields.io/github/stars/janeczku/calibre-web?style=flat) ![Calibre](https://img.shields.io/github/languages/top/janeczku/calibre-web?style=flat)                                             | :books: Web app for browsing, reading and downloading eBooks stored in a Calibre database                                                                                                                                                                                                                                        |
+| [Jackett](https://github.com/Jackett/Jackett)                            | ![Jackett](https://img.shields.io/github/stars/Jackett/Jackett?style=flat) ![Jackett](https://img.shields.io/github/languages/top/Jackett/Jackett?style=flat)                                                       | API Support for your favorite torrent trackers                                                                                                                                                                                                                                                                                   |
+| [Beets](https://github.com/beetbox/beets)                                | ![Beets](https://img.shields.io/github/stars/beetbox/beets?style=flat) ![Beets](https://img.shields.io/github/languages/top/beetbox/beets?style=flat)                                                               | music library manager and MusicBrainz tagger                                                                                                                                                                                                                                                                                     |
+| [Sonarr](https://github.com/Sonarr/Sonarr)                               | ![Sonarr](https://img.shields.io/github/stars/Sonarr/Sonarr?style=flat) ![Sonarr](https://img.shields.io/github/languages/top/Sonarr/Sonarr?style=flat)                                                             | Smart PVR for newsgroup and bittorrent users.                                                                                                                                                                                                                                                                                    |
+| [Radarr](https://github.com/Radarr/Radarr)                               | ![Radarr](https://img.shields.io/github/stars/Radarr/Radarr?style=flat) ![Radarr](https://img.shields.io/github/languages/top/Radarr/Radarr?style=flat)                                                             | Movie organizer/manager for usenet and torrent users.                                                                                                                                                                                                                                                                            |
+| [Owncast](https://github.com/owncast/owncast)                            | ![Owncast](https://img.shields.io/github/stars/owncast/owncast?style=flat) ![Owncast](https://img.shields.io/github/languages/top/owncast/owncast?style=flat)                                                       | Take control over your live stream video by running it yourself.  Streaming + chat out of the box.                                                                                                                                                                                                                               |
+| [MeTube](https://github.com/alexta69/metube)                             | ![MeTube](https://img.shields.io/github/stars/alexta69/metube?style=flat) ![MeTube](https://img.shields.io/github/languages/top/alexta69/metube?style=flat)                                                         | Self-hosted YouTube downloader (web UI for youtube-dl / yt-dlp)                                                                                                                                                                                                                                                                  |
+| [Audiobookshelf](https://github.com/advplyr/audiobookshelf)              | ![Audiobookshelf](https://img.shields.io/github/stars/advplyr/audiobookshelf?style=flat) ![Audiobookshelf](https://img.shields.io/github/languages/top/advplyr/audiobookshelf?style=flat)                           | Self-hosted audiobook and podcast server                                                                                                                                                                                                                                                                                         |
+| [Streama](https://github.com/streamaserver/streama)                      | ![Streama](https://img.shields.io/github/stars/streamaserver/streama?style=flat) ![Streama](https://img.shields.io/github/languages/top/streamaserver/streama?style=flat)                                           | Self hosted streaming media server. https://docs.streama-project.com/                                                                                                                                                                                                                                                            |
+| [MoviePilot](https://github.com/jxxghp/MoviePilot)                       | ![MoviePilot](https://img.shields.io/github/stars/jxxghp/MoviePilot?style=flat) ![MoviePilot](https://img.shields.io/github/languages/top/jxxghp/MoviePilot?style=flat)                                             | NAS媒体库自动化管理工具                                                                                                                                                                                                                                                                                                                    |
+| [Kavita](https://github.com/Kareadita/Kavita)                            | ![Kavita](https://img.shields.io/github/stars/Kareadita/Kavita?style=flat) ![Kavita](https://img.shields.io/github/languages/top/Kareadita/Kavita?style=flat)                                                       | Kavita is a fast, feature rich, cross platform reading server. Built with the goal of being a full solution for all your reading needs. Setup your own server and share your reading collection with your friends and family.                                                                                                    |
+| [Jellyseerr](https://github.com/Fallenbagel/jellyseerr)                  | ![Jellyseerr](https://img.shields.io/github/stars/Fallenbagel/jellyseerr?style=flat) ![Jellyseerr](https://img.shields.io/github/languages/top/Fallenbagel/jellyseerr?style=flat)                                   | Open-source media request and discovery manager for Jellyfin, Plex, and Emby.                                                                                                                                                                                                                                                    |
+| [Komga](https://github.com/gotson/komga)                                 | ![Komga](https://img.shields.io/github/stars/gotson/komga?style=flat) ![Komga](https://img.shields.io/github/languages/top/gotson/komga?style=flat)                                                                 | Media server for comics/mangas/BDs/magazines/eBooks with API, OPDS, Kobo Sync and KOReader Sync support                                                                                                                                                                                                                          |
+| [Komga](https://github.com/gotson/komga)                                 | ![Komga](https://img.shields.io/github/stars/gotson/komga?style=flat) ![Komga](https://img.shields.io/github/languages/top/gotson/komga?style=flat)                                                                 | Media server for comics/mangas/BDs/magazines/eBooks with API, OPDS, Kobo Sync and KOReader Sync support                                                                                                                                                                                                                          |
+| [Prowlarr](https://github.com/Prowlarr/Prowlarr)                         | ![Prowlarr](https://img.shields.io/github/stars/Prowlarr/Prowlarr?style=flat) ![Prowlarr](https://img.shields.io/github/languages/top/Prowlarr/Prowlarr?style=flat)                                                 | Prowlarr is an indexer manager/proxy built on the popular *arr .net/reactjs base stack to integrate with your various PVR apps, supporting management of both Torrent Trackers and Usenet Indexers.                                                                                                                              |
+| [Overseerr](https://github.com/sct/overseerr)                            | ![Overseerr](https://img.shields.io/github/stars/sct/overseerr?style=flat) ![Overseerr](https://img.shields.io/github/languages/top/sct/overseerr?style=flat)                                                       | Request management and media discovery tool for the Plex ecosystem                                                                                                                                                                                                                                                               |
+| [Restreamer](https://github.com/datarhei/restreamer)                     | ![Restreamer](https://img.shields.io/github/stars/datarhei/restreamer?style=flat) ![Restreamer](https://img.shields.io/github/languages/top/datarhei/restreamer?style=flat)                                         | The Restreamer is a complete streaming server solution for self-hosting. It has a visually appealing user interface and no ongoing license costs. Upload your live stream to YouTube, Twitch, Facebook, Vimeo, or other streaming solutions like Wowza. Receive video data from OBS and publish it with the RTMP and SRT server. |
+| [Lidarr](https://github.com/Lidarr/Lidarr)                               | ![Lidarr](https://img.shields.io/github/stars/Lidarr/Lidarr?style=flat) ![Lidarr](https://img.shields.io/github/languages/top/Lidarr/Lidarr?style=flat)                                                             | Looks and smells like Sonarr but made for music.                                                                                                                                                                                                                                                                                 |
+| [Emby](https://github.com/MediaBrowser/Emby)                             | ![Emby](https://img.shields.io/github/stars/MediaBrowser/Emby?style=flat) ![Emby](https://img.shields.io/github/languages/top/MediaBrowser/Emby?style=flat)                                                         | Emby Server is a personal media server with apps on just about every device.                                                                                                                                                                                                                                                     |
+| [musikcube](https://github.com/clangen/musikcube)                        | ![musikcube](https://img.shields.io/github/stars/clangen/musikcube?style=flat) ![musikcube](https://img.shields.io/github/languages/top/clangen/musikcube?style=flat)                                               | a cross-platform, terminal-based music player, audio engine, metadata indexer, and server in c++                                                                                                                                                                                                                                 |
+| [MediaCMS](https://github.com/mediacms-io/mediacms)                      | ![MediaCMS](https://img.shields.io/github/stars/mediacms-io/mediacms?style=flat) ![MediaCMS](https://img.shields.io/github/languages/top/mediacms-io/mediacms?style=flat)                                           | MediaCMS is a modern, fully featured open source video and media CMS, written in Python/Django and React, featuring a REST API.                                                                                                                                                                                                  |
+| [Your Spotify](https://github.com/Yooooomi/your_spotify)                 | ![Your Spotify](https://img.shields.io/github/stars/Yooooomi/your_spotify?style=flat) ![Your Spotify](https://img.shields.io/github/languages/top/Yooooomi/your_spotify?style=flat)                                 | Self hosted Spotify tracking dashboard                                                                                                                                                                                                                                                                                           |
+| [Black Candy](https://github.com/blackcandy-org/blackcandy)              | ![Black Candy](https://img.shields.io/github/stars/blackcandy-org/blackcandy?style=flat) ![Black Candy](https://img.shields.io/github/languages/top/blackcandy-org/blackcandy?style=flat)                           | A self hosted music streaming server                                                                                                                                                                                                                                                                                             |
+| [ChineseSubFinder](https://github.com/ChineseSubFinder/ChineseSubFinder) | ![ChineseSubFinder](https://img.shields.io/github/stars/ChineseSubFinder/ChineseSubFinder?style=flat) ![ChineseSubFinder](https://img.shields.io/github/languages/top/ChineseSubFinder/ChineseSubFinder?style=flat) | 自动化中文字幕下载。字幕网站支持 shooter、xunlei、arrst、a4k、SubtitleBest 。支持 Emby、Jellyfin、Plex、Sonarr、Radarr、TMM                                                                                                                                                                                                                                  |
+| [Plex](https://github.com/plexinc/pms-docker)                            | ![Plex](https://img.shields.io/github/stars/plexinc/pms-docker?style=flat) ![Plex](https://img.shields.io/github/languages/top/plexinc/pms-docker?style=flat)                                                       | Plex Media Server Docker repo, for all your PMS docker needs.                                                                                                                                                                                                                                                                    |
+| [Ampache](https://github.com/ampache/ampache)                            | ![Ampache](https://img.shields.io/github/stars/ampache/ampache?style=flat) ![Ampache](https://img.shields.io/github/languages/top/ampache/ampache?style=flat)                                                       | A web based audio/video streaming application and file manager allowing you to access your music & videos from anywhere, using almost any internet enabled device.                                                                                                                                                               |
+| [Headphones](https://github.com/rembo10/headphones)                      | ![Headphones](https://img.shields.io/github/stars/rembo10/headphones?style=flat) ![Headphones](https://img.shields.io/github/languages/top/rembo10/headphones?style=flat)                                           | Automatic music downloader for SABnzbd                                                                                                                                                                                                                                                                                           |
+| [AzuraCast](https://github.com/AzuraCast/AzuraCast)                      | ![AzuraCast](https://img.shields.io/github/stars/AzuraCast/AzuraCast?style=flat) ![AzuraCast](https://img.shields.io/github/languages/top/AzuraCast/AzuraCast?style=flat)                                           | A self-hosted web radio management suite, including turnkey installer tools for the full radio software stack and a modern, easy-to-use web app to manage your stations.                                                                                                                                                         |
+| [Bazarr](https://github.com/morpheus65535/bazarr)                        | ![Bazarr](https://img.shields.io/github/stars/morpheus65535/bazarr?style=flat) ![Bazarr](https://img.shields.io/github/languages/top/morpheus65535/bazarr?style=flat)                                               | Bazarr is a companion application to Sonarr and Radarr. It manages and downloads subtitles based on your requirements. You define your preferences by TV show or movie and Bazarr takes care of everything for you.                                                                                                              |
+| [Readarr](https://github.com/Readarr/Readarr)                            | ![Readarr](https://img.shields.io/github/stars/Readarr/Readarr?style=flat) ![Readarr](https://img.shields.io/github/languages/top/Readarr/Readarr?style=flat)                                                       | Book Manager and Automation (Sonarr for Ebooks)                                                                                                                                                                                                                                                                                  |
+| [Sick Beard](https://github.com/midgetspy/Sick-Beard)                    | ![Sick Beard](https://img.shields.io/github/stars/midgetspy/Sick-Beard?style=flat) ![Sick Beard](https://img.shields.io/github/languages/top/midgetspy/Sick-Beard?style=flat)                                       | PVR & episode guide that downloads and manages all your TV shows                                                                                                                                                                                                                                                                 |
+| [NymphCast](https://github.com/MayaPosch/NymphCast)                      | ![NymphCast](https://img.shields.io/github/stars/MayaPosch/NymphCast?style=flat) ![NymphCast](https://img.shields.io/github/languages/top/MayaPosch/NymphCast?style=flat)                                           | Audio and video casting system with support for custom applications.                                                                                                                                                                                                                                                             |
+| [cloudtunes](https://github.com/jkbrzt/cloudtunes)                       | ![cloudtunes](https://img.shields.io/github/stars/jkbrzt/cloudtunes?style=flat) ![cloudtunes](https://img.shields.io/github/languages/top/jkbrzt/cloudtunes?style=flat)                                             | Web-based music player for the cloud :cloud: :notes: Play music from YouTube, Dropbox, etc.                                                                                                                                                                                                                                      |
+| [SickChill](https://github.com/SickChill/SickChill)                      | ![SickChill](https://img.shields.io/github/stars/SickChill/SickChill?style=flat) ![SickChill](https://img.shields.io/github/languages/top/SickChill/SickChill?style=flat)                                           | Less rage, more chill.                                                                                                                                                                                                                                                                                                           |
+| [Polaris](https://github.com/agersant/polaris)                           | ![Polaris](https://img.shields.io/github/stars/agersant/polaris?style=flat) ![Polaris](https://img.shields.io/github/languages/top/agersant/polaris?style=flat)                                                     | Polaris is a music streaming application, designed to let you enjoy your music collection from any computer or mobile device.                                                                                                                                                                                                    |
+| [asciinema](https://github.com/asciinema/asciinema-server)               | ![asciinema](https://img.shields.io/github/stars/asciinema/asciinema-server?style=flat) ![asciinema](https://img.shields.io/github/languages/top/asciinema/asciinema-server?style=flat)                             | Platform for hosting and sharing terminal session recordings                                                                                                                                                                                                                                                                     |
+| [mStream](https://github.com/IrosTheBeggar/mStream)                      | ![mStream](https://img.shields.io/github/stars/IrosTheBeggar/mStream?style=flat) ![mStream](https://img.shields.io/github/languages/top/IrosTheBeggar/mStream?style=flat)                                           | The easiest music streaming server available                                                                                                                                                                                                                                                                                     |
+| [ErsatzTV](https://github.com/ErsatzTV/ErsatzTV)                         | ![ErsatzTV](https://img.shields.io/github/stars/ErsatzTV/ErsatzTV?style=flat) ![ErsatzTV](https://img.shields.io/github/languages/top/ErsatzTV/ErsatzTV?style=flat)                                                 | Open-source platform that transforms your personal media library into live, custom TV channels.                                                                                                                                                                                                                                  |
+| [gonic](https://github.com/sentriz/gonic)                                | ![gonic](https://img.shields.io/github/stars/sentriz/gonic?style=flat) ![gonic](https://img.shields.io/github/languages/top/sentriz/gonic?style=flat)                                                               | music streaming server / free-software subsonic server API implementation                                                                                                                                                                                                                                                        |
+| [YouPHPTube](https://github.com/WWBN/AVideo)                             | ![YouPHPTube](https://img.shields.io/github/stars/WWBN/AVideo?style=flat) ![YouPHPTube](https://img.shields.io/github/languages/top/WWBN/AVideo?style=flat)                                                         | Create Your Own Broadcast Network With AVideo Platform Open-Source. OAVP OVP                                                                                                                                                                                                                                                     |
+| [Groove Basin](https://github.com/andrewrk/groovebasin)                  | ![Groove Basin](https://img.shields.io/github/stars/andrewrk/groovebasin?style=flat) ![Groove Basin](https://img.shields.io/github/languages/top/andrewrk/groovebasin?style=flat)                                   | Music player server with a web-based user interface.                                                                                                                                                                                                                                                                             |
+| [Medusa](https://github.com/pymedusa/Medusa)                             | ![Medusa](https://img.shields.io/github/stars/pymedusa/Medusa?style=flat) ![Medusa](https://img.shields.io/github/languages/top/pymedusa/Medusa?style=flat)                                                         | Automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic.                                                                                                                                                                                    |
+| [Podgrab](https://github.com/akhilrex/podgrab)                           | ![Podgrab](https://img.shields.io/github/stars/akhilrex/podgrab?style=flat) ![Podgrab](https://img.shields.io/github/languages/top/akhilrex/podgrab?style=flat)                                                     | A self-hosted podcast manager/downloader/archiver tool to download podcast episodes as soon as they become live with an integrated player.                                                                                                                                                                                       |
+| [Mango](https://github.com/getmango/Mango)                               | ![Mango](https://img.shields.io/github/stars/getmango/Mango?style=flat) ![Mango](https://img.shields.io/github/languages/top/getmango/Mango?style=flat)                                                             | Mango is a self-hosted manga server and web reader                                                                                                                                                                                                                                                                               |
+| [CyTube](https://github.com/calzoneman/sync)                             | ![CyTube](https://img.shields.io/github/stars/calzoneman/sync?style=flat) ![CyTube](https://img.shields.io/github/languages/top/calzoneman/sync?style=flat)                                                         | Node.JS Server and JavaScript/HTML Client for synchronizing online media                                                                                                                                                                                                                                                         |
+| [SiCKRAGE](https://github.com/SiCKRAGE/SiCKRAGE)                         | ![SiCKRAGE](https://img.shields.io/github/stars/SiCKRAGE/SiCKRAGE?style=flat) ![SiCKRAGE](https://img.shields.io/github/languages/top/SiCKRAGE/SiCKRAGE?style=flat)                                                 | Mirror of OFFICIAL SiCKRAGE                                                                                                                                                                                                                                                                                                      |
+| [COPS](https://github.com/seblucas/cops)                                 | ![COPS](https://img.shields.io/github/stars/seblucas/cops?style=flat) ![COPS](https://img.shields.io/github/languages/top/seblucas/cops?style=flat)                                                                 | Calibre OPDS (and HTML) PHP Server : web-based light alternative to Calibre content server / Calibre2OPDS to serve ebooks (epub, mobi, pdf, ...)                                                                                                                                                                                 |
+| [LMS](https://github.com/epoupon/lms)                                    | ![LMS](https://img.shields.io/github/stars/epoupon/lms?style=flat) ![LMS](https://img.shields.io/github/languages/top/epoupon/lms?style=flat)                                                                       | Lightweight Music Server. Access your self-hosted music using a web interface.                                                                                                                                                                                                                                                   |
+| [Revive Adserver](https://github.com/revive-adserver/revive-adserver)    | ![Revive Adserver](https://img.shields.io/github/stars/revive-adserver/revive-adserver?style=flat) ![Revive Adserver](https://img.shields.io/github/languages/top/revive-adserver/revive-adserver?style=flat)       | The world's most popular free, open source ad serving system. You can download the latest release at:                                                                                                                                                                                                                            |
+| [Volumio](https://github.com/volumio/Volumio2)                           | ![Volumio](https://img.shields.io/github/stars/volumio/Volumio2?style=flat) ![Volumio](https://img.shields.io/github/languages/top/volumio/Volumio2?style=flat)                                                     | Volumio 2 - Audiophile Music Player                                                                                                                                                                                                                                                                                              |
+| [Maintainerr](https://github.com/jorenn92/Maintainerr)                   | ![Maintainerr](https://img.shields.io/github/stars/jorenn92/Maintainerr?style=flat) ![Maintainerr](https://img.shields.io/github/languages/top/jorenn92/Maintainerr?style=flat)                                     | Looks and smells like Overseerr, does the opposite. Maintenance tool for the Plex ecosystem                                                                                                                                                                                                                                      |
+| [Mediacrush](https://github.com/MediaCrush/MediaCrush)                   | ![Mediacrush](https://img.shields.io/github/stars/MediaCrush/MediaCrush?style=flat) ![Mediacrush](https://img.shields.io/github/languages/top/MediaCrush/MediaCrush?style=flat)                                     | A website for sharing media                                                                                                                                                                                                                                                                                                      |
+| [Midarr](https://github.com/midarrlabs/midarr-server)                    | ![Midarr](https://img.shields.io/github/stars/midarrlabs/midarr-server?style=flat) ![Midarr](https://img.shields.io/github/languages/top/midarrlabs/midarr-server?style=flat)                                       | 🔥Midarr, the minimal lightweight media server.                                                                                                                                                                                                                                                                                  |
+| [Flox](https://github.com/devfake/flox)                                  | ![Flox](https://img.shields.io/github/stars/devfake/flox?style=flat) ![Flox](https://img.shields.io/github/languages/top/devfake/flox?style=flat)                                                                   | Self Hosted Movie, Series and Anime Watch List                                                                                                                                                                                                                                                                                   |
+| [peerflix-server](https://github.com/asapach/peerflix-server)            | ![peerflix-server](https://img.shields.io/github/stars/asapach/peerflix-server?style=flat) ![peerflix-server](https://img.shields.io/github/languages/top/asapach/peerflix-server?style=flat)                       | Streaming torrent client for Node.js with web ui.                                                                                                                                                                                                                                                                                |
+| [Gerbera](https://github.com/gerbera/gerbera)                            | ![Gerbera](https://img.shields.io/github/stars/gerbera/gerbera?style=flat) ![Gerbera](https://img.shields.io/github/languages/top/gerbera/gerbera?style=flat)                                                       | UPnP Media Server for 2025: Stream your digital media through your home network and consume it on all kinds of UPnP supporting devices 📱💻📺                                                                                                                                                                                    |
+| [nefarious](https://github.com/lardbit/nefarious)                        | ![nefarious](https://img.shields.io/github/stars/lardbit/nefarious?style=flat) ![nefarious](https://img.shields.io/github/languages/top/lardbit/nefarious?style=flat)                                               | Web application for automatically downloading TV & Movies (w/ VPN)                                                                                                                                                                                                                                                               |
+| [homehost](https://github.com/ridhwaans/homehost)                        | ![homehost](https://img.shields.io/github/stars/ridhwaans/homehost?style=flat) ![homehost](https://img.shields.io/github/languages/top/ridhwaans/homehost?style=flat)                                               | self-hosted, Netflix-like app made for streaming                                                                                                                                                                                                                                                                                 |
+| [CherryMusic](https://github.com/devsnd/cherrymusic)                     | ![CherryMusic](https://img.shields.io/github/stars/devsnd/cherrymusic?style=flat) ![CherryMusic](https://img.shields.io/github/languages/top/devsnd/cherrymusic?style=flat)                                         | Stream your own music collection to all your devices! The easy to use free and open-source music streaming server.                                                                                                                                                                                                               |
+| [Koillection](https://github.com/benjaminjonard/koillection)             | ![Koillection](https://img.shields.io/github/stars/benjaminjonard/koillection?style=flat) ![Koillection](https://img.shields.io/github/languages/top/benjaminjonard/koillection?style=flat)                         | Koillection is a self-hosted service allowing users to manage any kind of collections.                                                                                                                                                                                                                                           |
+| [Kapowarr](https://github.com/Casvt/Kapowarr)                            | ![Kapowarr](https://img.shields.io/github/stars/Casvt/Kapowarr?style=flat) ![Kapowarr](https://img.shields.io/github/languages/top/Casvt/Kapowarr?style=flat)                                                       | Kapowarr is a software to build and manage a comic book library, fitting in the *arr suite of software.                                                                                                                                                                                                                          |
+| [Booksonic Air](https://github.com/popeen/Booksonic-Air)                 | ![Booksonic Air](https://img.shields.io/github/stars/popeen/Booksonic-Air?style=flat) ![Booksonic Air](https://img.shields.io/github/languages/top/popeen/Booksonic-Air?style=flat)                                 | A new Booksonic server based on Airsonic. - OBS: The code here might not be ready for release. Feel free to compile it yourself but if so I recommend searching for the latest commit with the description "Prepare for release"                                                                                                 |
+
+### Monitoring
+
+| Name                                                                          | Info                                                                                                                                                                                                                          | Description                                                                                                                                                                                                                                    |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Uptime Kuma](https://github.com/louislam/uptime-kuma)                        | ![Uptime Kuma](https://img.shields.io/github/stars/louislam/uptime-kuma?style=flat) ![Uptime Kuma](https://img.shields.io/github/languages/top/louislam/uptime-kuma?style=flat)                                               | A fancy self-hosted monitoring tool                                                                                                                                                                                                            |
+| [Netdata](https://github.com/netdata/netdata)                                 | ![Netdata](https://img.shields.io/github/stars/netdata/netdata?style=flat) ![Netdata](https://img.shields.io/github/languages/top/netdata/netdata?style=flat)                                                                 | The fastest path to AI-powered full stack observability, even for lean teams.                                                                                                                                                                  |
+| [Grafana](https://github.com/grafana/grafana)                                 | ![Grafana](https://img.shields.io/github/stars/grafana/grafana?style=flat) ![Grafana](https://img.shields.io/github/languages/top/grafana/grafana?style=flat)                                                                 | The open and composable observability and data visualization platform. Visualize metrics, logs, and traces from multiple sources like Prometheus, Loki, Elasticsearch, InfluxDB, Postgres and many more.                                       |
+| [Prometheus](https://github.com/prometheus/prometheus)                        | ![Prometheus](https://img.shields.io/github/stars/prometheus/prometheus?style=flat) ![Prometheus](https://img.shields.io/github/languages/top/prometheus/prometheus?style=flat)                                               | The Prometheus monitoring system and time series database.                                                                                                                                                                                     |
+| [Glances](https://github.com/nicolargo/glances)                               | ![Glances](https://img.shields.io/github/stars/nicolargo/glances?style=flat) ![Glances](https://img.shields.io/github/languages/top/nicolargo/glances?style=flat)                                                             | Glances an Eye on your system. A top/htop alternative for GNU/Linux, BSD, Mac OS and Windows operating systems.                                                                                                                                |
+| [Change Detection](https://github.com/dgtlmoon/changedetection.io)            | ![Change Detection](https://img.shields.io/github/stars/dgtlmoon/changedetection.io?style=flat) ![Change Detection](https://img.shields.io/github/languages/top/dgtlmoon/changedetection.io?style=flat)                       | Best and simplest tool for website change detection, web page monitoring, and website change alerts. Perfect for tracking content changes, price drops, restock alerts, and website defacement monitoring—all for free or enjoy our SaaS plan! |
+| [Beszel](https://github.com/henrygd/beszel)                                   | ![Beszel](https://img.shields.io/github/stars/henrygd/beszel?style=flat) ![Beszel](https://img.shields.io/github/languages/top/henrygd/beszel?style=flat)                                                                     | Lightweight server monitoring hub with historical data, docker stats, and alerts.                                                                                                                                                              |
+| [Cachet](https://github.com/cachethq/cachet)                                  | ![Cachet](https://img.shields.io/github/stars/cachethq/cachet?style=flat) ![Cachet](https://img.shields.io/github/languages/top/cachethq/cachet?style=flat)                                                                   | 🚦 Cachet, the open-source, self-hosted status page system.                                                                                                                                                                                    |
+| [Healthchecks](https://github.com/healthchecks/healthchecks)                  | ![Healthchecks](https://img.shields.io/github/stars/healthchecks/healthchecks?style=flat) ![Healthchecks](https://img.shields.io/github/languages/top/healthchecks/healthchecks?style=flat)                                   | Open-source cron job and background task monitoring service, written in Python & Django                                                                                                                                                        |
+| [highlight.io](https://github.com/highlight/highlight)                        | ![highlight.io](https://img.shields.io/github/stars/highlight/highlight?style=flat) ![highlight.io](https://img.shields.io/github/languages/top/highlight/highlight?style=flat)                                               | highlight.io: The open source, full-stack monitoring platform. Error monitoring, session replay, logging, distributed tracing, and more.                                                                                                       |
+| [HertzBeat](https://github.com/apache/hertzbeat)                              | ![HertzBeat](https://img.shields.io/github/stars/apache/hertzbeat?style=flat) ![HertzBeat](https://img.shields.io/github/languages/top/apache/hertzbeat?style=flat)                                                           | Real-time observability system with agentless, performance cluster, prometheus-compatible, custom monitoring and status page building capabilities.                                                                                            |
+| [Zabbix](https://github.com/zabbix/zabbix)                                    | ![Zabbix](https://img.shields.io/github/stars/zabbix/zabbix?style=flat) ![Zabbix](https://img.shields.io/github/languages/top/zabbix/zabbix?style=flat)                                                                       | Real-time monitoring of IT components and services, such as networks, servers, VMs, applications and the cloud.                                                                                                                                |
+| [LibreNMS](https://github.com/librenms/librenms)                              | ![LibreNMS](https://img.shields.io/github/stars/librenms/librenms?style=flat) ![LibreNMS](https://img.shields.io/github/languages/top/librenms/librenms?style=flat)                                                           | Community-based GPL-licensed network monitoring system                                                                                                                                                                                         |
+| [Errbit](https://github.com/errbit/errbit)                                    | ![Errbit](https://img.shields.io/github/stars/errbit/errbit?style=flat) ![Errbit](https://img.shields.io/github/languages/top/errbit/errbit?style=flat)                                                                       | The open source error catcher that's Airbrake API compliant                                                                                                                                                                                    |
+| [Open source APM and DataDog alternative](https://github.com/uptrace/uptrace) | ![Open source APM and DataDog alternative](https://img.shields.io/github/stars/uptrace/uptrace?style=flat) ![Open source APM and DataDog alternative](https://img.shields.io/github/languages/top/uptrace/uptrace?style=flat) | Open source APM: OpenTelemetry traces, metrics, and logs                                                                                                                                                                                       |
+| [Motion](https://github.com/Motion-Project/motion)                            | ![Motion](https://img.shields.io/github/stars/Motion-Project/motion?style=flat) ![Motion](https://img.shields.io/github/languages/top/Motion-Project/motion?style=flat)                                                       | Motion, a software motion detector.     Home page:  https://motion-project.github.io/                                                                                                                                                          |
+| [cState](https://github.com/cstate/cstate)                                    | ![cState](https://img.shields.io/github/stars/cstate/cstate?style=flat) ![cState](https://img.shields.io/github/languages/top/cstate/cstate?style=flat)                                                                       | 🔥 Open source static (serverless) status page. Uses hyperfast Go & Hugo, minimal HTML/CSS/JS, customizable, outstanding browser support (IE8+), preloaded CMS, read-only API, badges & more.                                                  |
+| [Nagios](https://github.com/NagiosEnterprises/nagioscore)                     | ![Nagios](https://img.shields.io/github/stars/NagiosEnterprises/nagioscore?style=flat) ![Nagios](https://img.shields.io/github/languages/top/NagiosEnterprises/nagioscore?style=flat)                                         | Nagios Core                                                                                                                                                                                                                                    |
+| [Homer](https://github.com/sipcapture/homer)                                  | ![Homer](https://img.shields.io/github/stars/sipcapture/homer?style=flat) ![Homer](https://img.shields.io/github/languages/top/sipcapture/homer?style=flat)                                                                   | HOMER - 100% Open-Source SIP, VoIP, RTC Packet Capture & Monitoring                                                                                                                                                                            |
+| [Doku](https://github.com/amerkurev/doku)                                     | ![Doku](https://img.shields.io/github/stars/amerkurev/doku?style=flat) ![Doku](https://img.shields.io/github/languages/top/amerkurev/doku?style=flat)                                                                         | 💽 Doku - Docker disk usage dashboard                                                                                                                                                                                                          |
+| [Monocker](https://github.com/petersem/monocker)                              | ![Monocker](https://img.shields.io/github/stars/petersem/monocker?style=flat) ![Monocker](https://img.shields.io/github/languages/top/petersem/monocker?style=flat)                                                           |                                                                                                                                                                                                                                                |
+
+### Networking
+
+| Name                                                | Info                                                                                                                                                                      | Description                                                                                                          |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| [Tailscale](https://github.com/tailscale/tailscale) | ![Tailscale](https://img.shields.io/github/stars/tailscale/tailscale?style=flat) ![Tailscale](https://img.shields.io/github/languages/top/tailscale/tailscale?style=flat) | The easiest, most secure way to use WireGuard and 2FA.                                                               |
+| [ZeroTier](https://github.com/zerotier/ZeroTierOne) | ![ZeroTier](https://img.shields.io/github/stars/zerotier/ZeroTierOne?style=flat) ![ZeroTier](https://img.shields.io/github/languages/top/zerotier/ZeroTierOne?style=flat) | A Smart Ethernet Switch for Earth                                                                                    |
+| [Netmaker](https://github.com/gravitl/netmaker)     | ![Netmaker](https://img.shields.io/github/stars/gravitl/netmaker?style=flat) ![Netmaker](https://img.shields.io/github/languages/top/gravitl/netmaker?style=flat)         | Netmaker makes networks with WireGuard. Netmaker automates fast, secure, and distributed virtual networks.           |
+| [iodine](https://github.com/yarrick/iodine)         | ![iodine](https://img.shields.io/github/stars/yarrick/iodine?style=flat) ![iodine](https://img.shields.io/github/languages/top/yarrick/iodine?style=flat)                 | Official git repo for iodine dns tunnel                                                                              |
+| [ntopng](https://github.com/ntop/ntopng)            | ![ntopng](https://img.shields.io/github/stars/ntop/ntopng?style=flat) ![ntopng](https://img.shields.io/github/languages/top/ntop/ntopng?style=flat)                       | Web-based Traffic and Security Network Traffic Monitoring                                                            |
+| [Tinyproxy](https://github.com/tinyproxy/tinyproxy) | ![Tinyproxy](https://img.shields.io/github/stars/tinyproxy/tinyproxy?style=flat) ![Tinyproxy](https://img.shields.io/github/languages/top/tinyproxy/tinyproxy?style=flat) | tinyproxy - a light-weight HTTP/HTTPS proxy daemon for POSIX operating systems                                       |
+| [innernet](https://github.com/tonarino/innernet)    | ![innernet](https://img.shields.io/github/stars/tonarino/innernet?style=flat) ![innernet](https://img.shields.io/github/languages/top/tonarino/innernet?style=flat)       | A private network system that uses WireGuard under the hood.                                                         |
+| [Redbird](https://github.com/OptimalBits/redbird)   | ![Redbird](https://img.shields.io/github/stars/OptimalBits/redbird?style=flat) ![Redbird](https://img.shields.io/github/languages/top/OptimalBits/redbird?style=flat)     | A modern reverse proxy for node                                                                                      |
+| [sish](https://github.com/antoniomika/sish)         | ![sish](https://img.shields.io/github/stars/antoniomika/sish?style=flat) ![sish](https://img.shields.io/github/languages/top/antoniomika/sish?style=flat)                 | HTTP(S)/WS(S)/TCP Tunnels to localhost using only SSH.                                                               |
+| [Squid](https://github.com/squid-cache/squid)       | ![Squid](https://img.shields.io/github/stars/squid-cache/squid?style=flat) ![Squid](https://img.shields.io/github/languages/top/squid-cache/squid?style=flat)             | Squid Web Proxy Cache                                                                                                |
+| [Wireguard](https://github.com/WireGuard/wireguard) | ![Wireguard](https://img.shields.io/github/stars/WireGuard/wireguard?style=flat) ![Wireguard](https://img.shields.io/github/languages/top/WireGuard/wireguard?style=flat) | Historical monolithic WireGuard repository, split into wireguard-tools, wireguard-linux, and wireguard-linux-compat. |
+| [SmokePing](https://github.com/oetiker/SmokePing)   | ![SmokePing](https://img.shields.io/github/stars/oetiker/SmokePing?style=flat) ![SmokePing](https://img.shields.io/github/languages/top/oetiker/SmokePing?style=flat)     | The Active Monitoring System                                                                                         |
+
+### PhotoManagement
+
+| Name                                                      | Info                                                                                                                                                                                  | Description                                                                                                                                                                                                                                                                                |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [immich](https://github.com/immich-app/immich)            | ![immich](https://img.shields.io/github/stars/immich-app/immich?style=flat) ![immich](https://img.shields.io/github/languages/top/immich-app/immich?style=flat)                       | High performance self-hosted photo and video management solution.                                                                                                                                                                                                                          |
+| [PhotoPrism](https://github.com/photoprism/photoprism)    | ![PhotoPrism](https://img.shields.io/github/stars/photoprism/photoprism?style=flat) ![PhotoPrism](https://img.shields.io/github/languages/top/photoprism/photoprism?style=flat)       | AI-Powered Photos App for the Decentralized Web 🌈💎✨                                                                                                                                                                                                                                      |
+| [Ente](https://github.com/ente-io/ente)                   | ![Ente](https://img.shields.io/github/stars/ente-io/ente?style=flat) ![Ente](https://img.shields.io/github/languages/top/ente-io/ente?style=flat)                                     | 🔒 End-to-end encrypted cloud for photos, videos and 2FA secrets.                                                                                                                                                                                                                          |
+| [LibrePhotos](https://github.com/LibrePhotos/librephotos) | ![LibrePhotos](https://img.shields.io/github/stars/LibrePhotos/librephotos?style=flat) ![LibrePhotos](https://img.shields.io/github/languages/top/LibrePhotos/librephotos?style=flat) | A self-hosted open source photo management service. This is the repository of the backend.                                                                                                                                                                                                 |
+| [Lychee](https://github.com/electerious/Lychee)           | ![Lychee](https://img.shields.io/github/stars/electerious/Lychee?style=flat) ![Lychee](https://img.shields.io/github/languages/top/electerious/Lychee?style=flat)                     | A great looking and easy-to-use photo-management-system you can run on your server, to manage and share photos.                                                                                                                                                                            |
+| [Photoview](https://github.com/photoview/photoview)       | ![Photoview](https://img.shields.io/github/stars/photoview/photoview?style=flat) ![Photoview](https://img.shields.io/github/languages/top/photoview/photoview?style=flat)             | Photo gallery for self-hosted personal servers                                                                                                                                                                                                                                             |
+| [Expose](https://github.com/Jack000/Expose)               | ![Expose](https://img.shields.io/github/stars/Jack000/Expose?style=flat) ![Expose](https://img.shields.io/github/languages/top/Jack000/Expose?style=flat)                             | A simple static site generator for photoessays                                                                                                                                                                                                                                             |
+| [Piwigo](https://github.com/Piwigo/Piwigo)                | ![Piwigo](https://img.shields.io/github/stars/Piwigo/Piwigo?style=flat) ![Piwigo](https://img.shields.io/github/languages/top/Piwigo/Piwigo?style=flat)                               | Manage your photos with Piwigo, a full featured open source photo gallery application for the web. Star us on Github! More than 200 plugins and themes available. Join us and contribute!                                                                                                  |
+| [PiGallery 2](https://github.com/bpatrik/pigallery2)      | ![PiGallery 2](https://img.shields.io/github/stars/bpatrik/pigallery2?style=flat) ![PiGallery 2](https://img.shields.io/github/languages/top/bpatrik/pigallery2?style=flat)           | A fast directory-first photo gallery website, with rich UI,  optimized for running on low resource servers (especially on raspberry pi)                                                                                                                                                    |
+| [Photonix](https://github.com/photonixapp/photonix)       | ![Photonix](https://img.shields.io/github/stars/photonixapp/photonix?style=flat) ![Photonix](https://img.shields.io/github/languages/top/photonixapp/photonix?style=flat)             | A modern, web-based photo management server. Run it on your home server and it will let you find the right photo from your collection on any device. Smart filtering is made possible by object recognition, face recognition, location awareness, color analysis and other ML algorithms. |
+| [HomeGallery](https://github.com/xemle/home-gallery)      | ![HomeGallery](https://img.shields.io/github/stars/xemle/home-gallery?style=flat) ![HomeGallery](https://img.shields.io/github/languages/top/xemle/home-gallery?style=flat)           | Self-hosted open-source web gallery to view your photos and videos featuring mobile-friendly, tagging and AI powered image discovery                                                                                                                                                       |
+
+### RSS
+
+| Name                                                     | Info                                                                                                                                                                            | Description                                                                                                                         |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| [RSSHub](https://github.com/DIYgod/RSSHub)               | ![RSSHub](https://img.shields.io/github/stars/DIYgod/RSSHub?style=flat) ![RSSHub](https://img.shields.io/github/languages/top/DIYgod/RSSHub?style=flat)                         | 🧡 Everything is RSSible                                                                                                            |
+| [FreshRSS](https://github.com/FreshRSS/FreshRSS)         | ![FreshRSS](https://img.shields.io/github/stars/FreshRSS/FreshRSS?style=flat) ![FreshRSS](https://img.shields.io/github/languages/top/FreshRSS/FreshRSS?style=flat)             | A free, self-hostable news aggregator…                                                                                              |
+| [RSS-Bridge](https://github.com/RSS-Bridge/rss-bridge)   | ![RSS-Bridge](https://img.shields.io/github/stars/RSS-Bridge/rss-bridge?style=flat) ![RSS-Bridge](https://img.shields.io/github/languages/top/RSS-Bridge/rss-bridge?style=flat) | The RSS feed for websites missing it                                                                                                |
+| [Miniflux](https://github.com/miniflux/v2)               | ![Miniflux](https://img.shields.io/github/stars/miniflux/v2?style=flat) ![Miniflux](https://img.shields.io/github/languages/top/miniflux/v2?style=flat)                         | Minimalist and opinionated feed reader                                                                                              |
+| [NewsBlur](https://github.com/samuelclay/NewsBlur)       | ![NewsBlur](https://img.shields.io/github/stars/samuelclay/NewsBlur?style=flat) ![NewsBlur](https://img.shields.io/github/languages/top/samuelclay/NewsBlur?style=flat)         | NewsBlur is a personal news reader that brings people together to talk about the world. A new sound of an old instrument.           |
+| [CommaFeed](https://github.com/Athou/commafeed)          | ![CommaFeed](https://img.shields.io/github/stars/Athou/commafeed?style=flat) ![CommaFeed](https://img.shields.io/github/languages/top/Athou/commafeed?style=flat)               | Google Reader inspired self-hosted personal RSS reader.                                                                             |
+| [RSS](https://github.com/ssddanbrown/rss)                | ![RSS](https://img.shields.io/github/stars/ssddanbrown/rss?style=flat) ![RSS](https://img.shields.io/github/languages/top/ssddanbrown/rss?style=flat)                           | PROJECT MIGRATED TO CODEBERG -- A simple twitter-feed-style RSS aggregator written in PHP, Laravel, Inertia.js, Tailwind and Vue.js |
+| [Tiny Tiny RSS](https://gitlab.tt-rss.org/tt-rss/tt-rss) |                                                                                                                                                                                 |                                                                                                                                     |
+| [Feedbin](https://github.com/feedbin/feedbin)            | ![Feedbin](https://img.shields.io/github/stars/feedbin/feedbin?style=flat) ![Feedbin](https://img.shields.io/github/languages/top/feedbin/feedbin?style=flat)                   | A nice place to read on the web.                                                                                                    |
+| [Selfoss](https://github.com/fossar/selfoss)             | ![Selfoss](https://img.shields.io/github/stars/fossar/selfoss?style=flat) ![Selfoss](https://img.shields.io/github/languages/top/fossar/selfoss?style=flat)                     | multipurpose rss reader, live stream, mashup, aggregation web application                                                           |
+| [Fusion](https://github.com/0x2E/fusion)                 | ![Fusion](https://img.shields.io/github/stars/0x2E/fusion?style=flat) ![Fusion](https://img.shields.io/github/languages/top/0x2E/fusion?style=flat)                             | A lightweight, self-hosted friendly RSS reader                                                                                      |
+
+### Security
+
+| Name                                                                                  | Info                                                                                                                                                                                                                                          | Description                                                                                                                                           |
+| ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [vaultwarden](https://github.com/dani-garcia/vaultwarden)                             | ![vaultwarden](https://img.shields.io/github/stars/dani-garcia/vaultwarden?style=flat) ![vaultwarden](https://img.shields.io/github/languages/top/dani-garcia/vaultwarden?style=flat)                                                         | Unofficial Bitwarden compatible server written in Rust, formerly known as bitwarden_rs                                                                |
+| [Keycloak](https://github.com/keycloak/keycloak)                                      | ![Keycloak](https://img.shields.io/github/stars/keycloak/keycloak?style=flat) ![Keycloak](https://img.shields.io/github/languages/top/keycloak/keycloak?style=flat)                                                                           | Open Source Identity and Access Management For Modern Applications and Services                                                                       |
+| [Personal Security Checklist](https://github.com/Lissy93/personal-security-checklist) | ![Personal Security Checklist](https://img.shields.io/github/stars/Lissy93/personal-security-checklist?style=flat) ![Personal Security Checklist](https://img.shields.io/github/languages/top/Lissy93/personal-security-checklist?style=flat) | 🔒 A compiled checklist of 300+ tips for protecting digital security and privacy in 2024                                                              |
+| [Bitwarden](https://github.com/bitwarden/server)                                      | ![Bitwarden](https://img.shields.io/github/stars/bitwarden/server?style=flat) ![Bitwarden](https://img.shields.io/github/languages/top/bitwarden/server?style=flat)                                                                           | Bitwarden infrastructure/backend (API, database, Docker, etc).                                                                                        |
+| [Wazuh](https://github.com/wazuh/wazuh)                                               | ![Wazuh](https://img.shields.io/github/stars/wazuh/wazuh?style=flat) ![Wazuh](https://img.shields.io/github/languages/top/wazuh/wazuh?style=flat)                                                                                             | Wazuh - The Open Source Security Platform. Unified XDR and SIEM protection for endpoints and cloud workloads.                                         |
+| [KeeWeb](https://github.com/keeweb/keeweb)                                            | ![KeeWeb](https://img.shields.io/github/stars/keeweb/keeweb?style=flat) ![KeeWeb](https://img.shields.io/github/languages/top/keeweb/keeweb?style=flat)                                                                                       | Free cross-platform password manager compatible with KeePass                                                                                          |
+| [Vuls](https://github.com/future-architect/vuls)                                      | ![Vuls](https://img.shields.io/github/stars/future-architect/vuls?style=flat) ![Vuls](https://img.shields.io/github/languages/top/future-architect/vuls?style=flat)                                                                           | Agent-less vulnerability scanner for Linux, FreeBSD, Container, WordPress, Programming language libraries, Network devices                            |
+| [bunkerized-nginx](https://github.com/bunkerity/bunkerweb)                            | ![bunkerized-nginx](https://img.shields.io/github/stars/bunkerity/bunkerweb?style=flat) ![bunkerized-nginx](https://img.shields.io/github/languages/top/bunkerity/bunkerweb?style=flat)                                                       | 🛡️ Open-source and next-generation Web Application Firewall (WAF)                                                                                    |
+| [OpenCTI](https://github.com/OpenCTI-Platform/opencti)                                | ![OpenCTI](https://img.shields.io/github/stars/OpenCTI-Platform/opencti?style=flat) ![OpenCTI](https://img.shields.io/github/languages/top/OpenCTI-Platform/opencti?style=flat)                                                               | Open Cyber Threat Intelligence Platform                                                                                                               |
+| [Passbolt](https://github.com/passbolt/passbolt_api)                                  | ![Passbolt](https://img.shields.io/github/stars/passbolt/passbolt_api?style=flat) ![Passbolt](https://img.shields.io/github/languages/top/passbolt/passbolt_api?style=flat)                                                                   | Passbolt Community Edition (CE) API. The JSON API for the open source password manager for teams!                                                     |
+| [TheHive](https://github.com/TheHive-Project/TheHive)                                 | ![TheHive](https://img.shields.io/github/stars/TheHive-Project/TheHive?style=flat) ![TheHive](https://img.shields.io/github/languages/top/TheHive-Project/TheHive?style=flat)                                                                 | TheHive: a Scalable, Open Source and Free Security Incident Response Platform                                                                         |
+| [2FAuth](https://github.com/Bubka/2FAuth)                                             | ![2FAuth](https://img.shields.io/github/stars/Bubka/2FAuth?style=flat) ![2FAuth](https://img.shields.io/github/languages/top/Bubka/2FAuth?style=flat)                                                                                         | A Web app to manage your Two-Factor Authentication (2FA) accounts and generate their security codes                                                   |
+| [SWAG](https://github.com/linuxserver/docker-swag)                                    | ![SWAG](https://img.shields.io/github/stars/linuxserver/docker-swag?style=flat) ![SWAG](https://img.shields.io/github/languages/top/linuxserver/docker-swag?style=flat)                                                                       | Nginx webserver and reverse proxy with php support and a built-in Certbot (Let's Encrypt) client. It also contains fail2ban for intrusion prevention. |
+| [Padloc](https://github.com/padloc/padloc)                                            | ![Padloc](https://img.shields.io/github/stars/padloc/padloc?style=flat) ![Padloc](https://img.shields.io/github/languages/top/padloc/padloc?style=flat)                                                                                       | A modern, open source password manager for individuals and teams.                                                                                     |
+| [King Phisher](https://github.com/rsmusllp/king-phisher)                              | ![King Phisher](https://img.shields.io/github/stars/rsmusllp/king-phisher?style=flat) ![King Phisher](https://img.shields.io/github/languages/top/rsmusllp/king-phisher?style=flat)                                                           | Phishing Campaign Toolkit                                                                                                                             |
+| [FreeRADIUS](https://github.com/FreeRADIUS/freeradius-server)                         | ![FreeRADIUS](https://img.shields.io/github/stars/FreeRADIUS/freeradius-server?style=flat) ![FreeRADIUS](https://img.shields.io/github/languages/top/FreeRADIUS/freeradius-server?style=flat)                                                 | FreeRADIUS - A multi-protocol policy server.                                                                                                          |
+| [Maza ad blocking](https://github.com/tanrax/maza-ad-blocking)                        | ![Maza ad blocking](https://img.shields.io/github/stars/tanrax/maza-ad-blocking?style=flat) ![Maza ad blocking](https://img.shields.io/github/languages/top/tanrax/maza-ad-blocking?style=flat)                                               | Simple, native and efficient local ad blocker. Only Bash.                                                                                             |
+| [Teampass](https://github.com/nilsteampassnet/TeamPass)                               | ![Teampass](https://img.shields.io/github/stars/nilsteampassnet/TeamPass?style=flat) ![Teampass](https://img.shields.io/github/languages/top/nilsteampassnet/TeamPass?style=flat)                                                             | Collaborative Passwords Manager                                                                                                                       |
+| [Cortex](https://github.com/TheHive-Project/Cortex)                                   | ![Cortex](https://img.shields.io/github/stars/TheHive-Project/Cortex?style=flat) ![Cortex](https://img.shields.io/github/languages/top/TheHive-Project/Cortex?style=flat)                                                                     | Cortex: a Powerful Observable Analysis and Active Response Engine                                                                                     |
+| [GoCrack](https://github.com/mandiant/gocrack)                                        | ![GoCrack](https://img.shields.io/github/stars/mandiant/gocrack?style=flat) ![GoCrack](https://img.shields.io/github/languages/top/mandiant/gocrack?style=flat)                                                                               | GoCrack is a management frontend for password cracking tools written in Go                                                                            |
+
+### SocialMedia
+
+| Name                                                                         | Info                                                                                                                                                                                                                                            | Description                                                                                                                                                                                                                                                                  |
+| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Mastodon](https://github.com/mastodon/mastodon)                             | ![Mastodon](https://img.shields.io/github/stars/mastodon/mastodon?style=flat) ![Mastodon](https://img.shields.io/github/languages/top/mastodon/mastodon?style=flat)                                                                             | Your self-hosted, globally interconnected microblogging community                                                                                                                                                                                                            |
+| [Diaspora](https://github.com/diaspora/diaspora)                             | ![Diaspora](https://img.shields.io/github/stars/diaspora/diaspora?style=flat) ![Diaspora](https://img.shields.io/github/languages/top/diaspora/diaspora?style=flat)                                                                             | A privacy-aware, distributed, open source social network.                                                                                                                                                                                                                    |
+| [Nitter](https://github.com/zedeus/nitter)                                   | ![Nitter](https://img.shields.io/github/stars/zedeus/nitter?style=flat) ![Nitter](https://img.shields.io/github/languages/top/zedeus/nitter?style=flat)                                                                                         | Alternative Twitter front-end                                                                                                                                                                                                                                                |
+| [Misskey](https://github.com/misskey-dev/misskey)                            | ![Misskey](https://img.shields.io/github/stars/misskey-dev/misskey?style=flat) ![Misskey](https://img.shields.io/github/languages/top/misskey-dev/misskey?style=flat)                                                                           | 🌎 A completely free and open interplanetary-microblogging platform 🚀                                                                                                                                                                                                       |
+| [PixelFed](https://github.com/pixelfed/pixelfed)                             | ![PixelFed](https://img.shields.io/github/stars/pixelfed/pixelfed?style=flat) ![PixelFed](https://img.shields.io/github/languages/top/pixelfed/pixelfed?style=flat)                                                                             | Photo Sharing. For Everyone.                                                                                                                                                                                                                                                 |
+| [HumHub](https://github.com/humhub/humhub)                                   | ![HumHub](https://img.shields.io/github/stars/humhub/humhub?style=flat) ![HumHub](https://img.shields.io/github/languages/top/humhub/humhub?style=flat)                                                                                         | HumHub is an Open Source Enterprise Social Network. Easy to install, intuitive to use and extendable with countless freely available modules.                                                                                                                                |
+| [Isso](https://github.com/isso-comments/isso)                                | ![Isso](https://img.shields.io/github/stars/isso-comments/isso?style=flat) ![Isso](https://img.shields.io/github/languages/top/isso-comments/isso?style=flat)                                                                                   | a Disqus alternative                                                                                                                                                                                                                                                         |
+| [Libreddit](https://github.com/libreddit/libreddit)                          | ![Libreddit](https://img.shields.io/github/stars/libreddit/libreddit?style=flat) ![Libreddit](https://img.shields.io/github/languages/top/libreddit/libreddit?style=flat)                                                                       | Private front-end for Reddit                                                                                                                                                                                                                                                 |
+| [ThinkUp](https://github.com/ThinkUpLLC/ThinkUp)                             | ![ThinkUp](https://img.shields.io/github/stars/ThinkUpLLC/ThinkUp?style=flat) ![ThinkUp](https://img.shields.io/github/languages/top/ThinkUpLLC/ThinkUp?style=flat)                                                                             | ThinkUp gives you insights into your social networking activity on Twitter, Facebook, Instagram, and beyond.                                                                                                                                                                 |
+| [Vanilla Forums](https://github.com/vanilla/vanilla)                         | ![Vanilla Forums](https://img.shields.io/github/stars/vanilla/vanilla?style=flat) ![Vanilla Forums](https://img.shields.io/github/languages/top/vanilla/vanilla?style=flat)                                                                     | Vanilla is a powerfully simple discussion forum you can easily customize to make as unique as your community.                                                                                                                                                                |
+| [Misago](https://github.com/rafalp/Misago)                                   | ![Misago](https://img.shields.io/github/stars/rafalp/Misago?style=flat) ![Misago](https://img.shields.io/github/languages/top/rafalp/Misago?style=flat)                                                                                         | Misago is fully featured modern forum application that is fast, scalable and responsive.                                                                                                                                                                                     |
+| [flaskbb](https://github.com/flaskbb/flaskbb)                                | ![flaskbb](https://img.shields.io/github/stars/flaskbb/flaskbb?style=flat) ![flaskbb](https://img.shields.io/github/languages/top/flaskbb/flaskbb?style=flat)                                                                                   | A classic Forum Software in Python using Flask.                                                                                                                                                                                                                              |
+| [Mixpost](https://github.com/inovector/mixpost)                              | ![Mixpost](https://img.shields.io/github/stars/inovector/mixpost?style=flat) ![Mixpost](https://img.shields.io/github/languages/top/inovector/mixpost?style=flat)                                                                               | 📅 Schedule, 📢 publish, and ⚡ manage your social media content on your server. No subscriptions, no limits. (Buffer alternative)                                                                                                                                            |
+| [Bootcamp](https://github.com/vitorfs/bootcamp)                              | ![Bootcamp](https://img.shields.io/github/stars/vitorfs/bootcamp?style=flat) ![Bootcamp](https://img.shields.io/github/languages/top/vitorfs/bootcamp?style=flat)                                                                               | An enterprise social network                                                                                                                                                                                                                                                 |
+| [Pump.io](https://github.com/pump-io/pump.io)                                | ![Pump.io](https://img.shields.io/github/stars/pump-io/pump.io?style=flat) ![Pump.io](https://img.shields.io/github/languages/top/pump-io/pump.io?style=flat)                                                                                   | Social server with an ActivityStreams API                                                                                                                                                                                                                                    |
+| [Coral](https://github.com/coralproject/talk)                                | ![Coral](https://img.shields.io/github/stars/coralproject/talk?style=flat) ![Coral](https://img.shields.io/github/languages/top/coralproject/talk?style=flat)                                                                                   | A better commenting experience from Vox Media                                                                                                                                                                                                                                |
+| [Elgg](https://github.com/Elgg/Elgg)                                         | ![Elgg](https://img.shields.io/github/stars/Elgg/Elgg?style=flat) ![Elgg](https://img.shields.io/github/languages/top/Elgg/Elgg?style=flat)                                                                                                     | A social networking engine in PHP/MySQL                                                                                                                                                                                                                                      |
+| [Friendica](https://github.com/friendica/friendica)                          | ![Friendica](https://img.shields.io/github/stars/friendica/friendica?style=flat) ![Friendica](https://img.shields.io/github/languages/top/friendica/friendica?style=flat)                                                                       | Friendica Communications Platform                                                                                                                                                                                                                                            |
+| [Thredded](https://github.com/thredded/thredded)                             | ![Thredded](https://img.shields.io/github/stars/thredded/thredded?style=flat) ![Thredded](https://img.shields.io/github/languages/top/thredded/thredded?style=flat)                                                                             | The best Rails forums engine ever.                                                                                                                                                                                                                                           |
+| [twister](https://github.com/miguelfreitas/twister-core)                     | ![twister](https://img.shields.io/github/stars/miguelfreitas/twister-core?style=flat) ![twister](https://img.shields.io/github/languages/top/miguelfreitas/twister-core?style=flat)                                                             | twister core / daemon                                                                                                                                                                                                                                                        |
+| [Socioboard](https://github.com/socioboard/Socioboard-5.0)                   | ![Socioboard](https://img.shields.io/github/stars/socioboard/Socioboard-5.0?style=flat) ![Socioboard](https://img.shields.io/github/languages/top/socioboard/Socioboard-5.0?style=flat)                                                         | Socioboard is world's first and open source Social Technology Enabler. Socioboard Core is our flagship product.                                                                                                                                                              |
+| [MyBB](https://github.com/mybb/mybb)                                         | ![MyBB](https://img.shields.io/github/stars/mybb/mybb?style=flat) ![MyBB](https://img.shields.io/github/languages/top/mybb/mybb?style=flat)                                                                                                     | MyBB is a free and open source forum software.                                                                                                                                                                                                                               |
+| [OSSN](https://github.com/opensource-socialnetwork/opensource-socialnetwork) | ![OSSN](https://img.shields.io/github/stars/opensource-socialnetwork/opensource-socialnetwork?style=flat) ![OSSN](https://img.shields.io/github/languages/top/opensource-socialnetwork/opensource-socialnetwork?style=flat)                     | Opensource-Socialnetwork (OSSN) is a powerful open-source social networking software developed in PHP. It enables you to create a fully functional social networking website that fosters community engagement and helps your members form meaningful social relationships.  |
+| [Pleroma](https://git.pleroma.social/pleroma/pleroma)                        | ![Pleroma](https://img.shields.io/gitlab/stars/pleroma%2Fpleroma?style=flat&gitlab_url=https://git.pleroma.social) ![Pleroma](https://img.shields.io/gitlab/languages/count/pleroma%2Fpleroma?style=flat&gitlab_url=https://git.pleroma.social) | Pleroma backend                                                                                                                                                                                                                                                              |
+| [GoToSocial](https://github.com/superseriousbusiness/gotosocial)             | ![GoToSocial](https://img.shields.io/github/stars/superseriousbusiness/gotosocial?style=flat) ![GoToSocial](https://img.shields.io/github/languages/top/superseriousbusiness/gotosocial?style=flat)                                             |                                                                                                                                                                                                                                                                              |
+| [Known](https://github.com/idno/known)                                       | ![Known](https://img.shields.io/github/stars/idno/known?style=flat) ![Known](https://img.shields.io/github/languages/top/idno/known?style=flat)                                                                                                 | A social publishing platform.                                                                                                                                                                                                                                                |
+
+### Syncing
+
+| Name                                                                  | Info                                                                                                                                                                                                          | Description                                                                           |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| [Syncthing](https://github.com/syncthing/syncthing)                   | ![Syncthing](https://img.shields.io/github/stars/syncthing/syncthing?style=flat) ![Syncthing](https://img.shields.io/github/languages/top/syncthing/syncthing?style=flat)                                     | Open Source Continuous File Synchronization                                           |
+| [Radicale](https://github.com/Kozea/Radicale)                         | ![Radicale](https://img.shields.io/github/stars/Kozea/Radicale?style=flat) ![Radicale](https://img.shields.io/github/languages/top/Kozea/Radicale?style=flat)                                                 | A simple CalDAV (calendar) and CardDAV (contact) server.                              |
+| [Firefox Sync Server](https://github.com/mozilla-services/syncserver) | ![Firefox Sync Server](https://img.shields.io/github/stars/mozilla-services/syncserver?style=flat) ![Firefox Sync Server](https://img.shields.io/github/languages/top/mozilla-services/syncserver?style=flat) | Run-Your-Own Firefox Sync Server                                                      |
+| [xBrowserSync](https://github.com/xbrowsersync/app)                   | ![xBrowserSync](https://img.shields.io/github/stars/xbrowsersync/app?style=flat) ![xBrowserSync](https://img.shields.io/github/languages/top/xbrowsersync/app?style=flat)                                     | xBrowserSync browser extensions / mobile app                                          |
+| [Baikal](https://github.com/ckulka/baikal-docker)                     | ![Baikal](https://img.shields.io/github/stars/ckulka/baikal-docker?style=flat) ![Baikal](https://img.shields.io/github/languages/top/ckulka/baikal-docker?style=flat)                                         | Provides a ready-to-go Baikal server, incl. docker-compose.yml & Systemd service file |
+
+### Tools
+
+| Name                                                                 | Info                                                                                                                                                                                                        | Description                                                                                                                                                                                                                                                              |
+| -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [RustDesk](https://github.com/rustdesk/rustdesk)                     | ![RustDesk](https://img.shields.io/github/stars/rustdesk/rustdesk?style=flat) ![RustDesk](https://img.shields.io/github/languages/top/rustdesk/rustdesk?style=flat)                                         | An open-source remote desktop application designed for self-hosting, as an alternative to TeamViewer.                                                                                                                                                                    |
+| [Postwoman](https://github.com/hoppscotch/hoppscotch)                | ![Postwoman](https://img.shields.io/github/stars/hoppscotch/hoppscotch?style=flat) ![Postwoman](https://img.shields.io/github/languages/top/hoppscotch/hoppscotch?style=flat)                               | Open-Source API Development Ecosystem • https://hoppscotch.io • Offline, On-Prem & Cloud • Web, Desktop & CLI • Open-Source Alternative to Postman, Insomnia                                                                                                             |
+| [revealjs](https://github.com/hakimel/reveal.js)                     | ![revealjs](https://img.shields.io/github/stars/hakimel/reveal.js?style=flat) ![revealjs](https://img.shields.io/github/languages/top/hakimel/reveal.js?style=flat)                                         | The HTML Presentation Framework                                                                                                                                                                                                                                          |
+| [Stirling-PDF](https://github.com/Stirling-Tools/Stirling-PDF)       | ![Stirling-PDF](https://img.shields.io/github/stars/Stirling-Tools/Stirling-PDF?style=flat) ![Stirling-PDF](https://img.shields.io/github/languages/top/Stirling-Tools/Stirling-PDF?style=flat)             | #1 Locally hosted web application that allows you to perform various operations on PDF files                                                                                                                                                                             |
+| [Penpot](https://github.com/penpot/penpot)                           | ![Penpot](https://img.shields.io/github/stars/penpot/penpot?style=flat) ![Penpot](https://img.shields.io/github/languages/top/penpot/penpot?style=flat)                                                     | Penpot: The open-source design tool for design and code collaboration                                                                                                                                                                                                    |
+| [ToolJet](https://github.com/ToolJet/ToolJet)                        | ![ToolJet](https://img.shields.io/github/stars/ToolJet/ToolJet?style=flat) ![ToolJet](https://img.shields.io/github/languages/top/ToolJet/ToolJet?style=flat)                                               | ToolJet is the open-source foundation of ToolJet AI - the AI-native platform for building internal tools, dashboard, business applications, workflows and AI agents 🚀                                                                                                   |
+| [IT-Tools](https://github.com/CorentinTh/it-tools)                   | ![IT-Tools](https://img.shields.io/github/stars/CorentinTh/it-tools?style=flat) ![IT-Tools](https://img.shields.io/github/languages/top/CorentinTh/it-tools?style=flat)                                     | Collection of handy online tools for developers, with great UX.                                                                                                                                                                                                          |
+| [CyberChef](https://github.com/gchq/CyberChef)                       | ![CyberChef](https://img.shields.io/github/stars/gchq/CyberChef?style=flat) ![CyberChef](https://img.shields.io/github/languages/top/gchq/CyberChef?style=flat)                                             | The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis                                                                                                                                                                           |
+| [Hoarder](https://github.com/hoarder-app/hoarder)                    | ![Hoarder](https://img.shields.io/github/stars/hoarder-app/hoarder?style=flat) ![Hoarder](https://img.shields.io/github/languages/top/hoarder-app/hoarder?style=flat)                                       | A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search                                                                                                                                                   |
+| [ActivityWatch](https://github.com/ActivityWatch/activitywatch)      | ![ActivityWatch](https://img.shields.io/github/stars/ActivityWatch/activitywatch?style=flat) ![ActivityWatch](https://img.shields.io/github/languages/top/ActivityWatch/activitywatch?style=flat)           | The best free and open-source automated time tracker. Cross-platform, extensible, privacy-focused.                                                                                                                                                                       |
+| [Gotify](https://github.com/gotify/server)                           | ![Gotify](https://img.shields.io/github/stars/gotify/server?style=flat) ![Gotify](https://img.shields.io/github/languages/top/gotify/server?style=flat)                                                     | A simple server for sending and receiving messages in real-time per WebSocket. (Includes a sleek web-ui)                                                                                                                                                                 |
+| [Habitica](https://github.com/HabitRPG/habitica)                     | ![Habitica](https://img.shields.io/github/stars/HabitRPG/habitica?style=flat) ![Habitica](https://img.shields.io/github/languages/top/HabitRPG/habitica?style=flat)                                         | A habit tracker app which treats your goals like a Role Playing Game.                                                                                                                                                                                                    |
+| [YOURLS](https://github.com/YOURLS/YOURLS)                           | ![YOURLS](https://img.shields.io/github/stars/YOURLS/YOURLS?style=flat) ![YOURLS](https://img.shields.io/github/languages/top/YOURLS/YOURLS?style=flat)                                                     | 🔗 The 𝘥𝘦 𝘧𝘢𝘤𝘵𝘰 standard, self hosted, powerful and customizable, URL shortener in PHP                                                                                                                                                                            |
+| [Shiori](https://github.com/go-shiori/shiori)                        | ![Shiori](https://img.shields.io/github/stars/go-shiori/shiori?style=flat) ![Shiori](https://img.shields.io/github/languages/top/go-shiori/shiori?style=flat)                                               | Simple bookmark manager built with Go                                                                                                                                                                                                                                    |
+| [Kutt](https://github.com/thedevs-network/kutt)                      | ![Kutt](https://img.shields.io/github/stars/thedevs-network/kutt?style=flat) ![Kutt](https://img.shields.io/github/languages/top/thedevs-network/kutt?style=flat)                                           | Free Modern URL Shortener.                                                                                                                                                                                                                                               |
+| [Grist](https://github.com/gristlabs/grist-core)                     | ![Grist](https://img.shields.io/github/stars/gristlabs/grist-core?style=flat) ![Grist](https://img.shields.io/github/languages/top/gristlabs/grist-core?style=flat)                                         | Grist is the evolution of spreadsheets.                                                                                                                                                                                                                                  |
+| [Centrifugo](https://github.com/centrifugal/centrifugo)              | ![Centrifugo](https://img.shields.io/github/stars/centrifugal/centrifugo?style=flat) ![Centrifugo](https://img.shields.io/github/languages/top/centrifugal/centrifugo?style=flat)                           | Scalable real-time messaging server in a language-agnostic way. Self-hosted alternative to Pubnub, Pusher, Ably, socket.io. Set up once and forever.                                                                                                                     |
+| [Tandoor Recipes](https://github.com/TandoorRecipes/recipes)         | ![Tandoor Recipes](https://img.shields.io/github/stars/TandoorRecipes/recipes?style=flat) ![Tandoor Recipes](https://img.shields.io/github/languages/top/TandoorRecipes/recipes?style=flat)                 | Application for managing recipes, planning meals, building shopping lists and much much more!                                                                                                                                                                            |
+| [TeslaMate](https://github.com/teslamate-org/teslamate)              | ![TeslaMate](https://img.shields.io/github/stars/teslamate-org/teslamate?style=flat) ![TeslaMate](https://img.shields.io/github/languages/top/teslamate-org/teslamate?style=flat)                           | A self-hosted data logger for your Tesla  🚘 [main maintainer=@JakobLichterfeld]                                                                                                                                                                                         |
+| [Snapcast](https://github.com/badaix/snapcast)                       | ![Snapcast](https://img.shields.io/github/stars/badaix/snapcast?style=flat) ![Snapcast](https://img.shields.io/github/languages/top/badaix/snapcast?style=flat)                                             | Synchronous multiroom audio player                                                                                                                                                                                                                                       |
+| [OS.js](https://github.com/os-js/OS.js)                              | ![OS.js](https://img.shields.io/github/stars/os-js/OS.js?style=flat) ![OS.js](https://img.shields.io/github/languages/top/os-js/OS.js?style=flat)                                                           | OS.js - JavaScript Web Desktop Platform                                                                                                                                                                                                                                  |
+| [GateOne](https://github.com/liftoff/GateOne)                        | ![GateOne](https://img.shields.io/github/stars/liftoff/GateOne?style=flat) ![GateOne](https://img.shields.io/github/languages/top/liftoff/GateOne?style=flat)                                               | Gate One is an HTML5-powered terminal emulator and SSH client                                                                                                                                                                                                            |
+| [ONLYOFFICE](https://github.com/ONLYOFFICE/DocumentServer)           | ![ONLYOFFICE](https://img.shields.io/github/stars/ONLYOFFICE/DocumentServer?style=flat) ![ONLYOFFICE](https://img.shields.io/github/languages/top/ONLYOFFICE/DocumentServer?style=flat)                     | ONLYOFFICE Docs is a free collaborative online office suite comprising viewers and editors for texts, spreadsheets and presentations, forms and PDF, fully compatible with Office Open XML formats: .docx, .xlsx, .pptx and enabling collaborative editing in real time. |
+| [Sink](https://github.com/ccbikai/sink)                              | ![Sink](https://img.shields.io/github/stars/ccbikai/sink?style=flat) ![Sink](https://img.shields.io/github/languages/top/ccbikai/sink?style=flat)                                                           | ⚡ A Simple / Speedy / Secure Link Shortener with Analytics, 100% run on Cloudflare.                                                                                                                                                                                      |
+| [Polr](https://github.com/cydrobolt/polr)                            | ![Polr](https://img.shields.io/github/stars/cydrobolt/polr?style=flat) ![Polr](https://img.shields.io/github/languages/top/cydrobolt/polr?style=flat)                                                       | :aerial_tramway: A modern, powerful, and robust URL shortener                                                                                                                                                                                                            |
+| [Shlink](https://github.com/shlinkio/shlink)                         | ![Shlink](https://img.shields.io/github/stars/shlinkio/shlink?style=flat) ![Shlink](https://img.shields.io/github/languages/top/shlinkio/shlink?style=flat)                                                 | The definitive self-hosted URL shortener                                                                                                                                                                                                                                 |
+| [UpSnap](https://github.com/seriousm4x/UpSnap)                       | ![UpSnap](https://img.shields.io/github/stars/seriousm4x/UpSnap?style=flat) ![UpSnap](https://img.shields.io/github/languages/top/seriousm4x/UpSnap?style=flat)                                             | A simple wake on lan web app written with SvelteKit, Go and PocketBase.                                                                                                                                                                                                  |
+| [Nullboard](https://github.com/apankrat/nullboard)                   | ![Nullboard](https://img.shields.io/github/stars/apankrat/nullboard?style=flat) ![Nullboard](https://img.shields.io/github/languages/top/apankrat/nullboard?style=flat)                                     | Nullboard is a minimalist kanban board, focused on compactness and readability.                                                                                                                                                                                          |
+| [MicroBin](https://github.com/szabodanika/microbin)                  | ![MicroBin](https://img.shields.io/github/stars/szabodanika/microbin?style=flat) ![MicroBin](https://img.shields.io/github/languages/top/szabodanika/microbin?style=flat)                                   | A secure, configurable file-sharing and URL shortening web app written in Rust.                                                                                                                                                                                          |
+| [osTicket](https://github.com/osTicket/osTicket)                     | ![osTicket](https://img.shields.io/github/stars/osTicket/osTicket?style=flat) ![osTicket](https://img.shields.io/github/languages/top/osTicket/osTicket?style=flat)                                         | The osTicket open source ticketing system official project repository, for versions 1.8 and later                                                                                                                                                                        |
+| [Moodist](https://github.com/remvze/moodist)                         | ![Moodist](https://img.shields.io/github/stars/remvze/moodist?style=flat) ![Moodist](https://img.shields.io/github/languages/top/remvze/moodist?style=flat)                                                 | 🌲 | Ambient sounds for focus and calm.                                                                                                                                                                                                                                  |
+| [Ryot](https://github.com/IgnisDa/ryot)                              | ![Ryot](https://img.shields.io/github/stars/IgnisDa/ryot?style=flat) ![Ryot](https://img.shields.io/github/languages/top/IgnisDa/ryot?style=flat)                                                           | Roll your own tracker!                                                                                                                                                                                                                                                   |
+| [Vikunja](https://github.com/go-vikunja/vikunja)                     | ![Vikunja](https://img.shields.io/github/stars/go-vikunja/vikunja?style=flat) ![Vikunja](https://img.shields.io/github/languages/top/go-vikunja/vikunja?style=flat)                                         | The to-do app to organize your life.                                                                                                                                                                                                                                     |
+| [SerpBear](https://github.com/towfiqi/serpbear)                      | ![SerpBear](https://img.shields.io/github/stars/towfiqi/serpbear?style=flat) ![SerpBear](https://img.shields.io/github/languages/top/towfiqi/serpbear?style=flat)                                           | Search Engine Position Rank Tracking App                                                                                                                                                                                                                                 |
+| [M4TT72 Terminal](https://github.com/m4tt72/terminal)                | ![M4TT72 Terminal](https://img.shields.io/github/stars/m4tt72/terminal?style=flat) ![M4TT72 Terminal](https://img.shields.io/github/languages/top/m4tt72/terminal?style=flat)                               | Terminal style website                                                                                                                                                                                                                                                   |
+| [uMap](https://github.com/umap-project/umap)                         | ![uMap](https://img.shields.io/github/stars/umap-project/umap?style=flat) ![uMap](https://img.shields.io/github/languages/top/umap-project/umap?style=flat)                                                 | uMap lets you create maps with OpenStreetMap layers in a minute and embed them in your site.                                                                                                                                                                             |
+| [PixelCraft](https://github.com/rgab1508/PixelCraft)                 | ![PixelCraft](https://img.shields.io/github/stars/rgab1508/PixelCraft?style=flat) ![PixelCraft](https://img.shields.io/github/languages/top/rgab1508/PixelCraft?style=flat)                                 | A Pixel Art Editor                                                                                                                                                                                                                                                       |
+| [LittleLink-Server](https://github.com/techno-tim/littlelink-server) | ![LittleLink-Server](https://img.shields.io/github/stars/techno-tim/littlelink-server?style=flat) ![LittleLink-Server](https://img.shields.io/github/languages/top/techno-tim/littlelink-server?style=flat) | A lightweight, open source, stateless, and self-hosted alternative to linktree in a Docker container!                                                                                                                                                                    |
+| [Zimit](https://github.com/openzim/zimit)                            | ![Zimit](https://img.shields.io/github/stars/openzim/zimit?style=flat) ![Zimit](https://img.shields.io/github/languages/top/openzim/zimit?style=flat)                                                       | Make a ZIM file from any Web site and surf offline!                                                                                                                                                                                                                      |
+| [Snapp](https://github.com/urania-dev/snapp)                         | ![Snapp](https://img.shields.io/github/stars/urania-dev/snapp?style=flat) ![Snapp](https://img.shields.io/github/languages/top/urania-dev/snapp?style=flat)                                                 | Yet Another Url Shortner. A simple excercise to learn Svelte.                                                                                                                                                                                                            |
+| [jetlog](https://github.com/pbogre/jetlog)                           | ![jetlog](https://img.shields.io/github/stars/pbogre/jetlog?style=flat) ![jetlog](https://img.shields.io/github/languages/top/pbogre/jetlog?style=flat)                                                     | Personal flight tracker and viewer                                                                                                                                                                                                                                       |
+| [PdfDing](https://codeberg.org/mrmn/PdfDing)                         |                                                                                                                                                                                                             |                                                                                                                                                                                                                                                                          |
+| [Commento++](https://github.com/souramoo/commentoplusplus)           | ![Commento++](https://img.shields.io/github/stars/souramoo/commentoplusplus?style=flat) ![Commento++](https://img.shields.io/github/languages/top/souramoo/commentoplusplus?style=flat)                     | Commento with out of the box patches and updates to add useful features and fixes. Also with one-click deploy to Heroku so you can get up and running fast.                                                                                                              |
+| [Wishthis](https://github.com/wishthis/wishthis)                     | ![Wishthis](https://img.shields.io/github/stars/wishthis/wishthis?style=flat) ![Wishthis](https://img.shields.io/github/languages/top/wishthis/wishthis?style=flat)                                         | wishthis is a simple, intuitive and modern wishlist platform to create, manage and view your wishes for any kind of occasion.                                                                                                                                            |
+
+### Writing
+
+| Name                                                                         | Info                                                                                                                                                                                                                        | Description                                                                                                                                                                                                                                                      |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Hugo](https://github.com/gohugoio/hugo)                                     | ![Hugo](https://img.shields.io/github/stars/gohugoio/hugo?style=flat) ![Hugo](https://img.shields.io/github/languages/top/gohugoio/hugo?style=flat)                                                                         | The world’s fastest framework for building websites.                                                                                                                                                                                                             |
+| [Ghost](https://github.com/TryGhost/Ghost)                                   | ![Ghost](https://img.shields.io/github/stars/TryGhost/Ghost?style=flat) ![Ghost](https://img.shields.io/github/languages/top/TryGhost/Ghost?style=flat)                                                                     | Independent technology for modern publishing, memberships, subscriptions and newsletters.                                                                                                                                                                        |
+| [Jekyll](https://github.com/jekyll/jekyll)                                   | ![Jekyll](https://img.shields.io/github/stars/jekyll/jekyll?style=flat) ![Jekyll](https://img.shields.io/github/languages/top/jekyll/jekyll?style=flat)                                                                     | :globe_with_meridians: Jekyll is a blog-aware static site generator in Ruby                                                                                                                                                                                      |
+| [Memos](https://github.com/usememos/memos)                                   | ![Memos](https://img.shields.io/github/stars/usememos/memos?style=flat) ![Memos](https://img.shields.io/github/languages/top/usememos/memos?style=flat)                                                                     | An open-source, self-hosted note-taking services. No tracking, no ads, no subscription fees — just a clean, fast way to capture your ideas.                                                                                                                      |
+| [Hexo](https://github.com/hexojs/hexo)                                       | ![Hexo](https://img.shields.io/github/stars/hexojs/hexo?style=flat) ![Hexo](https://img.shields.io/github/languages/top/hexojs/hexo?style=flat)                                                                             | A fast, simple & powerful blog framework, powered by Node.js.                                                                                                                                                                                                    |
+| [WordPress](https://github.com/WordPress/WordPress)                          | ![WordPress](https://img.shields.io/github/stars/WordPress/WordPress?style=flat) ![WordPress](https://img.shields.io/github/languages/top/WordPress/WordPress?style=flat)                                                   | WordPress, Git-ified. This repository is just a mirror of the WordPress subversion repository. Please do not send pull requests. Submit pull requests to https://github.com/WordPress/wordpress-develop and patches to https://core.trac.wordpress.org/ instead. |
+| [mdBook](https://github.com/rust-lang/mdBook)                                | ![mdBook](https://img.shields.io/github/stars/rust-lang/mdBook?style=flat) ![mdBook](https://img.shields.io/github/languages/top/rust-lang/mdBook?style=flat)                                                               | Create book from markdown files. Like Gitbook but implemented in Rust                                                                                                                                                                                            |
+| [Etherpad](https://github.com/ether/etherpad-lite)                           | ![Etherpad](https://img.shields.io/github/stars/ether/etherpad-lite?style=flat) ![Etherpad](https://img.shields.io/github/languages/top/ether/etherpad-lite?style=flat)                                                     | Etherpad: A modern really-real-time collaborative document editor.                                                                                                                                                                                               |
+| [Boostnote](https://github.com/BoostIO/BoostNote-Legacy)                     | ![Boostnote](https://img.shields.io/github/stars/BoostIO/BoostNote-Legacy?style=flat) ![Boostnote](https://img.shields.io/github/languages/top/BoostIO/BoostNote-Legacy?style=flat)                                         | This repository is outdated and new Boost Note app is available! We've launched a new Boost Note app which supports real-time collaborative writing. https://github.com/BoostIO/BoostNote-App                                                                    |
+| [ShareLaTex](https://github.com/overleaf/overleaf)                           | ![ShareLaTex](https://img.shields.io/github/stars/overleaf/overleaf?style=flat) ![ShareLaTex](https://img.shields.io/github/languages/top/overleaf/overleaf?style=flat)                                                     | A web-based collaborative LaTeX editor                                                                                                                                                                                                                           |
+| [Novel](https://github.com/steven-tey/novel)                                 | ![Novel](https://img.shields.io/github/stars/steven-tey/novel?style=flat) ![Novel](https://img.shields.io/github/languages/top/steven-tey/novel?style=flat)                                                                 | Notion-style WYSIWYG editor with AI-powered autocompletion.                                                                                                                                                                                                      |
+| [Pelican](https://github.com/getpelican/pelican)                             | ![Pelican](https://img.shields.io/github/stars/getpelican/pelican?style=flat) ![Pelican](https://img.shields.io/github/languages/top/getpelican/pelican?style=flat)                                                         | Static site generator that supports Markdown and reST syntax. Powered by Python.                                                                                                                                                                                 |
+| [Leanote](https://github.com/leanote/leanote)                                | ![Leanote](https://img.shields.io/github/stars/leanote/leanote?style=flat) ![Leanote](https://img.shields.io/github/languages/top/leanote/leanote?style=flat)                                                               | Not Just A Notepad! (golang + mongodb) http://leanote.org                                                                                                                                                                                                        |
+| [HackMD](https://github.com/hackmdio/codimd)                                 | ![HackMD](https://img.shields.io/github/stars/hackmdio/codimd?style=flat) ![HackMD](https://img.shields.io/github/languages/top/hackmdio/codimd?style=flat)                                                                 | CodiMD - Realtime collaborative markdown notes on all platforms.                                                                                                                                                                                                 |
+| [dillinger](https://github.com/joemccann/dillinger)                          | ![dillinger](https://img.shields.io/github/stars/joemccann/dillinger?style=flat) ![dillinger](https://img.shields.io/github/languages/top/joemccann/dillinger?style=flat)                                                   | The last Markdown editor, ever.                                                                                                                                                                                                                                  |
+| [Metalsmith](https://github.com/metalsmith/metalsmith)                       | ![Metalsmith](https://img.shields.io/github/stars/metalsmith/metalsmith?style=flat) ![Metalsmith](https://img.shields.io/github/languages/top/metalsmith/metalsmith?style=flat)                                             | An extremely simple, pluggable static site generator for Node.js                                                                                                                                                                                                 |
+| [OpenSign™](https://github.com/OpenSignLabs/OpenSign)                        | ![OpenSign™](https://img.shields.io/github/stars/OpenSignLabs/OpenSign?style=flat) ![OpenSign™](https://img.shields.io/github/languages/top/OpenSignLabs/OpenSign?style=flat)                                               | 🔥 The free & Open Source DocuSign alternative                                                                                                                                                                                                                   |
+| [WriteFreely](https://github.com/writefreely/writefreely)                    | ![WriteFreely](https://img.shields.io/github/stars/writefreely/writefreely?style=flat) ![WriteFreely](https://img.shields.io/github/languages/top/writefreely/writefreely?style=flat)                                       | A clean, Markdown-based publishing platform made for writers. Write together and build a community.                                                                                                                                                              |
+| [Canvas](https://github.com/austintoddj/canvas)                              | ![Canvas](https://img.shields.io/github/stars/austintoddj/canvas?style=flat) ![Canvas](https://img.shields.io/github/languages/top/austintoddj/canvas?style=flat)                                                           | Publishing on your own terms                                                                                                                                                                                                                                     |
+| [Dnote](https://github.com/dnote/dnote)                                      | ![Dnote](https://img.shields.io/github/stars/dnote/dnote?style=flat) ![Dnote](https://img.shields.io/github/languages/top/dnote/dnote?style=flat)                                                                           | A simple command line notebook                                                                                                                                                                                                                                   |
+| [Plume](https://github.com/Plume-org/Plume)                                  | ![Plume](https://img.shields.io/github/stars/Plume-org/Plume?style=flat) ![Plume](https://img.shields.io/github/languages/top/Plume-org/Plume?style=flat)                                                                   | Federated blogging application, thanks to ActivityPub (now on https://git.joinplu.me/ — this is just a mirror)                                                                                                                                                   |
+| [BroadcastChannel](https://github.com/ccbikai/BroadcastChannel)              | ![BroadcastChannel](https://img.shields.io/github/stars/ccbikai/BroadcastChannel?style=flat) ![BroadcastChannel](https://img.shields.io/github/languages/top/ccbikai/BroadcastChannel?style=flat)                           | Turn your Telegram Channel into a MicroBlog.                                                                                                                                                                                                                     |
+| [Publify](https://github.com/publify/publify)                                | ![Publify](https://img.shields.io/github/stars/publify/publify?style=flat) ![Publify](https://img.shields.io/github/languages/top/publify/publify?style=flat)                                                               | A self hosted Web publishing platform on Rails.                                                                                                                                                                                                                  |
+| [sleek](https://github.com/ransome1/sleek)                                   | ![sleek](https://img.shields.io/github/stars/ransome1/sleek?style=flat) ![sleek](https://img.shields.io/github/languages/top/ransome1/sleek?style=flat)                                                                     | todo.txt manager for Linux, Windows and MacOS, free and open-source (FOSS)                                                                                                                                                                                       |
+| [OpenNote](https://github.com/FoxUSA/OpenNote)                               | ![OpenNote](https://img.shields.io/github/stars/FoxUSA/OpenNote?style=flat) ![OpenNote](https://img.shields.io/github/languages/top/FoxUSA/OpenNote?style=flat)                                                             | OpenNote was built to be an open web-based alternative to Microsoft OneNote (T) and EverNote.                                                                                                                                                                    |
+| [minimalist-web-notepad](https://github.com/pereorga/minimalist-web-notepad) | ![minimalist-web-notepad](https://img.shields.io/github/stars/pereorga/minimalist-web-notepad?style=flat) ![minimalist-web-notepad](https://img.shields.io/github/languages/top/pereorga/minimalist-web-notepad?style=flat) | Minimalist Web Notepad                                                                                                                                                                                                                                           |
+| [htmly](https://github.com/danpros/htmly)                                    | ![htmly](https://img.shields.io/github/stars/danpros/htmly?style=flat) ![htmly](https://img.shields.io/github/languages/top/danpros/htmly?style=flat)                                                                       | Simple and fast databaseless PHP blogging platform, and Flat-File CMS                                                                                                                                                                                            |
+| [oTranscribe](https://github.com/oTranscribe/oTranscribe)                    | ![oTranscribe](https://img.shields.io/github/stars/oTranscribe/oTranscribe?style=flat) ![oTranscribe](https://img.shields.io/github/languages/top/oTranscribe/oTranscribe?style=flat)                                       | A free & open tool for transcribing audio interviews                                                                                                                                                                                                             |
+| [Writing](https://github.com/josephernest/writing)                           | ![Writing](https://img.shields.io/github/stars/josephernest/writing?style=flat) ![Writing](https://img.shields.io/github/languages/top/josephernest/writing?style=flat)                                                     | Writing is a lightweight distraction-free text editor, in the browser (Markdown and LaTeX supported).                                                                                                                                                            |
+| [LetsMarkdown](https://github.com/Cveinnt/LetsMarkdown.com)                  | ![LetsMarkdown](https://img.shields.io/github/stars/Cveinnt/LetsMarkdown.com?style=flat) ![LetsMarkdown](https://img.shields.io/github/languages/top/Cveinnt/LetsMarkdown.com?style=flat)                                   | 👨‍💻👩‍💻 Write Markdown. Together.                                                                                                                                                                                                                             |
+| [Haven](https://github.com/havenweb/haven)                                   | ![Haven](https://img.shields.io/github/stars/havenweb/haven?style=flat) ![Haven](https://img.shields.io/github/languages/top/havenweb/haven?style=flat)                                                                     | Self-hostable private blogging                                                                                                                                                                                                                                   |
+| [Typemill](https://github.com/typemill/typemill)                             | ![Typemill](https://img.shields.io/github/stars/typemill/typemill?style=flat) ![Typemill](https://img.shields.io/github/languages/top/typemill/typemill?style=flat)                                                         | Typemill is a flat-file CMS based on Markdown and designed for informational websites like documentation, manuals, and handbooks.                                                                                                                                |
+| [LinkStack](https://github.com/LinkStackOrg/linkstack-docker)                | ![LinkStack](https://img.shields.io/github/stars/LinkStackOrg/linkstack-docker?style=flat) ![LinkStack](https://img.shields.io/github/languages/top/LinkStackOrg/linkstack-docker?style=flat)                               | A simple to set up docker variant of LinkStack. LinkStack is a highly customizable link sharing platform with an intuitive, easy to use user interface.                                                                                                          |
+``` is
+```handwritten-ink
+{
+	"versionAtEmbed": "0.3.4",
+	"filepath": "*/Ink/Writing/2025.10.28 - 13.54pm.writing"
+}
+```
