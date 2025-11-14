@@ -1,0 +1,22 @@
+# Copy this file to terraform.tfvars and fill in your values
+# terraform.tfvars is excluded from Git via .gitignore
+
+# Proxmox API Configuration
+proxmox_api_url          = "https://192.168.1.200:8006/api2/json"
+proxmox_api_token_id     = "root@pam!terraform"
+proxmox_api_token_secret = "your-secret-token-here"
+proxmox_tls_insecure     = true
+
+# Infrastructure Settings
+proxmox_node    = "duality"
+proxmox_storage = "local-zfs"
+template_name   = "ubuntu-2204-cloudinit-template"
+
+# SSH Configuration
+ssh_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQ... your-key-here"
+ssh_user       = "admin"
+
+# Network Settings
+network_bridge  = "vmbr0"
+network_gateway = "192.168.1.1"
+dns_server      = "192.168.1.1" # Change to 192.168.1.210 after Pi-hole deployment

@@ -2,17 +2,21 @@
 autoinstall:
   version: 1
   identity:
-    hostname: ubuntu-ci
+    hostname: ubuntu-template
     username: packer
-    password: $6$B.bxps01QRe8avf2$YcDVPiM.n7skaW74A3ldNoBvXbF1yAbj.LBLqxSbFRSop8nXD0r50uNygv.7tgwjTRF3P9Rc7z/WDSuH4QFO7.   # <-- fill in step 2EPLACE_ME$REPLACE_ME_MORE"   # <-- fill in step 2
+    # Password: packer (hashed with mkpasswd --method=SHA-512)
+    password: $6$rounds=4096$saltsaltlettuce$JdTmrQpvvbRj7YzEhP3RJpCK.WaOWkp/cNRqS9Ml.BoXG8GFJ5FZVl8RlKfXu5vJGp6o.7d0MvI8XWqQ5MMTN/
   ssh:
     install-server: true
   packages:
     - qemu-guest-agent
     - cloud-init
+    - openssh-server
   storage:
-    layout: { name: lvm }
+    layout:
+      name: lvm
   apt:
     preserve_sources_list: false
   late-commands:
     - curtin in-target --target=/target -- systemctl enable qemu-guest-agent
+    - curtin in-target --target=/target -- systemctl enable ssh

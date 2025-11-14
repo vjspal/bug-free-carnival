@@ -1,0 +1,27 @@
+# Example Test VM
+# Rename to vm-test.tf and uncomment to deploy
+
+# module "test_vm" {
+#   source = "../modules/vm-from-template"
+#
+#   vm_name       = "test-vm"
+#   target_node   = var.proxmox_node
+#   template_name = var.template_name
+#   description   = "Test VM for validating Packer->Terraform->Ansible workflow"
+#
+#   cores  = 1
+#   memory = 1024
+#   disk_size = "10G"
+#
+#   storage        = var.proxmox_storage
+#   network_bridge = var.network_bridge
+#   ip_address     = "192.168.1.230"
+#   gateway        = var.network_gateway
+#   nameserver     = var.dns_server
+#   ssh_keys       = var.ssh_public_key
+# }
+#
+# output "test_vm_ip" {
+#   description = "IP address of test VM"
+#   value       = module.test_vm.ip_address
+# }

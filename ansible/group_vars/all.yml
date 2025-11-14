@@ -1,0 +1,45 @@
+---
+# Global variables for all hosts
+
+# Timezone
+timezone: America/New_York
+
+# DNS Configuration
+dns_servers:
+  - 192.168.1.1  # Router (change to 192.168.1.210 after Pi-hole deployment)
+
+# NTP Servers
+ntp_servers:
+  - 0.pool.ntp.org
+  - 1.pool.ntp.org
+
+# Common packages to install on all hosts
+common_packages:
+  - vim
+  - curl
+  - wget
+  - git
+  - htop
+  - tmux
+  - ncdu
+  - tree
+  - net-tools
+  - dnsutils
+
+# User configuration
+admin_user: admin
+admin_groups:
+  - sudo
+
+# Security settings
+ssh_port: 22
+disable_root_login: true
+disable_password_auth: true
+
+# Docker configuration (for hosts that need it)
+docker_users:
+  - "{{ admin_user }}"
+
+# Monitoring (future)
+# monitoring_enabled: false
+# prometheus_exporter_port: 9100
