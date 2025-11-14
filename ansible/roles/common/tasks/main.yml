@@ -1,0 +1,90 @@
+---
+# Common role - base configuration for all hosts
+
+- name: Set timezone
+  timezone:
+    name: "{{ timezone }}"
+  tags: timezone
+
+- name: Update all packages
+  apt:
+    upgrade: dist
+    update_cache: yes
+    cache_valid_time: 3600
+    autoremove: yes
+    autoclean: yes
+  tags: update
+
+- name: Install common packages
+  apt:
+    name: "{{ common_packages }}"
+    state: present
+  tags: packages
+
+- name: Configure SSH server
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: present
+  loop:
+    - { regexp: '^#?PermitRootLogin', line: 'PermitRootLogin no' }
+    - { regexp: '^#?PasswordAuthentication', line: 'PasswordAuthentication no' }
+    - { regexp: '^#?PubkeyAuthentication', line: 'PubkeyAuthentication yes' }
+  notify: restart sshd
+  when: disable_root_login
+  tags: ssh
+
+- name: Ensure admin user exists
+  user:
+    name: "{{ admin_user }}"
+    groups: "{{ admin_groups }}"
+    append: yes
+    shell: /bin/bash
+    create_home: yes
+  tags: users
+
+- name: Set up authorized keys for admin user
+  authorized_key:
+    user: "{{ admin_user }}"
+    state: present
+    key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+  tags: ssh
+
+- name: Configure sudoers for admin user
+  lineinfile:
+    path: /etc/sudoers.d/{{ admin_user }}
+    line: "{{ admin_user }} ALL=(ALL) NOPASSWD:ALL"
+    create: yes
+    mode: '0440'
+    validate: 'visudo -cf %s'
+  tags: users
+
+- name: Set hostname
+  hostname:
+    name: "{{ inventory_hostname }}"
+  tags: hostname
+
+- name: Update /etc/hosts
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ ansible_host }} {{ inventory_hostname }} {{ inventory_hostname_short }}"
+    state: present
+  tags: hostname
+
+- name: Enable automatic security updates
+  apt:
+    name: unattended-upgrades
+    state: present
+  tags: security
+
+- name: Configure automatic updates
+  copy:
+    dest: /etc/apt/apt.conf.d/50unattended-upgrades
+    content: |
+      Unattended-Upgrade::Allowed-Origins {
+        "${distro_id}:${distro_codename}-security";
+      };
+      Unattended-Upgrade::Automatic-Reboot "false";
+    mode: '0644'
+  tags: security

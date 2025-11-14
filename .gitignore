@@ -1,0 +1,75 @@
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+!terraform.tfvars.example
+.terraform/
+.terraform.lock.hcl
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ansible
+*.retry
+ansible/vault_password.txt
+ansible/**/*vault*.yml
+!ansible/**/*vault*.yml.example
+ansible/.vault_pass
+*.log
+
+# Packer
+packer/builds/
+packer/*.box
+packer_cache/
+output-*/
+
+# Secrets & Credentials
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+credentials.json
+secrets.yml
+.env
+.env.local
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.iml
+
+# Backup files
+*.bak
+*.backup
+*-backup
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Documentation builds (if using tools like mkdocs)
+site/
+_site/
+
+# Python (for automation scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+env/
+ENV/
+
+# Node (for any web dashboards)
+node_modules/
+npm-debug.log
+yarn-error.log

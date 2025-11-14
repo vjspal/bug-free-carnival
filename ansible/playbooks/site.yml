@@ -1,0 +1,32 @@
+---
+# Main playbook for home lab infrastructure
+# This is the entry point for configuring all services
+
+- name: Configure all home lab hosts
+  hosts: all
+  become: true
+  gather_facts: true
+
+  pre_tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      when: ansible_os_family == "Debian"
+
+  roles:
+    - common
+
+- name: Configure automation hosts
+  hosts: automation
+  become: true
+  roles:
+    - docker
+    # Service-specific roles will be added here
+
+- name: Configure infrastructure hosts
+  hosts: infrastructure
+  become: true
+  roles:
+    - docker
+    # Service-specific roles will be added here

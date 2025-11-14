@@ -1,0 +1,27 @@
+---
+# Example vault file for encrypted secrets
+# To use:
+# 1. Create vault password file: echo "your-password" > vault_password.txt
+# 2. Create encrypted vault: ansible-vault create group_vars/vault.yml
+# 3. Add your secrets (see examples below)
+
+# Example secrets (add your actual values in the real vault.yml)
+vault_proxmox_api_token: "your-proxmox-api-token"
+vault_gitea_admin_password: "your-gitea-admin-password"
+vault_semaphore_admin_password: "your-semaphore-admin-password"
+vault_mysql_root_password: "your-mysql-root-password"
+vault_vpn_username: "your-vpn-username"
+vault_vpn_password: "your-vpn-password"
+vault_letsencrypt_email: "your-email@example.com"
+
+# API Keys
+vault_api_keys:
+  sonarr: "your-sonarr-api-key"
+  radarr: "your-radarr-api-key"
+  prowlarr: "your-prowlarr-api-key"
+
+# To edit encrypted vault:
+# ansible-vault edit group_vars/vault.yml
+
+# To view encrypted vault:
+# ansible-vault view group_vars/vault.yml
