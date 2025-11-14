@@ -6,7 +6,10 @@ proxmox = { source = "github.com/hashicorp/proxmox", version = ">= 1.2.0" }
 }
 
 
-variable "pm_password" { type = string, sensitive = true }
+variable "pm_password" {
+  type      = string
+  sensitive = true
+}
 
 
 locals {
@@ -48,7 +51,7 @@ source "proxmox-iso" "ubuntu" {
   # Disk Configuration
   scsi_controller = "virtio-scsi-pci"
 
-  disk {
+  disks {
     type              = "scsi"
     disk_size         = "20G"
     storage_pool      = local.disk_store
