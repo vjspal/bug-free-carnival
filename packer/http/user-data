@@ -4,7 +4,7 @@ autoinstall:
   identity:
     hostname: ubuntu-ci
     username: packer
-    password: "$6$rounds=4096$REPLACE_ME$REPLACE_ME_MORE"   # <-- fill in step 2
+    password: $6$B.bxps01QRe8avf2$YcDVPiM.n7skaW74A3ldNoBvXbF1yAbj.LBLqxSbFRSop8nXD0r50uNygv.7tgwjTRF3P9Rc7z/WDSuH4QFO7.   # <-- fill in step 2EPLACE_ME$REPLACE_ME_MORE"   # <-- fill in step 2
   ssh:
     install-server: true
   packages:

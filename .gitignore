@@ -1,7 +1,0 @@
-.terraform*
-terraform.tfstate*
-terraform.tfvars
-ansible/vault_password.txt
-.DS_Store
-packer_cache/
-output-*/
