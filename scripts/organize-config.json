@@ -1,0 +1,42 @@
+{
+  "description": "Custom organization rules for Downloads folder",
+  "rules": [
+    {
+      "name": "Obsidian Vaults",
+      "pattern": ".*\\.obsidian.*",
+      "destination": "Obsidian"
+    },
+    {
+      "name": "Work Documents",
+      "pattern": "(?i)(work|meeting|invoice|contract).*\\.(pdf|docx?)",
+      "destination": "Work"
+    },
+    {
+      "name": "Screenshots",
+      "pattern": "(?i)(screenshot|screen shot|capture).*",
+      "destination": "Screenshots"
+    },
+    {
+      "name": "Installers",
+      "pattern": "(?i).*setup.*\\.(exe|msi)",
+      "destination": "Installers"
+    },
+    {
+      "name": "Projects",
+      "pattern": "(?i).*project.*",
+      "destination": "Projects"
+    },
+    {
+      "name": "Temporary Files",
+      "pattern": "(?i)^(temp|tmp).*",
+      "destination": "Temp"
+    }
+  ],
+  "excludePatterns": [
+    "desktop.ini",
+    "thumbs.db",
+    ".DS_Store"
+  ],
+  "duplicateAction": "report",
+  "oldFileThreshold": 90
+}
